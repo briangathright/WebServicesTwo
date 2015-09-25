@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 public class Client 
 {
-	public static void main(String[] args)
+	public static void run(String[] args)
 	{
 		System.out.println("Making products!");
 		Product p1 = new Product("Meaning of Life");
