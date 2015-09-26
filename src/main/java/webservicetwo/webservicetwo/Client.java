@@ -50,10 +50,6 @@ public class Client
 		{
 			writer.println(p.getDetail());
 		}
-		writer.println("deleting all objects");
-		dao.delete(c1);
-		dao.delete(c2);
-		dao.delete(p1);
-		dao.delete(p2);
+		HibernateSessionHelper.getSessionFactory().close();
 	}
 }
