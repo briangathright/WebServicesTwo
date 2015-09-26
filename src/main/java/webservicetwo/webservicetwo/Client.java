@@ -14,42 +14,42 @@ public class Client
 		writer.println("Making Sellers (Partners)");
 		writer.println("-------------------------");
 		Seller s1 = new Seller("LuTech Inc.");
-		writer.println("Created Seller: " + s1);
+		writer.println("Created Seller: \n" + s1);
 		Seller s2 = new Seller("Zewdie and Co.");
-		writer.println("Created Seller: " + s2);
+		writer.println("Created Seller: \n" + s2);
 		Seller s3 = new Seller("Nema Nemati");
-		writer.println("Created Seller: " + s3);
+		writer.println("Created Seller: \n" + s3);
 		
 		writer.println("Making Products");
 		writer.println("---------------");
 		Product p1 = new Product("Lemon Shandy - 12pack");
-		writer.println("Created Product: " + p1);
+		writer.println("Created Product: \n" + p1);
 		Product p2 = new Product("Grapefruit Shandy - 12pack");
-		writer.println("Created Product: " + p2);
+		writer.println("Created Product: \n" + p2);
 		Product p3 = new Product("Merlot - 1 bottle");
-		writer.println("Created Product: " + p3);
+		writer.println("Created Product: \n" + p3);
 		Product p4 = new Product("White Zinfandel - 1 bottle");
-		writer.println("Created Product: " + p4);
+		writer.println("Created Product: \n" + p4);
 		Product p5 = new Product("Moonshine - 1 jar");
-		writer.println("Created Product: " + p5);
+		writer.println("Created Product: \n" + p5);
 		
 		writer.println("Adding Products to Sellers");
 		writer.println("--------------------------");
 		s1.addProduct(p1);
 		s1.addProduct(p2);
-		writer.println(s1 + " sells " + p1 + " and " + p2);
+		writer.println(s1);
 		s2.addProduct(p3);
 		s2.addProduct(p4);
-		writer.println(s2 + " sells " + p3 + " and " + p4);
+		writer.println(s2);
 		s3.addProduct(p5);
-		writer.println(s3 + " sells " + p5);
+		writer.println(s3);
 		
 		writer.println("Making Customers");
 		writer.println("----------------");
 		Customer c1 = new Customer("Thor Odinson");
-		writer.println("Created Customer: " + c1);
+		writer.println("Created Customer: \n" + c1);
 		Customer c2 = new Customer("Odin Allfather");
-		writer.println("Created Customer: " + c2);
+		writer.println("Created Customer: \n" + c2);
 		
 		writer.println("Making Reviews");
 		writer.println("--------------");
@@ -88,12 +88,12 @@ public class Client
 		writer.println("---------------------");
 		writer.println("Retrieving Product with ID: 1");
 		Product retP1 = dao.retrieveProduct((long)1);
-		writer.println("Retrieved Product is: " + retP1);
+		writer.println("Retrieved Product is: \n" + retP1);
 		writer.println("Retrieving Seller with ID: 1");
 		Seller retS1 = dao.retrieveSeller((long)1);
-		writer.println("Retrieved Seller is: " + retS1);
+		writer.println("Retrieved Seller is: \n" + retS1);
 		
-	 	writer.println("Retrieved Product list for Retrieved Seller contains:  ");
+	 	writer.println("Retrieved Product list for Retrieved Seller contains: ");
 		for(Product p : retS1.getProductList())
 		{
 			writer.println(p);
