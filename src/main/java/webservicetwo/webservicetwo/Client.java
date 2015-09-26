@@ -42,13 +42,13 @@ public class Client
 		
 		Product retP1 = dao.retrieveProduct(p1, p1.getID());
 		writer.println("retrieved product is: " + retP1.getID() + " " + retP1.getDetail());
-//		Customer retC1 = dao.retrieveCustomer(c1, (long)1);
-//		
-//		writer.println("retreived customer is: " + retC1.getID() + " " + retC1.getName());
-// 		writer.println("Retrieved products: ");
-//		for(Product p : retC1.getProductList())
-//		{
-//			System.out.println(p.getDetail());
-//		}
+		Customer retC1 = dao.retrieveCustomer(c1, (long)1);
+		
+		writer.println("retreived customer is: " + retC1.getID() + " " + retC1.getName());
+ 		writer.println("Retrieved products: ");
+		for(Product p : retC1.getProductList())
+		{
+			System.out.println(p.getDetail());
+		}
 	}
 }
