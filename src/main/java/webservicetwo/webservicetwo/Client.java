@@ -14,42 +14,42 @@ public class Client
 		writer.println("Making Sellers (Partners)");
 		writer.println("-------------------------");
 		Seller s1 = new Seller("LuTech Inc.");
-		writer.println("Created Seller: \n" + s1);
+		writer.println("Created Seller: \n" + s1 + "\n");
 		Seller s2 = new Seller("Zewdie and Co.");
-		writer.println("Created Seller: \n" + s2);
+		writer.println("Created Seller: \n" + s2 + "\n");
 		Seller s3 = new Seller("Nema Nemati");
-		writer.println("Created Seller: \n" + s3);
+		writer.println("Created Seller: \n" + s3 + "\n");
 		
 		writer.println("Making Products");
 		writer.println("---------------");
 		Product p1 = new Product("Lemon Shandy - 12pack");
-		writer.println("Created Product: \n" + p1);
+		writer.println("Created Product: \n" + p1 + "\n");
 		Product p2 = new Product("Grapefruit Shandy - 12pack");
-		writer.println("Created Product: \n" + p2);
+		writer.println("Created Product: \n" + p2 + "\n");
 		Product p3 = new Product("Merlot - 1 bottle");
-		writer.println("Created Product: \n" + p3);
+		writer.println("Created Product: \n" + p3 + "\n");
 		Product p4 = new Product("White Zinfandel - 1 bottle");
-		writer.println("Created Product: \n" + p4);
+		writer.println("Created Product: \n" + p4 + "\n");
 		Product p5 = new Product("Moonshine - 1 jar");
-		writer.println("Created Product: \n" + p5);
+		writer.println("Created Product: \n" + p5 + "\n");
 		
 		writer.println("Adding Products to Sellers");
 		writer.println("--------------------------");
 		s1.addProduct(p1);
 		s1.addProduct(p2);
-		writer.println(s1);
+		writer.println(s1 + "\n");
 		s2.addProduct(p3);
 		s2.addProduct(p4);
-		writer.println(s2);
+		writer.println(s2 + "\n");
 		s3.addProduct(p5);
-		writer.println(s3);
+		writer.println(s3 + "\n");
 		
 		writer.println("Making Customers");
 		writer.println("----------------");
 		Customer c1 = new Customer("Thor Odinson");
-		writer.println("Created Customer: \n" + c1);
+		writer.println("Created Customer: \n" + c1 + "\n");
 		Customer c2 = new Customer("Odin Allfather");
-		writer.println("Created Customer: \n" + c2);
+		writer.println("Created Customer: \n" + c2 + "\n");
 		
 		writer.println("Making Reviews");
 		writer.println("--------------");
@@ -88,7 +88,7 @@ public class Client
 		writer.println("---------------------");
 		writer.println("Retrieving Product with ID: 1");
 		Product retP1 = dao.retrieveProduct((long)1);
-		writer.println("Retrieved Product is: \n" + retP1);
+		writer.println("Retrieved Product is: \n" + retP1 + "\n");
 		writer.println("Retrieving Seller with ID: 1");
 		Seller retS1 = dao.retrieveSeller((long)1);
 		writer.println("Retrieved Seller is: \n" + retS1);

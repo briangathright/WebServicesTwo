@@ -114,7 +114,7 @@ public String toString() {
 			"\nName: " + name + 
 			"\nRating: " + calcAverageRating() + 
 			"\nNumber of Reviews: " + reviewList.size() + 
-			"\nProduct List: " + productList;
+			"\nProduct List:\n" + productList;
 }
 
 
