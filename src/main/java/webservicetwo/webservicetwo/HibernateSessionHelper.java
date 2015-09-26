@@ -7,9 +7,9 @@ import java.net.URI;
 
 public class HibernateSessionHelper {
 
-    private static final SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
 
-    static {
+    public static void configHibernate() {
         try {
             Configuration cfg = new Configuration().configure();
             URI dbUri = new URI(System.getenv("DATABASE_URL"));

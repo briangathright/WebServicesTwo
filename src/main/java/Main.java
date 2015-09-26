@@ -10,14 +10,17 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.*;
 
 import webservicetwo.webservicetwo.Client;
+import webservicetwo.webservicetwo.HibernateSessionHelper;
 
 public class Main extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+    	HibernateSessionHelper.configHibernate();
         PrintWriter writer = resp.getWriter();
         Client c = new Client(writer);
         c.run();
+        HibernateSessionHelper.getSessionFactory().close();
     }
 
     public static void main(String[] args) throws Exception{
