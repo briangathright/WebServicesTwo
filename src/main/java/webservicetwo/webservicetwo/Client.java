@@ -2,10 +2,6 @@ package webservicetwo.webservicetwo;
 
 import java.io.PrintWriter;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
 public class Client 
 {
 	PrintWriter writer;
@@ -44,15 +40,15 @@ public class Client
 		dao.add(c1);
 		dao.add(c2);
 		
-//		Product retP1 = dao.retrieveProduct((long)1);
-//		writer.println("retrieved product is: " + retP1.getID() + " " + retP1.getDetail());
-//		Customer retC1 = dao.retrieveCustomer((long)1);
-//		
-//		writer.println("retreived customer is: " + retC1.getID() + " " + retC1.getName());
-// 		writer.println("Retrieved products: ");
-//		for(Product p : retC1.getProductList())
-//		{
-//			System.out.println(p.getDetail());
-//		}
+		Product retP1 = dao.retrieveProduct(p1, (long)1);
+		writer.println("retrieved product is: " + retP1.getID() + " " + retP1.getDetail());
+		Customer retC1 = dao.retrieveCustomer(c1, (long)1);
+		
+		writer.println("retreived customer is: " + retC1.getID() + " " + retC1.getName());
+ 		writer.println("Retrieved products: ");
+		for(Product p : retC1.getProductList())
+		{
+			System.out.println(p.getDetail());
+		}
 	}
 }
