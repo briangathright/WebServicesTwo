@@ -24,23 +24,35 @@ public class HibernateDao {
         session.getTransaction().commit();
     }
 
-//    public static Object retrieve(String bean, String id) {
-//       try {
-//           BeanFactory context = new ClassPathXmlApplicationContext(IHibernate.appContext);
-//           Object className = context.getBean(bean);
-//
-//           org.hibernate.classic.Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
-//           session.beginTransaction();
-//
-//           Object obj = session.get(className.getClass(), id);
-//
-//           session.getTransaction().commit();
-//           return obj;
-//       } catch (Exception e) {
-//           e.printStackTrace();
-//       }
-//
-//       return null;
-//    }
+    public static Product retrieveProduct(long id) {
+       try {
+           Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+           session.beginTransaction();
 
+           Product prod = session.get(Product.class, id);
+
+           session.getTransaction().commit();
+           return prod;
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+
+       return null;
+    }
+    
+    public static Customer retrieveCustomer(long id) {
+        try {
+            Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+
+            Customer cust = session.get(Customer.class, id);
+
+            session.getTransaction().commit();
+            return cust;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+     }
 }
