@@ -48,7 +48,7 @@ public class Client
  		writer.println("Retrieved products: ");
 		for(Product p : retC1.getProductList())
 		{
-			System.out.println(p.getDetail());
+			writer.println(p.getDetail());
 		}
 	}
 }
