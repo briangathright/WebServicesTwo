@@ -11,7 +11,9 @@
         <!--<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/zewdiemarket</property>-->
         <!--<property name="hibernate.connection.username">postgres</property>-->
         <!--<property name="hibernate.connection.password">nemanemati</property>-->
- 
+ 		
+ 		<property name="hibernate.current_session_context_class">thread</property>
+        
         <!-- SQL dialect -->
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
  
