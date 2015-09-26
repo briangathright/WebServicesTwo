@@ -1,13 +1,17 @@
 package webservicetwo.webservicetwo;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.FetchType;
@@ -23,11 +27,15 @@ public class Product implements Serializable {
 	
 	@Column(name = "detail")
 	private String detail;
+	
+	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+	@JoinColumn(name="review_id")
+	private Set<Review> reviewList = new HashSet<Review>();
 		
 	public Product()
 	{
 		
-	};
+	}
 	
 	public Product(String detail)
 	{
@@ -52,5 +60,30 @@ public class Product implements Serializable {
 	public void setDetail(String detail)
 	{
 		this.detail=detail;
+	}
+	public void addReview(Review r)
+	{
+		reviewList.add(r);
+	}
+	
+	public void deleteReview(Review r){
+		reviewList.remove(r);
+	}
+	
+	public void setReviewList(HashSet<Review> rl) 
+	{
+		this.reviewList = rl;
+	}
+	
+	public Set<Review> getReviewList()
+	{
+		return reviewList;
+	}
+	
+	@Override
+	public String toString() {
+		return "Product " + product_id + ":" +
+				"\n Detail: " + detail;
+				
 	}
 }

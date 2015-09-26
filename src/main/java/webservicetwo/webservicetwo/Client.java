@@ -23,6 +23,8 @@ public class Client
 		Customer c2 = new Customer("George Thiruvathukal");
 		writer.println("Made customer with Name: " + c2.getName() + ".");
 		
+		writer.println("Making some Reviews!");
+		Review r1 = new Review(5, c2, "Just phenomenal!");
 		
 		writer.println("Storing products in Database!");
 		HibernateDao dao = new HibernateDao();
@@ -31,15 +33,22 @@ public class Client
 		dao.add(c2);
 		dao.add(p1);
 		dao.add(p2);
+		dao.add(r1);
 		
 		writer.println("Stored products and customers");
 		writer.println("Adding products to the customers' productlists!");
 		c1.addProduct(p1);
 		c1.addProduct(p2);
-		writer.println("Added products " + c1.getProductList() + " to Customer " + c1.getName() + ".");
+
+		writer.println("Adding review to a product");
+		
+		p1.addReview(r1);
+		
+		dao.add(p1);
 		dao.add(c1);
 		dao.add(c2);
 		
+		writer.println("Retrieving Items");
 		Product retP1 = dao.retrieveProduct((long)1);
 		writer.println("retrieved product is: " + retP1.getID() + " " + retP1.getDetail());
 		Customer retC1 = dao.retrieveCustomer((long)1);
@@ -48,7 +57,10 @@ public class Client
  		writer.println("Retrieved products: ");
 		for(Product p : retC1.getProductList())
 		{
-			writer.println(p.getDetail());
+			writer.println(p);
+			for(Review r : p.getReviewList()) {
+				writer.println(r);
+			}
 		}
 	}
 }
