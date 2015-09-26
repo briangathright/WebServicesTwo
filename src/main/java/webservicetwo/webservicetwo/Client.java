@@ -50,6 +50,5 @@ public class Client
 		{
 			writer.println(p.getDetail());
 		}
-		HibernateSessionHelper.getSessionFactory().close();
 	}
 }
