@@ -18,7 +18,7 @@ import javax.persistence.FetchType;
 
 @Entity
 @Table(name = "product")
-public class Product implements Serializable {
+public class Product implements Serializable, IReviewable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

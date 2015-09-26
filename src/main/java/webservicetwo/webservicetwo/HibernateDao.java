@@ -55,4 +55,35 @@ public class HibernateDao {
 
         return null;
      }
+    
+    public static Review retrieveReview(long id) {
+        try {
+        	Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+
+            Review review = session.get(Review.class, id);
+
+            session.getTransaction().commit();
+            return review;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+     }
+    public static Seller retrieveSeller(long id) {
+        try {
+        	Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+
+            Seller seller = session.get(Seller.class, id);
+
+            session.getTransaction().commit();
+            return seller;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+     }
 }

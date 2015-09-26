@@ -29,10 +29,6 @@ public class Customer implements Serializable {
 	@Column(name = "customer_name")
 	private String name;
 	
-	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-	@JoinColumn(name="product_id")
-	private Set<Product> productList = new HashSet<Product>();
-	
 	public Customer()
 	{
 	}
@@ -61,21 +57,4 @@ public class Customer implements Serializable {
 	{
 		this.name=name;
 	}
-	
-	public void addProduct(Product p)
-	{
-		productList.add(p);
-	}
-	
-	public void setProductList(HashSet<Product> pl) 
-	{
-		this.productList = pl;
-	}
-	
-	public Set<Product> getProductList()
-	{
-		return productList;
-	}
-	
-	
 }

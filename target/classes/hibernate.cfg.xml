@@ -29,6 +29,7 @@
         <mapping class="webservicetwo.webservicetwo.Product"/>
         <mapping class="webservicetwo.webservicetwo.Customer"/>
         <mapping class="webservicetwo.webservicetwo.Review"/>
+        <mapping class="webservicetwo.webservicetwo.Seller"/>
         
     </session-factory>
 </hibernate-configuration>
