@@ -28,6 +28,7 @@
         <!-- Annotated entity classes -->
         <mapping class="webservicetwo.webservicetwo.Product"/>
         <mapping class="webservicetwo.webservicetwo.Customer"/>
+        <mapping class="webservicetwo.webservicetwo.Review"/>
         
     </session-factory>
 </hibernate-configuration>
