@@ -24,35 +24,35 @@ public class HibernateDao {
         session.getTransaction().commit();
     }
 
-    public static Product retrieveProduct(long id) {
-       try {
-           Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
-           session.beginTransaction();
-
-           Product prod = session.get(Product.class, id);
-
-           session.getTransaction().commit();
-           return prod;
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
-
-       return null;
-    }
-    
-    public static Customer retrieveCustomer(long id) {
-        try {
-            Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
-            session.beginTransaction();
-
-            Customer cust = session.get(Customer.class, id);
-
-            session.getTransaction().commit();
-            return cust;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
-     }
+//    public static Product retrieveProduct(long id) {
+//       try {
+//           Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+//           session.beginTransaction();
+//
+//           Product prod = session.get(Product.class, id);
+//
+//           session.getTransaction().commit();
+//           return prod;
+//       } catch (Exception e) {
+//           e.printStackTrace();
+//       }
+//
+//       return null;
+//    }
+//    
+//    public static Customer retrieveCustomer(long id) {
+//        try {
+//            Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+//            session.beginTransaction();
+//
+//            Customer cust = session.get(Customer.class, id);
+//
+//            session.getTransaction().commit();
+//            return cust;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return null;
+//     }
 }
