@@ -16,8 +16,8 @@ public class Main extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        writer.println("hello");
-        //Client c = new Client(writer);
+        Client c = new Client(writer);
+        c.run();
     }
 
     public static void main(String[] args) throws Exception{
