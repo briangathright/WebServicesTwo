@@ -80,10 +80,22 @@ public class Product implements Serializable {
 		return reviewList;
 	}
 	
+	public double calcAverageRating() {
+		if(reviewList.isEmpty()) {
+			return 0;
+		}
+		double total = 0;
+		for(Review r : reviewList) {
+			total += r.getRating();
+		}
+		return total/reviewList.size();
+	}
+	
 	@Override
 	public String toString() {
 		return "Product " + product_id + ":" +
-				"\n Detail: " + detail;
-				
+				"\nDetail: " + detail + 
+				"\nRating: " + calcAverageRating() + 
+				"\nNumber of Reviews: " + reviewList.size();
 	}
 }
