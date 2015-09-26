@@ -32,6 +32,10 @@ public class Review implements Serializable {
 	@JoinColumn(name="customer_id")
 	private Customer customer;	
 	
+	public Review() {
+		
+	}
+	
 	public Review(float rating, Customer customer) {
 		this.rating = boundRating(rating);
 		this.customer = customer;
