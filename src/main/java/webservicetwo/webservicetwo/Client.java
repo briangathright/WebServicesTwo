@@ -13,7 +13,7 @@ public class Client
 	public Client(PrintWriter writer) {
 		this.writer = writer;
 	}
-	public void run(String[] args)
+	public void run()
 	{
 		writer.println("Making products!");
 		Product p1 = new Product("Meaning of Life");
