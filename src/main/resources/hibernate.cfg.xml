@@ -8,9 +8,9 @@
  
         <!-- Connection settings -->
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/zewdiemarket</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">nemanemati</property>
+        <!--<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/zewdiemarket</property>-->
+        <!--<property name="hibernate.connection.username">postgres</property>-->
+        <!--<property name="hibernate.connection.password">nemanemati</property>-->
  
         <!-- SQL dialect -->
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
@@ -21,7 +21,7 @@
         <!-- Drop and re-create all database on startup -->
         <!-- Commented out line below creates, then drops. Uncommented message only creates databases. -->
         <!-- <property name="hibernate.hbm2ddl.auto">create-drop</property> -->
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
  
         <!-- Annotated entity classes -->
         <mapping class="webservicetwo.webservicetwo.Product"/>

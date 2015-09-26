@@ -9,12 +9,14 @@ import org.apache.log4j.BasicConfigurator;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.*;
 
+import webservicetwo.webservicetwo.Client;
+
 public class Main extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        writer.println("hello world");
+        Client c = new Client(writer);
     }
 
     public static void main(String[] args) throws Exception{
