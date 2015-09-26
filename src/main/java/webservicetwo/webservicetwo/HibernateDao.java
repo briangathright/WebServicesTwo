@@ -24,12 +24,12 @@ public class HibernateDao {
         session.getTransaction().commit();
     }
 
-    public static Product retrieveProduct(Product p1, long id) {
+    public static Product retrieveProduct(long id) {
        try {
            Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
            session.beginTransaction();
 
-           Product prod = session.get(p1.getClass(), id);
+           Product prod = session.get(Product.class, id);
 
            session.getTransaction().commit();
            return prod;
@@ -40,12 +40,12 @@ public class HibernateDao {
        return null;
     }
     
-    public static Customer retrieveCustomer(Customer c1, long id) {
+    public static Customer retrieveCustomer(long id) {
         try {
         	Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
             session.beginTransaction();
 
-            Customer cust = session.get(c1.getClass(), id);
+            Customer cust = session.get(Customer.class, id);
 
             session.getTransaction().commit();
             return cust;

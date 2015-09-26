@@ -40,9 +40,9 @@ public class Client
 		dao.add(c1);
 		dao.add(c2);
 		
-		Product retP1 = dao.retrieveProduct(p1, p1.getID());
+		Product retP1 = dao.retrieveProduct((long)1);
 		writer.println("retrieved product is: " + retP1.getID() + " " + retP1.getDetail());
-		Customer retC1 = dao.retrieveCustomer(c1, (long)1);
+		Customer retC1 = dao.retrieveCustomer((long)1);
 		
 		writer.println("retreived customer is: " + retC1.getID() + " " + retC1.getName());
  		writer.println("Retrieved products: ");
@@ -50,5 +50,10 @@ public class Client
 		{
 			writer.println(p.getDetail());
 		}
+		writer.println("deleting all objects");
+		dao.delete(c1);
+		dao.delete(c2);
+		dao.delete(p1);
+		dao.delete(p2);
 	}
 }
