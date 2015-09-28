@@ -2,34 +2,35 @@
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
- 
+
 <hibernate-configuration>
-    <session-factory>
- 
-        <!-- Connection settings -->
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <!--<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/zewdiemarket</property>-->
-        <!--<property name="hibernate.connection.username">postgres</property>-->
-        <!--<property name="hibernate.connection.password">nemanemati</property>-->
- 		
- 		<property name="hibernate.current_session_context_class">thread</property>
-        
-        <!-- SQL dialect -->
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
- 
-        <!-- Print executed SQL to stdout -->
-        <property name="show_sql">true</property>
- 
-        <!-- Drop and re-create all database on startup -->
-        <!-- Commented out line below creates, then drops. Uncommented message only creates databases. -->
-        <!-- <property name="hibernate.hbm2ddl.auto">create-drop</property> -->
-        <property name="hibernate.hbm2ddl.auto">create-drop</property>
- 
-        <!-- Annotated entity classes -->
-        <mapping class="webservicetwo.webservicetwo.Product"/>
-        <mapping class="webservicetwo.webservicetwo.Customer"/>
-        <mapping class="webservicetwo.webservicetwo.Review"/>
-        <mapping class="webservicetwo.webservicetwo.Seller"/>
-        
-    </session-factory>
+	<session-factory>
+
+		<!-- Connection settings -->
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<!--<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/zewdiemarket</property> -->
+		<!--<property name="hibernate.connection.username">postgres</property> -->
+		<!--<property name="hibernate.connection.password">nemanemati</property> -->
+
+		<property name="hibernate.current_session_context_class">thread</property>
+
+		<!-- SQL dialect -->
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+
+		<!-- Print executed SQL to stdout -->
+		<property name="show_sql">true</property>
+
+		<!-- Drop and re-create all database on startup -->
+		<!-- Commented out line below creates, then drops. Uncommented message 
+			only creates databases. -->
+		<!-- <property name="hibernate.hbm2ddl.auto">create-drop</property> -->
+		<property name="hibernate.hbm2ddl.auto">create-drop</property>
+
+		<!-- Annotated entity classes -->
+		<mapping class="Model.Product" />
+		<mapping class="Model.Customer" />
+		<mapping class="Model.Review" />
+		<mapping class="Model.Seller" />
+
+	</session-factory>
 </hibernate-configuration>

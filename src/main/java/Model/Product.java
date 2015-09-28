@@ -1,4 +1,4 @@
-package webservicetwo.webservicetwo;
+package Model;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -18,68 +18,60 @@ import javax.persistence.FetchType;
 
 @Entity
 @Table(name = "product")
-public class Product implements Serializable, IReviewable{
-	
+public class Product implements Serializable, IReviewable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
 	private long product_id;
-	
+
 	@Column(name = "detail")
 	private String detail;
-	
+
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="review_id")
 	private Set<Review> reviewList = new HashSet<Review>();
-		
-	public Product()
-	{
-		
+
+	public Product() {
+
 	}
-	
-	public Product(String detail)
-	{
+
+	public Product(String detail) {
 		this.detail=detail;
 	}
-	
-	public long getID()
-	{
+
+	public long getID() {
 		return product_id;
 	}
-	
-	public void setID(long id)
-	{
+
+	public void setID(long id) {
 		this.product_id=id;
 	}
-	
-	public String getDetail()
-	{
+
+	public String getDetail() {
 		return detail;
 	}
-	
-	public void setDetail(String detail)
-	{
+
+	public void setDetail(String detail) {
 		this.detail=detail;
 	}
-	public void addReview(Review r)
-	{
+
+	public void addReview(Review r) {
 		reviewList.add(r);
 	}
-	
+
 	public void deleteReview(Review r){
 		reviewList.remove(r);
 	}
-	
-	public void setReviewList(HashSet<Review> rl) 
-	{
+
+	public void setReviewList(HashSet<Review> rl)  {
 		this.reviewList = rl;
 	}
-	
-	public Set<Review> getReviewList()
-	{
+
+	public Set<Review> getReviewList() {
 		return reviewList;
 	}
-	
+
 	public double calcAverageRating() {
 		if(reviewList.isEmpty()) {
 			return 0;
@@ -90,7 +82,7 @@ public class Product implements Serializable, IReviewable{
 		}
 		return total/reviewList.size();
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Product " + product_id + ":" +

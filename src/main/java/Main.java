@@ -9,28 +9,28 @@ import org.apache.log4j.BasicConfigurator;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.*;
 
-import webservicetwo.webservicetwo.Client;
-import webservicetwo.webservicetwo.HibernateSessionHelper;
+import Data.HibernateSessionHelper;
+import View.Client;
 
 public class Main extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-    	HibernateSessionHelper.configHibernate();
-        PrintWriter writer = resp.getWriter();
-        Client c = new Client(writer);
-        c.run();
-        HibernateSessionHelper.getSessionFactory().close();
-    }
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		HibernateSessionHelper.configHibernate();
+		PrintWriter writer = resp.getWriter();
+		Client c = new Client(writer);
+		c.run();
+		HibernateSessionHelper.getSessionFactory().close();
+	}
 
-    public static void main(String[] args) throws Exception{
-        Server server = new Server(Integer.valueOf(System.getenv("PORT")));
-        BasicConfigurator.configure();
-        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.setContextPath("/");
-        server.setHandler(context);
-        context.addServlet(new ServletHolder(new Main()),"/*");
-        server.start();
-        server.join();
-    }
+	public static void main(String[] args) throws Exception {
+		Server server = new Server(Integer.valueOf(System.getenv("PORT")));
+		BasicConfigurator.configure();
+		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+		context.setContextPath("/");
+		server.setHandler(context);
+		context.addServlet(new ServletHolder(new Main()),"/*");
+		server.start();
+		server.join();
+	}
 }
