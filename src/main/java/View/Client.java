@@ -72,11 +72,6 @@ public class Client {
 		writer.println(c2.getName() + "'s address set to " + c2.getAddress());
 		writer.println(c2.getName() + "'s billing info set to " + c2.getBillingInfo());
 		
-		writer.println("\nPlacing Some Orders");
-		writer.println("-------------------");
-		c1.addToShoppingCart(p1);
-		c1.placeOrder();
-		
 		writer.println("\nMaking Reviews");
 		writer.println("--------------");
 		Review r1 = new Review(5, c1, "Just phenomenal!");

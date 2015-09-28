@@ -16,24 +16,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "order")
 public class Order implements Serializable {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "order_id")
 	private long order_id;
 	
-	@Column(name = "order_status")
 	private String orderStatus = "PLACED";
 	
-	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-	@JoinColumn(name="customer_id")
 	private Customer customer;
 	
-	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-	@JoinColumn(name="product_id")
 	Set<Product> orderProductList = new HashSet<Product>();
 	
 	public Order() {
