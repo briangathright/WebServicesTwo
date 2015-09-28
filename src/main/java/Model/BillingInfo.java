@@ -96,4 +96,14 @@ public class BillingInfo implements Serializable {
 	public void setCvcNumber(String cvcNumber) {
 		this.cvcNumber = cvcNumber;
 	}
+	
+	@Override
+	public String toString() {
+		return "\nCardType: " + cardType +
+		"\nBilling Name: " + billingName + 
+		"\nBilling Address: " + billingAddress +
+		"\nCard Number: " + cardNumber +
+		"\nExpiration Date: " + expDate +
+		"\nCVC Number: " + cvcNumber;
+	}
 }
