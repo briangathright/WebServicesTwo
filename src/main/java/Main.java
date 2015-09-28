@@ -9,8 +9,8 @@ import org.apache.log4j.BasicConfigurator;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.*;
 
-import Data.HibernateSessionHelper;
-import View.Client;
+import data.HibernateSessionHelper;
+import view.Client;
 
 public class Main extends HttpServlet {
 	@Override

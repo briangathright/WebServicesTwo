@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,8 +31,12 @@ public class Customer implements Serializable {
 	private String name;
 
 	@Column(name = "customer_shippingAddress")
-	private String shippingAddress = "N\\A";
+	private String shippingAddress = "N/A";
 
+	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+	@JoinColumn(name="billingInfo_id")
+	private BillingInfo billingInfo;
+	
 	public Customer() {
 	}
 
@@ -58,8 +63,17 @@ public class Customer implements Serializable {
 	public String getAddress() {
 		return this.shippingAddress;
 	}
+	
 	public void setAddress(String address) {
 		this.shippingAddress = address;
+	}
+	
+	public BillingInfo getBillingInfo() {
+		return this.billingInfo;
+	}
+	
+	public void setBillingInfo(BillingInfo bi) {
+		this.billingInfo = bi;
 	}
 
 	@Override

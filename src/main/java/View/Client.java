@@ -1,12 +1,13 @@
-package View;
+package view;
 
 import java.io.PrintWriter;
 
-import Data.HibernateDao;
-import Model.Customer;
-import Model.Product;
-import Model.Review;
-import Model.Seller;
+import data.HibernateDao;
+import model.BillingInfo;
+import model.Customer;
+import model.Product;
+import model.Review;
+import model.Seller;
 
 public class Client {
 	PrintWriter writer;
@@ -56,6 +57,19 @@ public class Client {
 		Customer c2 = new Customer("Odin Allfather");
 		writer.println("Created Customer: \n" + c2 + "\n");
 
+		writer.println("Adding Billing and Shipping Info to Customers");
+		writer.println("---------------------------------------------");
+		c1.setAddress("2244 Main Street, Asgard City, Asgard, 65101");
+		BillingInfo b1 = new BillingInfo("Visa", "Thor Odinson", "2244 Main Street, Asgard City, Asgard, 65101", "1234-4321-5343-1233", "03/16", "256");
+		c1.setBillingInfo(b1);
+		c2.setAddress("1212 Side Street, Asgard City, Asgard, 65101");
+		BillingInfo b2 = new BillingInfo("Visa", "Odin Allfather", "1212 Side Street, Asgard City, Asgard, 65101", "2313-4343-6444-1221", "04/17", "126");
+		c2.setBillingInfo(b2);
+		writer.println(c1.getName() + "'s address set to " + c1.getAddress());
+		writer.println(c1.getName() + "'s billing info set to " + c1.getBillingInfo());
+		writer.println(c2.getName() + "'s address set to " + c2.getAddress());
+		writer.println(c2.getName() + "'s billing info set to " + c2.getBillingInfo());
+		
 		writer.println("Making Reviews");
 		writer.println("--------------");
 		Review r1 = new Review(5, c1, "Just phenomenal!");
@@ -81,6 +95,8 @@ public class Client {
 		HibernateDao.add(p3);
 		HibernateDao.add(p4);
 		HibernateDao.add(p5);
+		HibernateDao.add(b1);
+		HibernateDao.add(b2);
 		HibernateDao.add(c1);
 		HibernateDao.add(c2);
 		HibernateDao.add(r1);

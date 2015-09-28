@@ -1,11 +1,12 @@
-package Data;
+package data;
 
 import org.hibernate.Session;
 
-import Model.Customer;
-import Model.Product;
-import Model.Review;
-import Model.Seller;
+import model.BillingInfo;
+import model.Customer;
+import model.Product;
+import model.Review;
+import model.Seller;
 
 public class HibernateDao {
 
@@ -85,6 +86,21 @@ public class HibernateDao {
 
 			session.getTransaction().commit();
 			return seller;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	public static BillingInfo retrieveBillingInfo(long id) {
+		try {
+			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+
+			BillingInfo bi = session.get(BillingInfo.class, id);
+
+			session.getTransaction().commit();
+			return bi;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
