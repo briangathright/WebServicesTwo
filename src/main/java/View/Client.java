@@ -1,10 +1,12 @@
 package view;
 
 import java.io.PrintWriter;
+import java.util.HashSet;
 
 import data.HibernateDao;
 import model.BillingInfo;
 import model.Customer;
+import model.Order;
 import model.Product;
 import model.Review;
 import model.Seller;
@@ -28,15 +30,15 @@ public class Client {
 
 		writer.println("Making Products");
 		writer.println("---------------");
-		Product p1 = new Product("Lemon Shandy - 12pack");
+		Product p1 = new Product("Lemon Shandy - 12pack", 7.99);
 		writer.println("Created Product: \n" + p1 + "\n");
-		Product p2 = new Product("Grapefruit Shandy - 12pack");
+		Product p2 = new Product("Grapefruit Shandy - 12pack", 6.99);
 		writer.println("Created Product: \n" + p2 + "\n");
-		Product p3 = new Product("Merlot - 1 bottle");
+		Product p3 = new Product("Merlot - 1 bottle", 10.99);
 		writer.println("Created Product: \n" + p3 + "\n");
-		Product p4 = new Product("White Zinfandel - 1 bottle");
+		Product p4 = new Product("White Zinfandel - 1 bottle", 9.99);
 		writer.println("Created Product: \n" + p4 + "\n");
-		Product p5 = new Product("Moonshine - 1 jar");
+		Product p5 = new Product("Moonshine - 1 jar", 12.99);
 		writer.println("Created Product: \n" + p5 + "\n");
 
 		writer.println("Adding Products to Sellers");
@@ -70,21 +72,23 @@ public class Client {
 		writer.println(c2.getName() + "'s address set to " + c2.getAddress());
 		writer.println(c2.getName() + "'s billing info set to " + c2.getBillingInfo());
 		
-		writer.println("Making Reviews");
+		writer.println("\nPlacing Some Orders");
+		writer.println("-------------------");
+		//TODO: shopping cart stuff
+		
+		writer.println("\nMaking Reviews");
 		writer.println("--------------");
 		Review r1 = new Review(5, c1, "Just phenomenal!");
 		Review r2 = new Review(2, c1, "It's pretty bad.");
 		Review r3 = new Review(-5, c2, "Meh.");
 		Review r4 = new Review(12, c2, "Outstanding!");
 
-		writer.println("Assigning Reviews");
-		writer.println("-----------------");
 		p1.addReview(r1);
 		p5.addReview(r2);
 		p1.addReview(r3);
 		s1.addReview(r4);
 
-		writer.println("Storing Everything in Database");
+		writer.println("\nStoring Everything in Database");
 		writer.println("------------------------------");
 
 		HibernateDao.add(s1);
@@ -104,7 +108,7 @@ public class Client {
 		HibernateDao.add(r3);
 		HibernateDao.add(r4);
 
-		writer.println("Retrieving Some Items");
+		writer.println("\nRetrieving Some Items");
 		writer.println("---------------------");
 		writer.println("Retrieving Product with ID: 1");
 		Product retP1 = HibernateDao.retrieveProduct((long)1);

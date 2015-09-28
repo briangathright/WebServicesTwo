@@ -31,9 +31,13 @@ public class Seller implements Serializable, IReviewable {
 	private Set<Product> productList = new HashSet<Product>();
 
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+	@JoinColumn(name="order_id")
+	private Set<Order> orderList = new HashSet<Order>();
+	
+	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="review_id")
 	private Set<Review> reviewList = new HashSet<Review>();
-
+	
 	public Seller() {
 	}
 
@@ -59,6 +63,11 @@ public class Seller implements Serializable, IReviewable {
 
 	public void addProduct(Product p) {
 		productList.add(p);
+		p.setSeller(this);
+	}
+	
+	public void removeProduct(Product p) {
+		productList.remove(p);
 	}
 
 	public void setProductList(HashSet<Product> pl) {
@@ -68,12 +77,34 @@ public class Seller implements Serializable, IReviewable {
 	public Set<Product> getProductList() {
 		return productList;
 	}
+	
+	public void addOrder(Order o) {
+		orderList.add(o);
+	}
+	
+	public void removeOrder(Order o) {
+		orderList.remove(o);
+	}
+	
+	public void fulfillOrder(Order o) {
+		if(o.getOrderStatus() == "PLACED") {
+			o.ship();
+		}
+	}
+	
+	public void setOrderList(HashSet<Order> ol) {
+		this.orderList = ol;
+	}
+	
+	public Set<Order> getOrderList() {
+		return orderList;
+	}
 
 	public void addReview(Review r) {
 		reviewList.add(r);
 	}
 
-	public void deleteReview(Review r){
+	public void removeReview(Review r){
 		reviewList.remove(r);
 	}
 

@@ -4,6 +4,7 @@ import org.hibernate.Session;
 
 import model.BillingInfo;
 import model.Customer;
+import model.Order;
 import model.Product;
 import model.Review;
 import model.Seller;
@@ -101,6 +102,21 @@ public class HibernateDao {
 
 			session.getTransaction().commit();
 			return bi;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	public static Order retrieveOrder(long id) {
+		try {
+			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+
+			Order o = session.get(Order.class, id);
+
+			session.getTransaction().commit();
+			return o;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

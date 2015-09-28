@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.FetchType;
 
@@ -27,7 +28,14 @@ public class Product implements Serializable, IReviewable {
 
 	@Column(name = "detail")
 	private String detail;
+	
+	@Column(name = "price")
+	private double price;
 
+	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+	@JoinColumn(name="seller_id")
+	private Seller seller;
+	
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="review_id")
 	private Set<Review> reviewList = new HashSet<Review>();
@@ -36,8 +44,9 @@ public class Product implements Serializable, IReviewable {
 
 	}
 
-	public Product(String detail) {
-		this.detail=detail;
+	public Product(String detail, double price) {
+		this.detail = detail;
+		this.price = price;
 	}
 
 	public long getID() {
@@ -55,12 +64,28 @@ public class Product implements Serializable, IReviewable {
 	public void setDetail(String detail) {
 		this.detail=detail;
 	}
+	
+	public double getPrice() {
+		return price;
+	}
+	
+	public void setPrice(double p) {
+		this.price = p;
+	}
+	
+	public Seller getSeller() {
+		return seller;
+	}
 
+	public void setSeller(Seller s) {
+		this.seller = s;
+	}
+	
 	public void addReview(Review r) {
 		reviewList.add(r);
 	}
 
-	public void deleteReview(Review r){
+	public void removeReview(Review r){
 		reviewList.remove(r);
 	}
 

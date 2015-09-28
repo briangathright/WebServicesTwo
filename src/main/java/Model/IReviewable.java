@@ -7,7 +7,7 @@ public interface IReviewable {
 
 	public void addReview(Review r);
 
-	public void deleteReview(Review r);
+	public void removeReview(Review r);
 
 	public void setReviewList(HashSet<Review> rl);
 
