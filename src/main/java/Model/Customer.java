@@ -108,6 +108,9 @@ public class Customer implements Serializable {
 		Order o = new Order(shoppingCart, this);
 		orderList.add(o);
 		o.place();
+		for(Product p : shoppingCart) {
+			p.getSeller().addOrder(o);
+		}
 		clearShoppingCart();
 	}
 	
