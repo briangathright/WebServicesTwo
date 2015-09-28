@@ -74,7 +74,7 @@ public class Client {
 		
 		writer.println("\nPlacing Some Orders");
 		writer.println("-------------------");
-		//TODO: shopping cart stuff
+		//TODO: 
 		
 		writer.println("\nMaking Reviews");
 		writer.println("--------------");

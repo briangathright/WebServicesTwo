@@ -25,8 +25,8 @@ public class Order implements Serializable {
 	@Column(name = "order_id")
 	private long order_id;
 	
-	
-	private String orderStatus;
+	@Column(name = "order_status")
+	private String orderStatus = "PLACED";
 	
 	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="customer_id")
