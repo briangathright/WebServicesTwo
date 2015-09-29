@@ -78,13 +78,13 @@ public class Client {
 		Review r4 = new Review(12, c2, "Outstanding!");
 
 		p1.addReview(r1);
-		writer.println("Added review: " + r1 + " to " + p1.getDetail() + "\n");
+		writer.println("Added review to " + p1.getDetail() + "\n" + r1);
 		p5.addReview(r2);
-		writer.println("Added review: " + r2 + " to " + p5.getDetail() + "\n");
+		writer.println("Added review to " + p5.getDetail() + "\n" + r2);
 		p1.addReview(r3);
-		writer.println("Added review: " + r3 + " to " + p1.getDetail() + "\n");
+		writer.println("Added review to " + p1.getDetail() + "\n" + r3);
 		s1.addReview(r4);
-		writer.println("Added review: " + r4 + " to " + s1.getName() + "\n");
+		writer.println("Added review to " + s1.getName() + "\n" + r4);
 
 		writer.println("\nPlacing Orders");
 		writer.println("-------------");
@@ -126,7 +126,7 @@ public class Client {
 
 		writer.println("\nRetrieved Product list for Retrieved Seller contains: ");
 		for(Product p : retS1.getProductList()) {
-			writer.println(p);
+			writer.println("\n" + p);
 			for(Review r : p.getReviewList()) {
 				writer.println("\n" + r + "\n");
 			}
