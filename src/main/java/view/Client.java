@@ -85,14 +85,12 @@ public class Client {
 		p1.addReview(r3);
 		s1.addReview(r4);
 		
-		writer.println("\nMaking Orders");
+		writer.println("\nPlacing Orders");
 		writer.println("-------------");
 		c1.addToShoppingCart(p1);
 		c1.addToShoppingCart(p2);
-		Order o = new Order(c1.getShoppingCart());
-		o.setStatus("PLACED");
-		writer.println("Made order:\n" + o);
-		c1.addOrder(o);
+		c1.placeOrder();
+		writer.println("Made order:\n" + c1.getOrderList());
 		
 		writer.println("\nStoring Everything in Database");
 		writer.println("------------------------------");
@@ -109,7 +107,6 @@ public class Client {
 		HibernateDao.add(b2);
 		HibernateDao.add(c1);
 		HibernateDao.add(c2);
-		HibernateDao.add(o);
 		HibernateDao.add(r1);
 		HibernateDao.add(r2);
 		HibernateDao.add(r3);

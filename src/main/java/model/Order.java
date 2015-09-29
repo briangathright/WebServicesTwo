@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,12 +35,21 @@ public class Order implements Serializable
 	Set <Product> orderedProducts = new HashSet<Product>();
 	
 	
+	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+	@JoinColumn(name="order_id")
+	Set <Order> subOrders = new HashSet<Order>();
+	
+	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+	@JoinColumn(name="customer_id")
+	Customer customer;
+	
 	public Order() {
 		
 	}
 	
-	public Order(Set<Product> productList) {
+	public Order(Customer customer, Set<Product> productList) {
 		this.orderedProducts=productList;
+		this.customer=customer;
 	}
 	
 	public long getID(){
@@ -65,6 +75,54 @@ public class Order implements Serializable
 	
 	public void setStatus(String status){
 		this.status=status;
+	}
+	
+	public Customer getCustomer(){
+		return customer;
+	}
+	
+	public void setCustomer(Customer customer){
+		this.customer=customer;
+	}
+	
+	public boolean checkFulfillment() {
+		for(Order o : subOrders){
+			if(!o.getStatus().equals("DELIEVERED"))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public double calculateCost() {
+		double total = 0.0;
+		for(Product p : orderedProducts) {
+			total += p.getPrice();
+		}
+		return total;
+	}
+	
+	public void place() {
+		status = "PLACED";
+		
+		for(Product p : orderedProducts){
+			Order o = new Order(customer, new HashSet<Product>(Arrays.asList(p)));
+			subOrders.add(o);
+			p.getSeller().getOrderList().add(o);
+		}
+	}
+	
+	public void ship() {
+		status = "SHIPPED";
+	}
+	
+	public void deliver() {
+		status = "DELIVERED";
+	}
+	
+	public void cancel() {
+		status = "CANCELLED";
 	}
 	
 	@Override

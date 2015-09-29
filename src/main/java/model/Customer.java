@@ -104,6 +104,18 @@ public class Customer implements Serializable {
 		this.shoppingCart = shoppingCart;
 	}
 	
+	public void placeOrder() {
+		Order o = new Order(this, shoppingCart);
+		orderList.add(o);
+		o.place();
+		clearShoppingCart();
+	}
+	
+	public void cancelOrder(Order o) {
+		orderList.remove(o);
+		o.cancel();
+	}
+	
 	public Set<Order> getOrderList(){
 		return orderList;
 	}
