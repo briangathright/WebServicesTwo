@@ -84,7 +84,7 @@ public class Order implements Serializable
 	{
 		return "Order " + order_id + ":" + 
 				"\nCustomer: " + customer +
-				"\nProductList: \n " + productList +
+				"\nProductList:\n " + productList +
 				"\nStatus: " + status;
 	}
 	

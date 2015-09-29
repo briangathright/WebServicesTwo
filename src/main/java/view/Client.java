@@ -72,14 +72,6 @@ public class Client {
 		writer.println(c2.getName() + "'s address set to " + c2.getAddress());
 		writer.println(c2.getName() + "'s billing info set to " + c2.getBillingInfo());
 		
-		writer.println("Making orders");
-		writer.println("-------------");
-		c1.addToShoppingCart(p1);
-		c1.addToShoppingCart(p2);
-		Order o = new Order(c1, c1.getShoppingCart());
-		o.setStatus("PLACED");
-		writer.println("Mader order: " + o + ".");
-		
 		
 		writer.println("\nMaking Reviews");
 		writer.println("--------------");
@@ -92,6 +84,14 @@ public class Client {
 		p5.addReview(r2);
 		p1.addReview(r3);
 		s1.addReview(r4);
+		
+		writer.println("\nMaking Orders");
+		writer.println("-------------");
+		c1.addToShoppingCart(p1);
+		c1.addToShoppingCart(p2);
+		Order o = new Order(c1, c1.getShoppingCart());
+		o.setStatus("PLACED");
+		writer.println("Made order: " + o);
 
 		writer.println("\nStoring Everything in Database");
 		writer.println("------------------------------");
