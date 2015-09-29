@@ -32,6 +32,7 @@
 		<mapping class="model.Review" />
 		<mapping class="model.Seller" />
 		<mapping class="model.BillingInfo" />
+		<mapping class="model.Order" />
 		
 	</session-factory>
 </hibernate-configuration>

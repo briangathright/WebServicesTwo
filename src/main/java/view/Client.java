@@ -72,6 +72,15 @@ public class Client {
 		writer.println(c2.getName() + "'s address set to " + c2.getAddress());
 		writer.println(c2.getName() + "'s billing info set to " + c2.getBillingInfo());
 		
+		writer.println("Making orders");
+		writer.println("-------------");
+		c1.addToShoppingCart(p1);
+		c1.addToShoppingCart(p2);
+		Order o = new Order(c1, c1.getShoppingCart());
+		o.setStatus("PLACED");
+		writer.println("Mader order: " + o + ".");
+		
+		
 		writer.println("\nMaking Reviews");
 		writer.println("--------------");
 		Review r1 = new Review(5, c1, "Just phenomenal!");
@@ -99,6 +108,7 @@ public class Client {
 		HibernateDao.add(b2);
 		HibernateDao.add(c1);
 		HibernateDao.add(c2);
+		HibernateDao.add(o);
 		HibernateDao.add(r1);
 		HibernateDao.add(r2);
 		HibernateDao.add(r3);

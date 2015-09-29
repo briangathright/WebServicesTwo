@@ -16,87 +16,77 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-public class Order implements Serializable {
+@Entity
+@Table(name="order")
+public class Order implements Serializable
+{
 	
-	private long order_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "order_id")
+	long order_id;
 	
-	private String orderStatus = "PLACED";
+	@Column(name="status")
+	String status;
 	
-	private Customer customer;
+	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+	@JoinColumn(name="customer_id")
+	Customer customer;
 	
-	Set<Product> orderProductList = new HashSet<Product>();
+	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+	@JoinColumn(name="product_id")
+	Set <Product> productList = new HashSet<Product>();
+	
 	
 	public Order() {
 		
 	}
 	
-	public Order(Set<Product> productList, Customer c) {
-		this.orderProductList = productList;
-		this.customer = c;
+	public Order(Customer customer, Set<Product> productList) {
+		this.customer=customer;
+		this.productList=productList;
 	}
 	
-	public long getID() {
+	public long getID(){
 		return order_id;
 	}
 	
-	public void setID(long id) {
-		this.order_id = id;
+	public void setID(long order_id){
+		this.order_id=order_id;
 	}
 	
-	public String getOrderStatus() {
-		return orderStatus;
-	}
-	
-	public void setOrderStatus(String status) {
-		this.orderStatus = status;
-	}
-	
-	public Customer getCustomer() {
+	public Customer getCustomer(){
 		return customer;
 	}
 	
-	public void setCustomer(Customer c) {
-		this.customer = c;
+	public void setCustomer(Customer customer){
+		this.customer=customer;
 	}
 	
-	public void addOrderProduct(Product p) {
-		orderProductList.add(p);
+	public Set<Product> getProductList(){
+		return productList;
 	}
 	
-	public void removeOrderProduct(Product p) {
-		orderProductList.remove(p);
-	}
-
-	public void setOrderProductList(HashSet<Product> pl) {
-		this.orderProductList = pl;
-	}
-
-	public Set<Product> getOrderProductList() {
-		return orderProductList;
+	public void setProductList(Set<Product> productList){
+		this.productList=productList;
 	}
 	
-	public double calculateCost() {
-		double total = 0.0;
-		for(Product p : orderProductList) {
-			total += p.getPrice();
-		}
-		return total;
-	}
-
-	public void place() {
-		orderStatus = "PLACED";
+	public String getStatus(){
+		return status;
 	}
 	
-	public void ship() {
-		orderStatus = "SHIPPED";
+	public void setStatus(String status){
+		this.status=status;
 	}
 	
-	public void deliver() {
-		orderStatus = "DELIVERED";
+	@Override
+	public String toString()
+	{
+		return "Order " + order_id + ":" + 
+				"\nCustomer: " + customer +
+				"\nProductList: \n " + productList +
+				"\nStatus: " + status;
 	}
 	
-	public void cancel() {
-		orderStatus = "CANCELLED";
-	}
 	
 }
