@@ -123,6 +123,7 @@ public class Customer implements Serializable {
 	public String toString() {
 		return "Customer:" +
 				"\nName: " + name + 
-				"\nAddress: " + shippingAddress;
+				"\nAddress: " + shippingAddress +
+				"\nOrder: " + orderList;
 	}
 }

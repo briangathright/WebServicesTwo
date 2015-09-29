@@ -28,11 +28,7 @@ public class Order implements Serializable
 	
 	@Column(name="status")
 	String status;
-	
-	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-	@JoinColumn(name="customer_id")
-	Customer customer;
-	
+
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="product_id")
 	Set <Product> productList = new HashSet<Product>();
@@ -42,8 +38,7 @@ public class Order implements Serializable
 		
 	}
 	
-	public Order(Customer customer, Set<Product> productList) {
-		this.customer=customer;
+	public Order(Set<Product> productList) {
 		this.productList=productList;
 	}
 	
@@ -55,13 +50,6 @@ public class Order implements Serializable
 		this.order_id=order_id;
 	}
 	
-	public Customer getCustomer(){
-		return customer;
-	}
-	
-	public void setCustomer(Customer customer){
-		this.customer=customer;
-	}
 	
 	public Set<Product> getProductList(){
 		return productList;
@@ -83,7 +71,6 @@ public class Order implements Serializable
 	public String toString()
 	{
 		return "Order:" + 
-				"\nCustomer: " + customer.getName() +
 				"\nProductList:\n" + productList +
 				"\nStatus: " + status;
 	}

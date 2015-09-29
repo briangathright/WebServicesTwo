@@ -89,7 +89,7 @@ public class Client {
 		writer.println("-------------");
 		c1.addToShoppingCart(p1);
 		c1.addToShoppingCart(p2);
-		Order o = new Order(c1, c1.getShoppingCart());
+		Order o = new Order(c1.getShoppingCart());
 		o.setStatus("PLACED");
 		writer.println("Made order:\n" + o);
 		c1.addOrder(o);
