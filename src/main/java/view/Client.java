@@ -68,7 +68,7 @@ public class Client {
 		BillingInfo b2 = new BillingInfo("Visa", "Odin Allfather", "1212 Side Street, Asgard City, Asgard, 65101", "2313-4343-6444-1221", "04/17", "126");
 		c2.setBillingInfo(b2);
 		writer.println(c1.getName() + "'s address set to " + c1.getAddress());
-		writer.println(c1.getName() + "'s billing info set to " + c1.getBillingInfo());
+		writer.println(c1.getName() + "'s billing info set to " + c1.getBillingInfo() + "\n");
 		writer.println(c2.getName() + "'s address set to " + c2.getAddress());
 		writer.println(c2.getName() + "'s billing info set to " + c2.getBillingInfo());
 		
@@ -91,8 +91,9 @@ public class Client {
 		c1.addToShoppingCart(p2);
 		Order o = new Order(c1, c1.getShoppingCart());
 		o.setStatus("PLACED");
-		writer.println("Made order: " + o);
-
+		writer.println("Made order:\n" + o);
+		c1.addOrder(o);
+		
 		writer.println("\nStoring Everything in Database");
 		writer.println("------------------------------");
 
@@ -130,5 +131,9 @@ public class Client {
 				writer.println(r);
 			}
 		}
+		writer.println("Retrieving Customer with ID: 1");
+		Customer retC1 = HibernateDao.retrieveCustomer((long)1);
+		writer.println("Retrieved Customer is: \n" + retC1 + "\n");
+		
 	}
 }

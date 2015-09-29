@@ -83,7 +83,7 @@ public class Order implements Serializable
 	public String toString()
 	{
 		return "Order:" + 
-				"\nCustomer: " + customer +
+				"\nCustomer: " + customer.getName() +
 				"\nProductList:\n" + productList +
 				"\nStatus: " + status;
 	}

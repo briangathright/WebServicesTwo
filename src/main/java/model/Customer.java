@@ -41,6 +41,10 @@ public class Customer implements Serializable {
 	@JoinColumn(name="product_id")
 	private Set<Product> shoppingCart = new HashSet<Product>();
 	
+	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+	@JoinColumn(name="order_id")
+	private Set<Order> orderList = new HashSet<Order>();
+	
 	public Customer() {
 	}
 
@@ -100,7 +104,21 @@ public class Customer implements Serializable {
 		this.shoppingCart = shoppingCart;
 	}
 	
+	public Set<Order> getOrderList(){
+		return orderList;
+	}
 	
+	public void setOrderList(Set<Order> orderList){
+		this.orderList = orderList;
+	}
+	
+	public void addOrder(Order o){
+		orderList.add(o);
+	}
+	
+	public void removeOrder(Order o){
+		orderList.remove(o);
+	}
 	@Override
 	public String toString() {
 		return "Customer:" +
