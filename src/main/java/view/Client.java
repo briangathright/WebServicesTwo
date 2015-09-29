@@ -70,17 +70,21 @@ public class Client {
 		writer.println(c2.getName() + "'s billing info set to " + c2.getBillingInfo());
 
 
-		writer.println("\nMaking Reviews");
-		writer.println("--------------");
+		writer.println("\nMaking Reviews for Products and Sellers");
+		writer.println("-----------------------------------------");
 		Review r1 = new Review(5, c1, "Just phenomenal!");
 		Review r2 = new Review(2, c1, "It's pretty bad.");
 		Review r3 = new Review(-5, c2, "Meh.");
 		Review r4 = new Review(12, c2, "Outstanding!");
 
 		p1.addReview(r1);
+		writer.println("Added review: " + r1 + " to " + p1.getDetail() + "\n");
 		p5.addReview(r2);
+		writer.println("Added review: " + r2 + " to " + p5.getDetail() + "\n");
 		p1.addReview(r3);
+		writer.println("Added review: " + r3 + " to " + p1.getDetail() + "\n");
 		s1.addReview(r4);
+		writer.println("Added review: " + r4 + " to " + s1.getName() + "\n");
 
 		writer.println("\nPlacing Orders");
 		writer.println("-------------");
@@ -109,8 +113,8 @@ public class Client {
 		HibernateDao.add(r3);
 		HibernateDao.add(r4);
 
-		writer.println("\nRetrieving Some Items");
-		writer.println("---------------------");
+		writer.println("\nRetrieving Some Entries from Database");
+		writer.println("---------------------------------------");
 
 		writer.println("\nRetrieving Product with ID: 1");
 		Product retP1 = HibernateDao.retrieveProduct((long)1);
@@ -124,7 +128,7 @@ public class Client {
 		for(Product p : retS1.getProductList()) {
 			writer.println(p);
 			for(Review r : p.getReviewList()) {
-				writer.println(r + "\n");
+				writer.println("\n" + r + "\n");
 			}
 		}
 		writer.println("\nRetrieving Customer with ID: 1");
