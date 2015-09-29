@@ -39,7 +39,7 @@ public class Order implements Serializable
 	@JoinColumn(name="order_id")
 	Set <Order> subOrders = new HashSet<Order>();
 	
-	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="customer_id")
 	Customer customer;
 	
