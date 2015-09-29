@@ -82,9 +82,9 @@ public class Order implements Serializable
 	@Override
 	public String toString()
 	{
-		return "Order " + order_id + ":" + 
+		return "Order:" + 
 				"\nCustomer: " + customer +
-				"\nProductList:\n " + productList +
+				"\nProductList:\n" + productList +
 				"\nStatus: " + status;
 	}
 	

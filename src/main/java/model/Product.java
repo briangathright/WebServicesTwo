@@ -110,8 +110,9 @@ public class Product implements Serializable, IReviewable {
 
 	@Override
 	public String toString() {
-		return "Product " + product_id + ":" +
+		return "Product: " +
 				"\nDetail: " + detail + 
+				"\nPrice: " + price +
 				"\nRating: " + calcAverageRating() + 
 				"\nNumber of Reviews: " + reviewList.size();
 	}

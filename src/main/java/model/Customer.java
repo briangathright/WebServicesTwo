@@ -103,7 +103,7 @@ public class Customer implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Customer " + customer_id + ":" +
+		return "Customer:" +
 				"\nName: " + name + 
 				"\nAddress: " + shippingAddress;
 	}

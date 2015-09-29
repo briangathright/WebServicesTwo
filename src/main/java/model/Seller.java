@@ -104,7 +104,7 @@ public class Seller implements Serializable, IReviewable {
 
 	@Override
 	public String toString() {
-		return "Seller " + seller_id + ":" +
+		return "Seller:" +
 				"\nName: " + name + 
 				"\nRating: " + calcAverageRating() + 
 				"\nNumber of Reviews: " + reviewList.size() + 

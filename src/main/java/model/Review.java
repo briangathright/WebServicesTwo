@@ -91,7 +91,7 @@ public class Review implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Review " + review_id + ":" + 
+		return "Review:" + 
 				"\nCustomer: " + customer.getName() +
 				"\nRating: " + rating + 
 				"\nDetail: " + review_detail;
