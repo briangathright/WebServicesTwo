@@ -3,11 +3,15 @@ package data;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import java.net.URI;
-
+/**
+ * HibernateSessionHelper configures our Heroku database integration
+ */
 public class HibernateSessionHelper {
 
 	private static SessionFactory sessionFactory;
-
+	/**
+	 * configHibernate configures our username, password, and connection information for our Postgres instance in Heroku
+	 */
 	public static void configHibernate() {
 		try {
 			Configuration cfg = new Configuration().configure();
@@ -27,7 +31,9 @@ public class HibernateSessionHelper {
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
-
+	/**
+	 * SessionFactory getter
+	 */
 	public static SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}

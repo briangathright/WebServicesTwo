@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+/**
+ * Seller: Class that represents sellers, who create accounts on our marketplace and sell products
+ */
 @Entity
 @Table(name = "seller")
 public class Seller implements Serializable, IReviewable {
@@ -34,6 +37,9 @@ public class Seller implements Serializable, IReviewable {
 	@JoinColumn(name="review_id")
 	private Set<Review> reviewList = new HashSet<Review>();
 
+	/**
+	 * Orderlist is the list of orders that have been placed to the seller from customers
+	 */
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="order_id")
 	private Set<Order> orderList = new HashSet<Order>();
@@ -61,11 +67,17 @@ public class Seller implements Serializable, IReviewable {
 		this.name=name;
 	}
 
+	/**
+	 * Adds a product to the seller's product list
+	 */
 	public void addProduct(Product p) {
 		productList.add(p);
 		p.setSeller(this);
 	}
 
+	/**
+	 * Removes product from seller's product list
+	 */
 	public void removeProduct(Product p) {
 		productList.remove(p);
 	}
@@ -104,12 +116,18 @@ public class Seller implements Serializable, IReviewable {
 		this.orderList = orderList;
 	}
 
+	/**
+	 * Allows sellers to fulfill orders by shipping placed orders
+	 */
 	public void fulfillOrder(Order o) {
 		if(o.getStatus().equals("PLACED")){
 			o.ship();
 		}
 	}
 
+	/**
+	 * Calculates the average ratings of a seller based on reviews
+	 */
 	public double calcAverageRating() {
 		if(reviewList.isEmpty()) {
 			return 0;
@@ -121,6 +139,9 @@ public class Seller implements Serializable, IReviewable {
 		return total/reviewList.size();
 	}
 
+	/**
+	 *toString method that allows us to show that our application works when testing its output in the client
+	 */
 	@Override
 	public String toString() {
 		return "Seller:" +

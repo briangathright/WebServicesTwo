@@ -9,8 +9,15 @@ import model.Product;
 import model.Review;
 import model.Seller;
 
+/**
+ * This is our Hibernate Data Access Object. 
+ * This is our wrapper for interaction with the database
+ */
 public class HibernateDao {
 
+	/**
+	 * Creates a session and adds the object to the database
+	 */
 	public static void add(Object o) {
 		try {
 			System.err.println("%% Adding "+o.getClass().getSimpleName()+" in DB: " + o.toString());
@@ -23,6 +30,9 @@ public class HibernateDao {
 		}
 	}
 
+	/**
+	 * Deletes the object from the database
+	 */
 	public static void delete(Object o) {
 		System.err.println("%% Deleting " + o.getClass().getSimpleName() + "in DB: " + o.toString());
 		Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
@@ -31,6 +41,9 @@ public class HibernateDao {
 		session.getTransaction().commit();
 	}
 
+	/**
+	 *Retrieves a product from the database.
+	 */
 	public static Product retrieveProduct(long id) {
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
@@ -47,6 +60,9 @@ public class HibernateDao {
 		return null;
 	}
 
+	/**
+	 *Retrieves a customer from the database
+	 */
 	public static Customer retrieveCustomer(long id) {
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
@@ -62,6 +78,10 @@ public class HibernateDao {
 
 		return null;
 	}
+	
+	/**
+	 * Retrieve a review from the database
+	 **/
 
 	public static Review retrieveReview(long id) {
 		try {
@@ -78,6 +98,11 @@ public class HibernateDao {
 
 		return null;
 	}
+	
+	/**
+	 * Retrieves a seller from the database
+	 */
+	
 	public static Seller retrieveSeller(long id) {
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
@@ -93,6 +118,11 @@ public class HibernateDao {
 
 		return null;
 	}
+	
+	/**
+	 * Retrieve a BillingInfo object from the database
+	 */
+	
 	public static BillingInfo retrieveBillingInfo(long id) {
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
@@ -108,6 +138,10 @@ public class HibernateDao {
 
 		return null;
 	}
+	
+	/**
+	 * Retrieve an order from the database 
+	 */
 	public static Order retrieveOrder(long id) {
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();

@@ -15,6 +15,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * Customer: Class that represents customer objects
+ */
 @Entity
 @Table(name = "customer")
 public class Customer implements Serializable {
@@ -41,10 +44,16 @@ public class Customer implements Serializable {
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="order_id")
 	private Set<Order> orderList = new HashSet<Order>();
-
+	
+	/**
+	 * Hibernate requires an empty constructor
+	 */
 	public Customer() {
 	}
-
+	
+	/**
+	 * @param name - constructs a customer with a name
+	 */
 	public Customer(String name) {
 		this.name=name;
 	}
@@ -80,15 +89,25 @@ public class Customer implements Serializable {
 	public void setBillingInfo(BillingInfo bi) {
 		this.billingInfo = bi;
 	}
-
+	
+	/**
+	 * Adds a product to the customer's Shopping Cart, which is then changed into
+	 * an order, shared with sellers.
+	 */
 	public void addToShoppingCart(Product p) {
 		shoppingCart.add(p);
 	}
 
+	/**
+	 *Removes an item from the customer's shopping cart if they don't want it to be included 
+	 *in the compeleted order
+	 */
 	public void removeFromShoppingCart(Product p) {
 		shoppingCart.remove(p);
 	}
-
+	/**
+	 * Clears the shopping cart, creating a new empty shopping cart
+	 */
 	public void clearShoppingCart() {
 		shoppingCart = new HashSet<Product>();
 	}
@@ -101,6 +120,10 @@ public class Customer implements Serializable {
 		this.shoppingCart = shoppingCart;
 	}
 
+	/**
+	 * Places an order, filled with the items from the customer's shopping cart
+	 * Calls Order's place method, marking the order as placed, then clears the shopping cart
+	 */
 	public void placeOrder() {
 		Order o = new Order(this, shoppingCart);
 		orderList.add(o);
@@ -108,6 +131,9 @@ public class Customer implements Serializable {
 		clearShoppingCart();
 	}
 
+	/**
+	 * Cancels an order, and tells the order to be marked as cancelled
+	 */
 	public void cancelOrder(Order o) {
 		orderList.remove(o);
 		o.cancel();
@@ -120,14 +146,21 @@ public class Customer implements Serializable {
 	public void setOrderList(Set<Order> orderList){
 		this.orderList = orderList;
 	}
-
+	/**
+	 * Adds an order to the orderList
+	 */
 	public void addOrder(Order o){
 		orderList.add(o);
 	}
-
+	/**
+	 * Removes an order to the orderList
+	 */
 	public void removeOrder(Order o){
 		orderList.remove(o);
 	}
+	/**
+	 *toString method that allows us to show that our application works when testing its output in the client
+	 */
 	@Override
 	public String toString() {
 		return "Customer:" +

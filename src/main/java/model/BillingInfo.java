@@ -7,7 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/**
+ * BillingInfo: Class that represents billing information for customers
+ */
 @Entity
 @Table(name = "billinginfo")
 public class BillingInfo implements Serializable { 
@@ -31,14 +33,24 @@ public class BillingInfo implements Serializable {
 
 	@Column(name = "expDate")
 	private String expDate;
-
+	
+	/**
+	 * Hibernate requires an empty constructor
+	 */
 	@Column(name = "cvcNumber")
 	private String cvcNumber;
-
 	public BillingInfo() {
 
 	}
-
+	/**
+	 * 
+	 * @param cardType - the customer's cardtype (MasterCards, VISA, etc.)
+	 * @param billingName - the name associated with the customer's billing info
+	 * @param billingAddress - customer's billing address
+	 * @param cardNumber - customer's payment card number
+	 * @param expDate - customer's payment expiration date
+	 * @param cvcNumber - customer's payment card CVC number
+	 */
 	public BillingInfo(String cardType, String billingName, String billingAddress, String cardNumber, String expDate, String cvcNumber) {
 		this.cardType = cardType;
 		this.billingName = billingName;
@@ -95,7 +107,9 @@ public class BillingInfo implements Serializable {
 	public void setCvcNumber(String cvcNumber) {
 		this.cvcNumber = cvcNumber;
 	}
-
+	/**
+	 * toString method that allows us to show that our application works when testing its output in the client
+	 */
 	@Override
 	public String toString() {
 		return "\nCardType: " + cardType +

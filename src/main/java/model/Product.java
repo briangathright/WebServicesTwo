@@ -15,6 +15,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.FetchType;
 
+/**
+ * Product: class that represents products that sellers sell and customers place orders for
+ */
 @Entity
 @Table(name = "product")
 public class Product implements Serializable, IReviewable {
@@ -34,14 +37,25 @@ public class Product implements Serializable, IReviewable {
 	@JoinColumn(name="seller_id")
 	private Seller seller;
 
+	/**
+	 * A list of reviews that customers write for products
+	 */
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="review_id")
 	private Set<Review> reviewList = new HashSet<Review>();
 
+	/**
+	 * Hibernate requires an empty constructor
+	 */
 	public Product() {
 
 	}
-
+	
+	/**
+	 * Constructs a product with detail and price
+	 * @param detail
+	 * @param price
+	 */
 	public Product(String detail, double price) {
 		this.detail = detail;
 		this.price = price;
@@ -95,6 +109,9 @@ public class Product implements Serializable, IReviewable {
 		return reviewList;
 	}
 
+	/**
+	 * Calculates the average rating that the product has, based on reviews.
+	 */
 	public double calcAverageRating() {
 		if(reviewList.isEmpty()) {
 			return 0;
@@ -105,7 +122,10 @@ public class Product implements Serializable, IReviewable {
 		}
 		return total/reviewList.size();
 	}
-
+	
+	/**
+	 *toString method that allows us to show that our application works when testing its output in the client
+	 */
 	@Override
 	public String toString() {
 		return "Product: " +

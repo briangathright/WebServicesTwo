@@ -8,6 +8,9 @@ import model.Product;
 import model.Review;
 import model.Seller;
 
+/**
+ * Client: Tests functions and classes, and database functionality. Output can be read on Heroku
+ */
 public class Client {
 	PrintWriter writer;
 
@@ -96,6 +99,9 @@ public class Client {
 		writer.println("\nStoring Everything in Database");
 		writer.println("------------------------------");
 
+		/**
+		 * Uses our Hibernate Data Access Object to add objects to be stored in our database
+		 */
 		HibernateDao.add(s1);
 		HibernateDao.add(s2);
 		HibernateDao.add(s3);
@@ -124,6 +130,9 @@ public class Client {
 		Seller retS1 = HibernateDao.retrieveSeller((long)1);
 		writer.println("Retrieved Seller is: \n" + retS1);
 
+		/**
+		 * Prints all of the Seller's Products and reviews
+		 */
 		writer.println("\nRetrieved Product list for Retrieved Seller contains: ");
 		for(Product p : retS1.getProductList()) {
 			writer.println("\n" + p);
@@ -131,6 +140,7 @@ public class Client {
 				writer.println("\n" + r);
 			}
 		}
+		
 		writer.println("\nRetrieving Customer with ID: 1");
 		Customer retC1 = HibernateDao.retrieveCustomer((long)1);
 		writer.println("Retrieved Customer is: \n" + retC1 + "\n");

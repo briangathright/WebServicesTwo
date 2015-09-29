@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * Review: Class that represents reviews that customers write for sellers and products
+ */
 @Entity
 @Table(name = "reviews")
 public class Review implements Serializable {
@@ -31,15 +34,29 @@ public class Review implements Serializable {
 	@JoinColumn(name="customer_id")
 	private Customer customer;	
 
+	/**
+	 * Hibernate requires an empty constructor
+	 */
 	public Review() {
 
 	}
 
+	/**
+	 * Constructs a Review that has rating and customer who wrote the review
+	 * @param rating
+	 * @param customer
+	 */
 	public Review(float rating, Customer customer) {
 		this.rating = boundRating(rating);
 		this.customer = customer;
 	}
 
+	/**
+	 * Constructs a Review that has rating, customer who wrote the review, and a detailed review
+	 * @param rating
+	 * @param customer
+	 * @param review_detail
+	 */
 	public Review(float rating, Customer customer, String review_detail) {
 		this.rating = boundRating(rating);
 		this.customer = customer;
@@ -78,6 +95,11 @@ public class Review implements Serializable {
 		return customer;
 	}
 
+	/**
+	 * Ensures that ratings are always between 0 and 5, changing outlies to accepted ratings
+	 * @param rating
+	 * @return
+	 */
 	public float boundRating(float rating) {
 		if(rating<0) {
 			return 0;
@@ -87,7 +109,10 @@ public class Review implements Serializable {
 		}
 		return rating;
 	}
-
+	
+	/**
+	 *toString method that allows us to show that our application works when testing its output in the client
+	 */
 	@Override
 	public String toString() {
 		return "Review:" + 

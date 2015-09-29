@@ -16,6 +16,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * Orders: Class that represents orders that customers place to order products
+ */
 @Entity
 @Table(name="orders")
 public class Order implements Serializable
@@ -33,7 +36,10 @@ public class Order implements Serializable
 	@JoinColumn(name="product_id")
 	Set <Product> orderedProducts = new HashSet<Product>();
 
-
+	/**
+	 * Suborders is a set of orders, where the main order is split into 
+	 * orders for each seller in the order.
+	 */
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="order_id")
 	Set <Order> subOrders = new HashSet<Order>();
@@ -42,10 +48,15 @@ public class Order implements Serializable
 	@JoinColumn(name="customer_id")
 	Customer customer;
 
+	/**
+	 * Hibernate requires an empty constructor
+	 */
 	public Order() {
 
 	}
-
+	/**
+	 * Constructs an Order object with product list and customer
+	 */
 	public Order(Customer customer, Set<Product> productList) {
 		this.orderedProducts=productList;
 		this.customer=customer;
@@ -83,7 +94,12 @@ public class Order implements Serializable
 	public void setCustomer(Customer customer){
 		this.customer=customer;
 	}
-
+	
+	/**
+	 * 
+	 * @return - Checks fulfillment of order by checking that each suborder (described above) is completely fulfilled, and returns
+	 * true or false
+	 */
 	public boolean checkFulfillment() {
 		for(Order o : subOrders){
 			if(!o.getStatus().equals("DELIEVERED"))
@@ -93,7 +109,10 @@ public class Order implements Serializable
 		}
 		return true;
 	}
-
+	/**
+	 * 
+	 * @return - total cost of an order
+	 */
 	public double calculateCost() {
 		double total = 0.0;
 		for(Product p : orderedProducts) {
@@ -101,12 +120,15 @@ public class Order implements Serializable
 		}
 		return total;
 	}
-
+	/**
+	 * Places an order by setting it's status as PLACED, and creates the seller's suborders, setting their status to PLACED.
+	 */
 	public void place() {
 		status = "PLACED";
 
 		for(Product p : orderedProducts){
 			Order o = new Order(customer, new HashSet<Product>(Arrays.asList(p)));
+			o.setStatus("PLACED");
 			subOrders.add(o);
 			p.getSeller().getOrderList().add(o);
 		}
@@ -123,7 +145,10 @@ public class Order implements Serializable
 	public void cancel() {
 		status = "CANCELLED";
 	}
-
+	
+	/**
+	 *toString method that allows us to show that our application works when testing its output in the client
+	 */
 	@Override
 	public String toString()
 	{
