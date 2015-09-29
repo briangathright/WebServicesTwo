@@ -114,23 +114,29 @@ public class Client {
 
 		writer.println("\nRetrieving Some Items");
 		writer.println("---------------------");
-		writer.println("Retrieving Product with ID: 1");
+		
+		writer.println("\nRetrieving Product with ID: 1");
 		Product retP1 = HibernateDao.retrieveProduct((long)1);
 		writer.println("Retrieved Product is: \n" + retP1 + "\n");
-		writer.println("Retrieving Seller with ID: 1");
+		
+		writer.println("\nRetrieving Seller with ID: 1");
 		Seller retS1 = HibernateDao.retrieveSeller((long)1);
 		writer.println("Retrieved Seller is: \n" + retS1);
 
-		writer.println("Retrieved Product list for Retrieved Seller contains: ");
+		writer.println("\nRetrieved Product list for Retrieved Seller contains: ");
 		for(Product p : retS1.getProductList()) {
 			writer.println(p);
+			writer.println("Retrieved Reviews for Product contain: ");
 			for(Review r : p.getReviewList()) {
 				writer.println(r);
 			}
 		}
-		writer.println("Retrieving Customer with ID: 1");
+		writer.println("\nRetrieving Customer with ID: 1");
 		Customer retC1 = HibernateDao.retrieveCustomer((long)1);
 		writer.println("Retrieved Customer is: \n" + retC1 + "\n");
 		
+		writer.println("\nRetrieving Customer with ID: 2");
+		Customer retC2 = HibernateDao.retrieveCustomer((long)2);
+		writer.println("Retrieved Customer is: \n" + retC2 + "\n");
 	}
 }
