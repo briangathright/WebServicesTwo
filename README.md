@@ -14,15 +14,18 @@ for info on individual classes.
 
 Main.java --> code for Heroku deployment (setting up a server and servlet)
 
-<View Package>
+View Package
+------------
 Client.java --> our "testing client" it tests most of our functions and classes and tests database functionality
 
-<Data Package>
+Data Package
+------------
 HibernateDao.java --> A Data Access Object to wrap our Hibernate. Its used to add, remove, and retrieve from our Postgres Database. 
 
 HibernateSessionHelper.java --> Handles configuring hibernate and hibernate sessions
 
-<Model Package>
+Model Package
+--------------
 BillingInfo.java --> billing info to be used for customers
 
 Customer.java --> our customer class, they can place orders on products.
