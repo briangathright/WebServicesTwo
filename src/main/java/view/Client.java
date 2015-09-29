@@ -1,12 +1,9 @@
 package view;
 
 import java.io.PrintWriter;
-import java.util.HashSet;
-
 import data.HibernateDao;
 import model.BillingInfo;
 import model.Customer;
-import model.Order;
 import model.Product;
 import model.Review;
 import model.Seller;
@@ -71,8 +68,8 @@ public class Client {
 		writer.println(c1.getName() + "'s billing info set to " + c1.getBillingInfo() + "\n");
 		writer.println(c2.getName() + "'s address set to " + c2.getAddress());
 		writer.println(c2.getName() + "'s billing info set to " + c2.getBillingInfo());
-		
-		
+
+
 		writer.println("\nMaking Reviews");
 		writer.println("--------------");
 		Review r1 = new Review(5, c1, "Just phenomenal!");
@@ -84,14 +81,14 @@ public class Client {
 		p5.addReview(r2);
 		p1.addReview(r3);
 		s1.addReview(r4);
-		
+
 		writer.println("\nPlacing Orders");
 		writer.println("-------------");
 		c1.addToShoppingCart(p1);
 		c1.addToShoppingCart(p2);
 		c1.placeOrder();
 		writer.println("Made order:\n" + c1.getOrderList());
-		
+
 		writer.println("\nStoring Everything in Database");
 		writer.println("------------------------------");
 
@@ -114,11 +111,11 @@ public class Client {
 
 		writer.println("\nRetrieving Some Items");
 		writer.println("---------------------");
-		
+
 		writer.println("\nRetrieving Product with ID: 1");
 		Product retP1 = HibernateDao.retrieveProduct((long)1);
 		writer.println("Retrieved Product is: \n" + retP1 + "\n");
-		
+
 		writer.println("\nRetrieving Seller with ID: 1");
 		Seller retS1 = HibernateDao.retrieveSeller((long)1);
 		writer.println("Retrieved Seller is: \n" + retS1);
@@ -126,15 +123,14 @@ public class Client {
 		writer.println("\nRetrieved Product list for Retrieved Seller contains: ");
 		for(Product p : retS1.getProductList()) {
 			writer.println(p);
-			writer.println("Retrieved Reviews for Product contain: ");
 			for(Review r : p.getReviewList()) {
-				writer.println(r);
+				writer.println(r + "\n");
 			}
 		}
 		writer.println("\nRetrieving Customer with ID: 1");
 		Customer retC1 = HibernateDao.retrieveCustomer((long)1);
 		writer.println("Retrieved Customer is: \n" + retC1 + "\n");
-		
+
 		writer.println("\nRetrieving Customer with ID: 2");
 		Customer retC2 = HibernateDao.retrieveCustomer((long)2);
 		writer.println("Retrieved Customer is: \n" + retC2 + "\n");

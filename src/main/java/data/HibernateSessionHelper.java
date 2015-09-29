@@ -2,7 +2,6 @@ package data;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
 import java.net.URI;
 
 public class HibernateSessionHelper {

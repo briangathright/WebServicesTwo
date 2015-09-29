@@ -3,7 +3,6 @@ package model;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,9 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -36,15 +33,15 @@ public class Customer implements Serializable {
 	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="billingInfo_id")
 	private BillingInfo billingInfo;
-	
+
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="product_id")
 	private Set<Product> shoppingCart = new HashSet<Product>();
-	
+
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="order_id")
 	private Set<Order> orderList = new HashSet<Order>();
-	
+
 	public Customer() {
 	}
 
@@ -71,63 +68,63 @@ public class Customer implements Serializable {
 	public String getAddress() {
 		return this.shippingAddress;
 	}
-	
+
 	public void setAddress(String address) {
 		this.shippingAddress = address;
 	}
-	
+
 	public BillingInfo getBillingInfo() {
 		return this.billingInfo;
 	}
-	
+
 	public void setBillingInfo(BillingInfo bi) {
 		this.billingInfo = bi;
 	}
-	
+
 	public void addToShoppingCart(Product p) {
 		shoppingCart.add(p);
 	}
-	
+
 	public void removeFromShoppingCart(Product p) {
 		shoppingCart.remove(p);
 	}
-	
+
 	public void clearShoppingCart() {
 		shoppingCart = new HashSet<Product>();
 	}
-	
+
 	public Set<Product> getShoppingCart() {
 		return shoppingCart;
 	}
-	
+
 	public void setShoppingCart(Set<Product> shoppingCart) {
 		this.shoppingCart = shoppingCart;
 	}
-	
+
 	public void placeOrder() {
 		Order o = new Order(this, shoppingCart);
 		orderList.add(o);
 		o.place();
 		clearShoppingCart();
 	}
-	
+
 	public void cancelOrder(Order o) {
 		orderList.remove(o);
 		o.cancel();
 	}
-	
+
 	public Set<Order> getOrderList(){
 		return orderList;
 	}
-	
+
 	public void setOrderList(Set<Order> orderList){
 		this.orderList = orderList;
 	}
-	
+
 	public void addOrder(Order o){
 		orderList.add(o);
 	}
-	
+
 	public void removeOrder(Order o){
 		orderList.remove(o);
 	}
@@ -136,6 +133,6 @@ public class Customer implements Serializable {
 		return "Customer:" +
 				"\nName: " + name + 
 				"\nAddress: " + shippingAddress +
-				"\nOrder: " + orderList;
+				"\nOrders: " + orderList;
 	}
 }

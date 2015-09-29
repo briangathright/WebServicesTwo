@@ -3,7 +3,6 @@ package model;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.FetchType;
@@ -28,14 +26,14 @@ public class Product implements Serializable, IReviewable {
 
 	@Column(name = "detail")
 	private String detail;
-	
+
 	@Column(name = "price")
 	private double price;
 
 	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="seller_id")
 	private Seller seller;
-	
+
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="review_id")
 	private Set<Review> reviewList = new HashSet<Review>();
@@ -64,15 +62,15 @@ public class Product implements Serializable, IReviewable {
 	public void setDetail(String detail) {
 		this.detail=detail;
 	}
-	
+
 	public double getPrice() {
 		return price;
 	}
-	
+
 	public void setPrice(double p) {
 		this.price = p;
 	}
-	
+
 	public Seller getSeller() {
 		return seller;
 	}
@@ -80,7 +78,7 @@ public class Product implements Serializable, IReviewable {
 	public void setSeller(Seller s) {
 		this.seller = s;
 	}
-	
+
 	public void addReview(Review r) {
 		reviewList.add(r);
 	}
