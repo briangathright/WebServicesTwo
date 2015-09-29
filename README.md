@@ -19,15 +19,21 @@ Client.java --> our "testing client" it tests most of our functions and classes 
 
 <Data Package>
 HibernateDao.java --> A Data Access Object to wrap our Hibernate. Its used to add, remove, and retrieve from our Postgres Database. 
+
 HibernateSessionHelper.java --> Handles configuring hibernate and hibernate sessions
 
 <Model Package>
 BillingInfo.java --> billing info to be used for customers
+
 Customer.java --> our customer class, they can place orders on products.
+
 IReviewable.java --> Interface for any classes that can have reviews (namely products and sellers (partners))
 Order.java --> class for orders: customers place orders on products and sellers are given orders for their products from the order.
+
 Product.java --> class that represents products, contains details, prices, seller, etc.
+
 Review.java --> a review class that has a rating system and comment section for customers to rate products and sellers
+
 Seller.java --> this is our "partner" class. They sell products and get information on orders placed on their products
 
 Please see code documentation and UML for more information. Please let us know if you need anything else.
