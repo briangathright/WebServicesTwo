@@ -31,7 +31,7 @@ public class Order implements Serializable
 
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="product_id")
-	Set <Product> productList = new HashSet<Product>();
+	Set <Product> orderedProducts = new HashSet<Product>();
 	
 	
 	public Order() {
@@ -39,7 +39,7 @@ public class Order implements Serializable
 	}
 	
 	public Order(Set<Product> productList) {
-		this.productList=productList;
+		this.orderedProducts=productList;
 	}
 	
 	public long getID(){
@@ -52,11 +52,11 @@ public class Order implements Serializable
 	
 	
 	public Set<Product> getProductList(){
-		return productList;
+		return orderedProducts;
 	}
 	
 	public void setProductList(Set<Product> productList){
-		this.productList=productList;
+		this.orderedProducts=productList;
 	}
 	
 	public String getStatus(){
@@ -71,7 +71,7 @@ public class Order implements Serializable
 	public String toString()
 	{
 		return "Order:" + 
-				"\nProductList:\n" + productList +
+				"\nProductList:\n" + orderedProducts +
 				"\nStatus: " + status;
 	}
 	
