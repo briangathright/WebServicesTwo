@@ -9,8 +9,8 @@ import org.apache.log4j.BasicConfigurator;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.*;
 
-import data.HibernateSessionHelper;
-import view.Client;
+import com.zewdiemarket.ws.client.Client;
+import com.zewdiemarket.ws.dal.HibernateSessionHelper;
 /**
  * Necessary for Heroku deployment - servers and servlets created
  */

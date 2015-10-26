@@ -1,4 +1,4 @@
-package data;
+package com.zewdiemarket.ws.dal;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

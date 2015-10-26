@@ -1,12 +1,14 @@
-package view;
+package com.zewdiemarket.ws.client;
 
 import java.io.PrintWriter;
-import data.HibernateDao;
+
+import com.zewdiemarket.ws.Customer;
+import com.zewdiemarket.ws.Product;
+import com.zewdiemarket.ws.Review;
+import com.zewdiemarket.ws.Seller;
+import com.zewdiemarket.ws.dal.HibernateDao;
+
 import model.BillingInfo;
-import model.Customer;
-import model.Product;
-import model.Review;
-import model.Seller;
 
 /**
  * Client: Tests functions and classes, and database functionality. Output can be read on Heroku

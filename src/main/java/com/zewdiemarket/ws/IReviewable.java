@@ -1,4 +1,4 @@
-package model;
+package com.zewdiemarket.ws;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package model;
+package com.zewdiemarket.ws;
 
 import java.io.Serializable;
 import java.util.Arrays;
