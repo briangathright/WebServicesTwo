@@ -27,12 +27,12 @@
 		<property name="hibernate.hbm2ddl.auto">create-drop</property>
 
 		<!-- Annotated entity classes -->
-		<mapping class="model.Product" />
-		<mapping class="model.Customer" />
-		<mapping class="model.Review" />
-		<mapping class="model.Seller" />
-		<mapping class="model.BillingInfo" />
-		<mapping class="model.Order" />
+		<mapping class="com.zewdiemarket.ws.Product" />
+		<mapping class="com.zewdiemarket.ws.Customer" />
+		<mapping class="com.zewdiemarket.ws.Review" />
+		<mapping class="com.zewdiemarket.ws.Seller" />
+		<mapping class="com.zewdiemarket.ws.BillingInfo" />
+		<mapping class="com.zewdiemarket.ws.Order" />
 		
 	</session-factory>
 </hibernate-configuration>
