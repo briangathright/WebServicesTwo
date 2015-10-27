@@ -28,5 +28,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/august/Documents/Senior Fall/WSP/apache-cxf-2.7.17/lib/javax.ws.rs-api-2.0-m10.jar" rootpath="/"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
