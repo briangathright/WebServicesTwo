@@ -1,5 +1,6 @@
 package com.zewdiemarket.ws.dal;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -160,13 +161,13 @@ public class HibernateDao {
 		return null;
 	}
 	
-	public static List<Product> retrieveProducts(){
+	public static Set<Product> retrieveProducts(){
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
 			
 			session.beginTransaction();
 			
-			List<Product> allProducts = session.createCriteria(Product.class).list();
+			Set<Product> allProducts = new LinkedHashSet<Product>(session.createCriteria(Product.class).list());
 			
 			session.getTransaction().commit();
 			return allProducts;
