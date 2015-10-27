@@ -155,7 +155,7 @@ public class ProductServiceClient {
 		
 		writer.println("Retrieve all Products: \n");
 		
-		List<Product> rp = HibernateDao.retrieveProducts();
+		Set<Product> rp = HibernateDao.retrieveProducts();
 		for(Product p : rp){
 			writer.println(p.getID());
 		}
