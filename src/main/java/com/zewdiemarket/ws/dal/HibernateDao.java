@@ -164,7 +164,12 @@ public class HibernateDao {
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
 			
-			return session.createCriteria(Product.class).list();
+			session.beginTransaction();
+			
+			List<Product> allProducts = session.createCriteria(Product.class).list();
+			
+			session.getTransaction().commit();
+			return allProducts;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
