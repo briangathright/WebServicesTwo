@@ -14,12 +14,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.FetchType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Product: class that represents products that sellers sell and customers place orders for
  */
 @Entity
 @Table(name = "product")
+@XmlRootElement
 public class Product implements Serializable, IReviewable {
 
 	private static final long serialVersionUID = 1L;

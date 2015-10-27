@@ -13,7 +13,7 @@ import com.zewdiemarket.ws.service.representation.ProductRepresentation;
 import com.zewdiemarket.ws.service.representation.ProductRequest;
 
 
-@Path("/employeeservice/")
+@Path("/productservice/")
 public class ProductResource implements ProductService{
 
 	@GET
