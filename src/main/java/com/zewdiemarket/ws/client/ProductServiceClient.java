@@ -154,7 +154,11 @@ public class ProductServiceClient {
 		
 		
 		writer.println("Retrieve all Products: \n");
-		
+		HibernateDao.delete(p1);
+		HibernateDao.delete(p2);
+		HibernateDao.delete(p3);
+		HibernateDao.delete(p4);
+		HibernateDao.delete(p5);
 		Set<Product> rp = HibernateDao.retrieveProducts();
 		for(Product p : rp){
 			writer.println(p.getID());
