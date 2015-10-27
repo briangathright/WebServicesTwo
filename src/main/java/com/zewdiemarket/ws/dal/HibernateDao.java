@@ -1,5 +1,8 @@
 package com.zewdiemarket.ws.dal;
 
+import java.util.List;
+import java.util.Set;
+
 import org.hibernate.Session;
 import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.Order;
@@ -154,6 +157,17 @@ public class HibernateDao {
 			e.printStackTrace();
 		}
 
+		return null;
+	}
+	
+	public static List<Product> retrieveProducts(){
+		try {
+			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+			
+			return session.createCriteria(Product.class).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 }

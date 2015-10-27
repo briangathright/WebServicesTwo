@@ -1,6 +1,8 @@
 package com.zewdiemarket.ws.client;
 
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.Set;
 
 import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.Product;
@@ -149,5 +151,13 @@ public class ProductServiceClient {
 		writer.println("\nRetrieving Customer with ID: 2");
 		Customer retC2 = HibernateDao.retrieveCustomer((long)2);
 		writer.println("Retrieved Customer is: \n" + retC2 + "\n");
+		
+		
+		writer.println("Retrieve all Products: \n");
+		
+		List<Product> rp = HibernateDao.retrieveProducts();
+		for(Product p : rp){
+			writer.println(p.toString()+"\n");
+		}
 	}
 }
