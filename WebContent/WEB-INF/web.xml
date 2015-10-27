@@ -7,7 +7,6 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>WEB-INF/cxf.xml</param-value>
-    <!-- param-value>classpath:com/company/hr/service/cxf.xml</param-value -->
   </context-param>
   <listener>
     <listener-class>

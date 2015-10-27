@@ -1,14 +1,12 @@
 package com.zewdiemarket.ws.dal;
 
 import org.hibernate.Session;
-
 import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.Order;
 import com.zewdiemarket.ws.Product;
 import com.zewdiemarket.ws.Review;
 import com.zewdiemarket.ws.Seller;
-
-import model.BillingInfo;
+import com.zewdiemarket.ws.BillingInfo;
 
 /**
  * This is our Hibernate Data Access Object. 

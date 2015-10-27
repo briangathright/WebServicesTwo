@@ -7,8 +7,7 @@ import com.zewdiemarket.ws.Product;
 import com.zewdiemarket.ws.Review;
 import com.zewdiemarket.ws.Seller;
 import com.zewdiemarket.ws.dal.HibernateDao;
-
-import model.BillingInfo;
+import com.zewdiemarket.ws.BillingInfo;
 
 /**
  * Client: Tests functions and classes, and database functionality. Output can be read on Heroku
