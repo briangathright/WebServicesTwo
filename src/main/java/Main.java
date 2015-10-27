@@ -9,7 +9,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.*;
 
-import com.zewdiemarket.ws.client.Client;
+import com.zewdiemarket.ws.client.ProductServiceClient;
 import com.zewdiemarket.ws.dal.HibernateSessionHelper;
 /**
  * Necessary for Heroku deployment - servers and servlets created
@@ -25,7 +25,7 @@ public class Main extends HttpServlet {
 			throws ServletException, IOException {
 		HibernateSessionHelper.configHibernate();
 		PrintWriter writer = resp.getWriter();
-		Client c = new Client(writer);
+		ProductServiceClient c = new ProductServiceClient(writer);
 		c.run();
 		HibernateSessionHelper.getSessionFactory().close();
 	}

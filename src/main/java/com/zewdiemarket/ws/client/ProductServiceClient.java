@@ -13,10 +13,10 @@ import model.BillingInfo;
 /**
  * Client: Tests functions and classes, and database functionality. Output can be read on Heroku
  */
-public class Client {
+public class ProductServiceClient {
 	PrintWriter writer;
 
-	public Client(PrintWriter writer) {
+	public ProductServiceClient(PrintWriter writer) {
 		this.writer = writer;
 	}
 
