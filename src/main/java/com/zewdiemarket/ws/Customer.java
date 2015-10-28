@@ -14,12 +14,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Customer: Class that represents customer objects
  */
 @Entity
 @Table(name = "customer")
+@XmlRootElement
 public class Customer implements Serializable {
 
 	@Id

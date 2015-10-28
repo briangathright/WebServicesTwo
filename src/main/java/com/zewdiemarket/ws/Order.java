@@ -15,12 +15,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Orders: Class that represents orders that customers place to order products
  */
 @Entity
 @Table(name="orders")
+@XmlRootElement
 public class Order implements Serializable
 {
 

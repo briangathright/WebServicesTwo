@@ -11,12 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Review: Class that represents reviews that customers write for sellers and products
  */
 @Entity
 @Table(name = "reviews")
+@XmlRootElement
 public class Review implements Serializable {
 
 	@Id

@@ -7,11 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 /**
  * BillingInfo: Class that represents billing information for customers
  */
 @Entity
 @Table(name = "billinginfo")
+@XmlRootElement
 public class BillingInfo implements Serializable { 
 
 	@Id

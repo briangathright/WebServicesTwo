@@ -8,16 +8,21 @@ import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.Product;
 import com.zewdiemarket.ws.Review;
 import com.zewdiemarket.ws.Seller;
+import com.zewdiemarket.ws.dal.BillingInfoDAO;
+import com.zewdiemarket.ws.dal.CustomerDAO;
 import com.zewdiemarket.ws.dal.HibernateDao;
+import com.zewdiemarket.ws.dal.ProductDAO;
+import com.zewdiemarket.ws.dal.ReviewDAO;
+import com.zewdiemarket.ws.dal.SellerDAO;
 import com.zewdiemarket.ws.BillingInfo;
 
 /**
  * Client: Tests functions and classes, and database functionality. Output can be read on Heroku
  */
-public class ProductServiceClient {
+public class ZewdieMarketClient {
 	PrintWriter writer;
 
-	public ProductServiceClient(PrintWriter writer) {
+	public ZewdieMarketClient(PrintWriter writer) {
 		this.writer = writer;
 	}
 
@@ -105,32 +110,32 @@ public class ProductServiceClient {
 		/**
 		 * Uses our Hibernate Data Access Object to add objects to be stored in our database
 		 */
-		HibernateDao.add(s1);
-		HibernateDao.add(s2);
-		HibernateDao.add(s3);
-		HibernateDao.add(p1);
-		HibernateDao.add(p2);
-		HibernateDao.add(p3);
-		HibernateDao.add(p4);
-		HibernateDao.add(p5);
-		HibernateDao.add(b1);
-		HibernateDao.add(b2);
-		HibernateDao.add(c1);
-		HibernateDao.add(c2);
-		HibernateDao.add(r1);
-		HibernateDao.add(r2);
-		HibernateDao.add(r3);
-		HibernateDao.add(r4);
+		SellerDAO.addSeller(s1);
+		SellerDAO.addSeller(s2);
+		SellerDAO.addSeller(s3);
+		ProductDAO.addProduct(p1);
+		ProductDAO.addProduct(p2);
+		ProductDAO.addProduct(p3);
+		ProductDAO.addProduct(p4);
+		ProductDAO.addProduct(p5);
+		BillingInfoDAO.addBillingInfo(b1);
+		BillingInfoDAO.addBillingInfo(b2);
+		CustomerDAO.addCustomer(c1);
+		CustomerDAO.addCustomer(c2);
+		ReviewDAO.addReview(r1);
+		ReviewDAO.addReview(r2);
+		ReviewDAO.addReview(r3);
+		ReviewDAO.addReview(r4);
 
 		writer.println("\nRetrieving Some Entries from Database");
 		writer.println("---------------------------------------");
 
 		writer.println("\nRetrieving Product with ID: 1");
-		Product retP1 = HibernateDao.retrieveProduct((long)1);
+		Product retP1 = ProductDAO.retrieveProduct((long)1);
 		writer.println("Retrieved Product is: \n" + retP1 + "\n");
 
 		writer.println("\nRetrieving Seller with ID: 1");
-		Seller retS1 = HibernateDao.retrieveSeller((long)1);
+		Seller retS1 = SellerDAO.retrieveSeller((long)1);
 		writer.println("Retrieved Seller is: \n" + retS1);
 
 		/**
@@ -145,17 +150,17 @@ public class ProductServiceClient {
 		}
 		
 		writer.println("\nRetrieving Customer with ID: 1");
-		Customer retC1 = HibernateDao.retrieveCustomer((long)1);
+		Customer retC1 = CustomerDAO.retrieveCustomer((long)1);
 		writer.println("Retrieved Customer is: \n" + retC1 + "\n");
 
 		writer.println("\nRetrieving Customer with ID: 2");
-		Customer retC2 = HibernateDao.retrieveCustomer((long)2);
+		Customer retC2 = CustomerDAO.retrieveCustomer((long)2);
 		writer.println("Retrieved Customer is: \n" + retC2 + "\n");
 		
 		
 		writer.println("Retrieve all Products: \n");
 		
-		Set<Product> rp = HibernateDao.retrieveProducts();
+		Set<Product> rp = ProductDAO.getAllProducts();
 		for(Product p : rp){
 			writer.println(p.getID());
 		}

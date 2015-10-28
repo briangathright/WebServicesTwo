@@ -13,12 +13,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Seller: Class that represents sellers, who create accounts on our marketplace and sell products
  */
 @Entity
 @Table(name = "seller")
+@XmlRootElement
 public class Seller implements Serializable, IReviewable {
 
 	@Id
