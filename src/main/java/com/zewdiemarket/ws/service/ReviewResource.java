@@ -9,13 +9,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
-import com.zewdiemarket.ws.Product;
-import com.zewdiemarket.ws.service.representation.ProductRepresentation;
-import com.zewdiemarket.ws.service.representation.ProductRequest;
 import com.zewdiemarket.ws.service.representation.ReviewRepresentation;
 import com.zewdiemarket.ws.service.representation.ReviewRequest;
-import com.zewdiemarket.ws.service.workflow.ProductActivity;
 import com.zewdiemarket.ws.service.workflow.ReviewActivity;
 
 
@@ -32,7 +27,7 @@ public class ReviewResource implements ReviewService{
 
 	@GET
 	@Produces({"application/xml" , "application/json"})
-	@Path("/product/{ReviewId}")
+	@Path("/review/{ReviewId}")
 	public ReviewRepresentation getReview(@PathParam("reviewId") String reviewId) {
 		ReviewActivity reviewAct = new ReviewActivity();
 		return reviewAct.getReview(reviewId);
@@ -48,10 +43,10 @@ public class ReviewResource implements ReviewService{
 	
 	@DELETE
 	@Produces({"application/xml" , "application/json"})
-	@Path("/product/{productId}")
-	public Response deleteProduct(@PathParam("productId") String productId) {
-		ProductActivity prodAct = new ProductActivity();
-		String res = prodAct.deleteProduct(productId);
+	@Path("/review/{reviewId}")
+	public Response deleteReview(@PathParam("reviewId") String reviewId) {
+		ReviewActivity reviewAct = new ReviewActivity();
+		String res = reviewAct.deleteReview(reviewId);
 		if (res.equals("OK")) {
 			return Response.status(Status.OK).build();
 		}

@@ -1,13 +1,16 @@
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
+import org.apache.catalina.startup.Tomcat;
 import org.apache.log4j.BasicConfigurator;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.*;
+import org.eclipse.jetty.webapp.WebAppContext;
 
 import com.zewdiemarket.ws.client.ZewdieMarketClient;
 import com.zewdiemarket.ws.dal.HibernateSessionHelper;
@@ -34,14 +37,39 @@ public class Main extends HttpServlet {
 	 * server, then starts the server.
 	 * 
 	 */
-	public static void main(String[] args) throws Exception {
-		Server server = new Server(Integer.valueOf(System.getenv("PORT")));
-		BasicConfigurator.configure();
-		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-		context.setContextPath("/");
-		server.setHandler(context);
-		context.addServlet(new ServletHolder(new Main()),"/*");
+	public static void main(String[] args) throws Exception {	
+		String webappDirLocation = "WebContent/";
+
+		//The port that we should run on can be set into an environment variable
+		//Look for that variable and default to 8080 if it isn't there.
+		String webPort = System.getenv("PORT");
+		if(webPort == null || webPort.isEmpty()) {
+			webPort = "8080";
+		}
+
+		Server server = new Server(Integer.valueOf(webPort));
+		WebAppContext root = new WebAppContext();
+
+		root.setContextPath("/");
+		root.setDescriptor(webappDirLocation+"/WEB-INF/web.xml");
+		root.setResourceBase(webappDirLocation);
+
+		root.setParentLoaderPriority(true);
+
+		server.setHandler(root);
+
 		server.start();
-		server.join();
+		server.join();   
+
+		//		Server server = new Server(Integer.valueOf(System.getenv("PORT")));
+		//		BasicConfigurator.configure();
+		//		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+		//		context.setContextPath("/");
+		//		server.setHandler(context);
+		//		context.addServlet(new ServletHolder(new Main()),"/*");
+		//		server.start();
+		//		server.join();
 	}
+
+
 }

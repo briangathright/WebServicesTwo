@@ -4,9 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.zewdiemarket.ws.Customer;
-import com.zewdiemarket.ws.Product;
 import com.zewdiemarket.ws.Review;
-import com.zewdiemarket.ws.dal.ProductDAO;
 import com.zewdiemarket.ws.dal.ReviewDAO;
 import com.zewdiemarket.ws.service.representation.ReviewRepresentation;
 

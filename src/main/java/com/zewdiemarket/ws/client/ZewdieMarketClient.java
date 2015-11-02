@@ -1,9 +1,19 @@
 package com.zewdiemarket.ws.client;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.xml.ws.Response;
+
+import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.ws.Response;
+import org.apache.cxf.jaxrs.client.WebClient;
+import org.apache.cxf.interceptor.LoggingInInterceptor;
+import org.apache.cxf.interceptor.LoggingOutInterceptor;
 import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.Product;
 import com.zewdiemarket.ws.Review;
@@ -21,6 +31,39 @@ import com.zewdiemarket.ws.BillingInfo;
 public class ZewdieMarketClient {
 	PrintWriter writer;
 
+	public ZewdieMarketClient() {}
+	
+	public void run2() {
+		 List<Object> providers = new ArrayList<Object>();
+         JacksonJsonProvider provider = new JacksonJsonProvider();
+         provider.addUntouchable(Response.class);
+         providers.add(provider);
+         
+         /*****************************************************************************************
+          * GET METHOD invoke
+          *****************************************************************************************/
+         writer.println("GET METHOD .........................................................");
+         WebClient getClient = WebClient.create("http://localhost:8081", providers);
+         
+         //Configuring the CXF logging interceptor for the outgoing message
+         WebClient.getConfig(getClient).getOutInterceptors().add(new LoggingOutInterceptor());
+       //Configuring the CXF logging interceptor for the incoming response
+         WebClient.getConfig(getClient).getInInterceptors().add(new LoggingInInterceptor());
+         
+         // change application/xml  to get in xml format
+         getClient = getClient.accept("application/json").type("application/json").path("/product/1");
+         
+         //The following lines are to show how to log messages without the CXF interceptors
+         String getRequestURI = getClient.getCurrentURI().toString();
+         writer.println("Client GET METHOD Request URI:  " + getRequestURI);
+         String getRequestHeaders = getClient.getHeaders().toString();
+         writer.println("Client GET METHOD Request Headers:  " + getRequestHeaders);
+         
+         //to see as raw XML/json
+         String response = getClient.get(String.class);
+         writer.println("GET METHOD Response: ...." + response);
+	}
+	
 	public ZewdieMarketClient(PrintWriter writer) {
 		this.writer = writer;
 	}

@@ -28,5 +28,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Program Files/WebServices/apache-cxf-2.7.11/apache-cxf-2.7.11/lib/cxf-2.7.11.jar" rootpath="/"/>
+	<classpathentry exported="true" kind="lib" path="/HRServicesRS/WebContent/WEB-INF/lib/jackson-all-1.9.4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
