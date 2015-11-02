@@ -5,8 +5,6 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
-
-import org.apache.catalina.startup.Tomcat;
 import org.apache.log4j.BasicConfigurator;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.*;
