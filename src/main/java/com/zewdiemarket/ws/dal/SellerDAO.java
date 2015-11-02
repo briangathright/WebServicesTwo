@@ -1,5 +1,7 @@
 package com.zewdiemarket.ws.dal;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
 import org.hibernate.Session;
 import com.zewdiemarket.ws.Seller;
 
@@ -49,5 +51,28 @@ public class SellerDAO {
 		}
 
 		return null;
+	}
+
+	public static Set<Seller> getAllSellers() {
+		try {
+			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+
+			session.beginTransaction();
+
+			Set<Seller> allSellers = new LinkedHashSet<Seller>(session.createCriteria(Seller.class).list());
+
+			session.getTransaction().commit();
+			return allSellers;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static Seller addNewSeller(String sellerName) {
+		Seller s = new Seller();
+		s.setName(sellerName);
+		addSeller(s);
+		return s;
 	}
 }

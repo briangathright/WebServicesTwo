@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "seller")
 @XmlRootElement
 public class Seller implements Serializable, IReviewable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
