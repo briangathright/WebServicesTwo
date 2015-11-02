@@ -10,7 +10,6 @@ import com.zewdiemarket.ws.Review;
 import com.zewdiemarket.ws.Seller;
 import com.zewdiemarket.ws.dal.BillingInfoDAO;
 import com.zewdiemarket.ws.dal.CustomerDAO;
-import com.zewdiemarket.ws.dal.HibernateDao;
 import com.zewdiemarket.ws.dal.ProductDAO;
 import com.zewdiemarket.ws.dal.ReviewDAO;
 import com.zewdiemarket.ws.dal.SellerDAO;

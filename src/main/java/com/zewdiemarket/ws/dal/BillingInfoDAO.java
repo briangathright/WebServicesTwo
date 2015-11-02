@@ -1,8 +1,12 @@
 package com.zewdiemarket.ws.dal;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import org.hibernate.Session;
 
 import com.zewdiemarket.ws.BillingInfo;
+import com.zewdiemarket.ws.Product;
 
 public class BillingInfoDAO {
 
@@ -31,11 +35,11 @@ public class BillingInfoDAO {
 		session.delete(b);
 		session.getTransaction().commit();
 	}
-	
+
 	/**
 	 * Retrieve a BillingInfo object from the database
 	 */
-	
+
 	public static BillingInfo retrieveBillingInfo(long id) {
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
@@ -51,5 +55,28 @@ public class BillingInfoDAO {
 
 		return null;
 	}
-	
+
+	public static Set<BillingInfo> getAllBillingInfos() {
+		try {
+			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+
+			session.beginTransaction();
+
+			Set<BillingInfo> allBillingInfos = new LinkedHashSet<BillingInfo>(session.createCriteria(BillingInfo.class).list());
+
+			session.getTransaction().commit();
+			return allBillingInfos;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static BillingInfo addNewBillingInfo(String billingName, String cardNumber) {
+		BillingInfo bi = new BillingInfo();
+		bi.setBillingName(billingName);(billingName);
+		bi.setCardNumber(cardNumber);
+		addBillingInfo(bi);
+		return bi;
+	}
 }

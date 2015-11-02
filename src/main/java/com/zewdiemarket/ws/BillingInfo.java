@@ -16,6 +16,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class BillingInfo implements Serializable { 
 
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "billingInfo_id")
@@ -41,6 +43,7 @@ public class BillingInfo implements Serializable {
 	 */
 	@Column(name = "cvcNumber")
 	private String cvcNumber;
+	
 	public BillingInfo() {
 
 	}
