@@ -15,21 +15,21 @@ import com.zewdiemarket.ws.dal.HibernateSessionHelper;
 /**
  * Necessary for Heroku deployment - servers and servlets created
  */
-public class Main extends HttpServlet {
+public class Main {
 	/**
 	 * This function passes the servlet's writer to our client, which then runs our client/test code.]
 	 * It also configures the Postgres database with Hibernate (ORM) by using our Heroku database settings.
 	 * It then closes thes session factory once the code has finished.
 	 */
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		HibernateSessionHelper.configHibernate();
-		PrintWriter writer = resp.getWriter();
-		ZewdieMarketClient c = new ZewdieMarketClient(writer);
-		c.run();
-		HibernateSessionHelper.getSessionFactory().close();
-	}
+//	@Override
+//	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+//			throws ServletException, IOException {
+//		HibernateSessionHelper.configHibernate();
+//		PrintWriter writer = resp.getWriter();
+//		ZewdieMarketClient c = new ZewdieMarketClient(writer);
+//		c.run();
+//		HibernateSessionHelper.getSessionFactory().close();
+//	}
 	/**
 	 * Starts a server on the Heroku instance using the given port. It creates the sever, adds it to the
 	 * server, then starts the server.

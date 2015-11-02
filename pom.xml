@@ -23,11 +23,6 @@
 		</dependency>
 		<!-- General dependencies for standard applications -->
 		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-servlet</artifactId>
-			<version>7.6.0.v20120127</version>
-		</dependency>
-		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-jaxrs</artifactId>
 			<version>1.9.4</version>
@@ -52,7 +47,7 @@
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-server</artifactId>
-			<version>9.0.0.RC2</version>
+			<version>8.0.0.RC0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
@@ -136,6 +131,29 @@
 								</artifactItem>
 							</artifactItems>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>appassembler-maven-plugin</artifactId>
+				<version>1.1.1</version>
+				<configuration>
+					<assembleDirectory>target</assembleDirectory>
+					<generateRepository>true</generateRepository>
+					<programs>
+						<program>
+							<mainClass>Main</mainClass>
+							<name>webapp</name>
+						</program>
+					</programs>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>assemble</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
