@@ -29,15 +29,16 @@
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-core-asl</artifactId>
+			<artifactId>jackson-jaxrs</artifactId>
 			<version>1.9.4</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-core</artifactId>
+			<artifactId>cxf-bundle-jaxrs</artifactId>
 			<version>2.7.11</version>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
