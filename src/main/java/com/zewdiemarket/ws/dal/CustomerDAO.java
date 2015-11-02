@@ -1,7 +1,8 @@
 package com.zewdiemarket.ws.dal;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
 import org.hibernate.Session;
-
 import com.zewdiemarket.ws.Customer;
 
 public class CustomerDAO {
@@ -30,7 +31,7 @@ public class CustomerDAO {
 		session.delete(c);
 		session.getTransaction().commit();
 	}
-	
+
 	/**
 	 *Retrieves a customer from the database
 	 */
@@ -48,5 +49,28 @@ public class CustomerDAO {
 		}
 
 		return null;
+	}
+
+	public static Set<Customer> getAllCustomers() {
+		try {
+			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+
+			session.beginTransaction();
+
+			Set<Customer> allCustomers = new LinkedHashSet<Customer>(session.createCriteria(Customer.class).list());
+
+			session.getTransaction().commit();
+			return allCustomers;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static Customer addNewCustomer(String customerName) {
+		Customer c = new Customer();
+		c.setName(customerName);
+		addCustomer(c);
+		return c;
 	}
 }
