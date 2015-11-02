@@ -1,7 +1,9 @@
 package com.zewdiemarket.ws.dal;
 
-import org.hibernate.Session;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
+import org.hibernate.Session;
 import com.zewdiemarket.ws.Order;
 
 public class OrderDAO {
@@ -49,5 +51,28 @@ public class OrderDAO {
 		}
 
 		return null;
+	}
+
+	public static Set<Order> getAllOrders() {
+		try {
+			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+
+			session.beginTransaction();
+
+			Set<Order> allOrders = new LinkedHashSet<Order>(session.createCriteria(Order.class).list());
+
+			session.getTransaction().commit();
+			return allOrders;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static Order addNewOrder(String status) {
+		Order o = new Order();
+		o.setStatus(status);
+		addOrder(o);
+		return o;
 	}
 }
