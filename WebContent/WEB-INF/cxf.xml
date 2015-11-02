@@ -1,33 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns:jaxws="http://cxf.apache.org/jaxws"
-      xmlns:jaxrs="http://cxf.apache.org/jaxrs"
-      xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
 							http://www.springframework.org/schema/beans/spring-beans.xsd
 							http://cxf.apache.org/jaxws
  							http://cxf.apache.org/schemas/jaxws.xsd
  							http://cxf.apache.org/jaxrs
  							http://cxf.apache.org/schemas/jaxrs.xsd">
-  <import resource="classpath:META-INF/cxf/cxf.xml" />
-  <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
-  	
-  <bean id="jacksonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
-      	
-  <jaxrs:server name="ProductService" address="http://localhost:8081">
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<bean id="jacksonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
+
+	<jaxrs:server name="MarketService" address="http://localhost:8081">
 		<jaxrs:serviceBeans>
+			<ref bean="billingInfoServiceRest" />
+			<ref bean="customerServiceRest" />
+			<ref bean="orderServiceRest" />
 			<ref bean="productServiceRest" />
+			<ref bean="reviewServiceRest" />
+			<ref bean="sellerServiceRest" />
+
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref bean="jacksonProvider" />
-		</jaxrs:providers> 
+		</jaxrs:providers>
 
 		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.company.hr.service.representation.BillingInfoRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.hr.service.representation.BillingInfoRepresentation</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.hr.service.representation.CustomerRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.hr.service.representation.CustomerRepresentation</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.hr.service.representation.Orderequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.hr.service.representation.OrderRepresentation</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.company.hr.service.representation.ProductRequest</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.company.hr.service.representation.ProductRepresentation</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.hr.service.representation.ReviewRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.hr.service.representation.ReviewRepresentation</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.hr.service.representation.SellerRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.hr.service.representation.SellerRepresentation</jaxrs:schemaLocation>
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
-  	<bean id="productServiceRest" class="com.zewdiemarket.ws.service.ProductResource" />
-  
+
+	<bean id="billingInfoServiceRest" class="com.zewdiemarket.ws.service.BillingInfoResource" />
+	<bean id="customerServiceRest" class="com.zewdiemarket.ws.service.CustomerResource" />
+	<bean id="orderServiceRest" class="com.zewdiemarket.ws.service.OrderResource" />
+	<bean id="productServiceRest" class="com.zewdiemarket.ws.service.ProductResource" />
+	<bean id="reviewServiceRest" class="com.zewdiemarket.ws.service.ReviewResource" />
+	<bean id="sellerServiceRest" class="com.zewdiemarket.ws.service.SellerResource" />
+
 </beans>
