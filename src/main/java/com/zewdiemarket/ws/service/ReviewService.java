@@ -1,5 +1,15 @@
 package com.zewdiemarket.ws.service;
 
-public interface ReviewService {
+import java.util.Set;
+import javax.jws.WebService;
+import com.zewdiemarket.ws.service.representation.ReviewRepresentation;
+import com.zewdiemarket.ws.service.representation.ReviewRequest;
 
+@WebService
+public interface ReviewService {
+		   
+		public Set<ReviewRepresentation> getReviews();
+		public ReviewRepresentation getReview(String reviewId);
+		public ReviewRepresentation createReview(ReviewRequest reviewRequest);
+	   	
 }

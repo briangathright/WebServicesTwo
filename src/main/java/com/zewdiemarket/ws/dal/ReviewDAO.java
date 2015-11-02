@@ -1,6 +1,11 @@
 package com.zewdiemarket.ws.dal;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import org.hibernate.Session;
+
+import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.Review;
 
 public class ReviewDAO {
@@ -50,4 +55,31 @@ public class ReviewDAO {
 
 		return null;
 	}
+
+	public static Set<Review> getAllReviews(){
+		try {
+			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+			
+			session.beginTransaction();
+			
+			Set<Review> allReviews = new LinkedHashSet<Review>(session.createCriteria(Review.class).list());
+			
+			session.getTransaction().commit();
+			return allReviews;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static Review addNewReview(String reviewDetail, float rating, Customer customer) {
+		Review r = new Review();
+		r.setReviewDetail(reviewDetail);
+		r.setRating(rating);
+		r.setCustomer(customer);
+		addReview(r);
+		return r;
+	}
 }
+
+
