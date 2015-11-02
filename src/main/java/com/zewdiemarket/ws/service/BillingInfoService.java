@@ -7,9 +7,9 @@ import com.zewdiemarket.ws.service.representation.BillingInfoRequest;
 
 @WebService
 public interface BillingInfoService {
-			   
-			public Set<BillingInfoRepresentation> getBillingInfos();
-			public BillingInfoRepresentation getBillingInfo(String billingInfoId);
-			public BillingInfoRepresentation createBillingInfo(BillingInfoRequest billingInfoRequest);
-		   	
+
+	public Set<BillingInfoRepresentation> getBillingInfos();
+	public BillingInfoRepresentation getBillingInfo(String billingInfoId);
+	public BillingInfoRepresentation createBillingInfo(BillingInfoRequest billingInfoRequest);
+
 }

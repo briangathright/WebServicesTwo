@@ -14,7 +14,7 @@ import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.BillingInfoRequest;
 import com.zewdiemarket.ws.service.workflow.BillingInfoActivity;
 
-@Path("/billininfoservice/")
+@Path("/billinginfoservice/")
 public class BillingInfoResource implements BillingInfoService {
 
 	@GET
@@ -43,8 +43,8 @@ public class BillingInfoResource implements BillingInfoService {
 
 	@DELETE
 	@Produces({"application/xml" , "application/json"})
-	@Path("/billininfo/{billinginfoId}")
-	public Response deleteProduct(@PathParam("billinginfoId") String billingInfoId) {
+	@Path("/billinginfo/{billinginfoId}")
+	public Response deleteBillingInfo(@PathParam("billinginfoId") String billingInfoId) {
 		BillingInfoActivity billingInfoAct = new BillingInfoActivity();
 		String res = billingInfoAct.deleteBillingInfo(billingInfoId);
 		if (res.equals("OK")) {

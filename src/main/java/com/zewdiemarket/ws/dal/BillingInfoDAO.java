@@ -2,11 +2,8 @@ package com.zewdiemarket.ws.dal;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-
 import org.hibernate.Session;
-
 import com.zewdiemarket.ws.BillingInfo;
-import com.zewdiemarket.ws.Product;
 
 public class BillingInfoDAO {
 
@@ -74,7 +71,7 @@ public class BillingInfoDAO {
 
 	public static BillingInfo addNewBillingInfo(String billingName, String cardNumber) {
 		BillingInfo bi = new BillingInfo();
-		bi.setBillingName(billingName);(billingName);
+		bi.setBillingName(billingName);
 		bi.setCardNumber(cardNumber);
 		addBillingInfo(bi);
 		return bi;
