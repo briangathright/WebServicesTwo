@@ -34,6 +34,7 @@ public class ReviewActivity {
 		reviewRep.setID(r.getID());
 		reviewRep.setReviewDetail(r.getReviewDetail());
 		Customer currentCustomer = r.getCustomer();
+		reviewRep.setRating(r.getRating());
 		String currentCustomerName = currentCustomer.getName();
 		reviewRep.setCustomerName(currentCustomerName);
 		return reviewRep;
