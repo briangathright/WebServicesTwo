@@ -42,7 +42,10 @@ public class ZewdieMarketClient {
           * GET METHOD invoke
           *****************************************************************************************/
          System.out.println("GET METHOD .........................................................");
-         WebClient getClient = WebClient.create("http://damp-reef-8180.herokuapp.com:8080", providers);
+         
+         String port = System.getenv("PORT");
+         
+         WebClient getClient = WebClient.create("https://damp-reef-8180.herokuapp.com:" + port, providers);
          
          //Configuring the CXF logging interceptor for the outgoing message
          WebClient.getConfig(getClient).getOutInterceptors().add(new LoggingOutInterceptor());
