@@ -43,7 +43,7 @@ public class ZewdieMarketClient {
           *****************************************************************************************/
          System.out.println("GET METHOD .........................................................");
                   
-         WebClient getClient = WebClient.create("https://damp-reef-8180.herokuapp.com/services", providers);
+         WebClient getClient = WebClient.create("/services", providers);
          
          //Configuring the CXF logging interceptor for the outgoing message
          WebClient.getConfig(getClient).getOutInterceptors().add(new LoggingOutInterceptor());
