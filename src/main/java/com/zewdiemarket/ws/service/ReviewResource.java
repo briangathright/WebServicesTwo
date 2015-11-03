@@ -27,7 +27,7 @@ public class ReviewResource implements ReviewService{
 
 	@GET
 	@Produces({"application/xml" , "application/json"})
-	@Path("/review/{ReviewId}")
+	@Path("/review/{reviewId}")
 	public ReviewRepresentation getReview(@PathParam("reviewId") String reviewId) {
 		ReviewActivity reviewAct = new ReviewActivity();
 		return reviewAct.getReview(reviewId);
