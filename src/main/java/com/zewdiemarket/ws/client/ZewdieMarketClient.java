@@ -60,8 +60,8 @@ public class ZewdieMarketClient {
          System.out.println("Client GET METHOD Request Headers:  " + getRequestHeaders);
          
          //to see as raw XML/json
-         String response = getClient.get(String.class);
-         System.out.println("GET METHOD Response: ...." + response);
+         //String response = getClient.get(String.class);
+         //System.out.println("GET METHOD Response: ...." + response);
          
          //expand ... (not working)
 	}
