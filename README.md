@@ -15,13 +15,20 @@ We couldn't get the client working, some kind of issues with heroku. But if you 
 You can test our getAlls by going to the below links.
 
 https://damp-reef-8180.herokuapp.com/services/billinginfoservice/billinginfo
+
 https://damp-reef-8180.herokuapp.com/services/customerservice/customer
+
 https://damp-reef-8180.herokuapp.com/services/orderservice/order
+
 https://damp-reef-8180.herokuapp.com/services/productservice/product
+
 https://damp-reef-8180.herokuapp.com/services/reviewservice/review
+
 https://damp-reef-8180.herokuapp.com/services/sellerservice/seller
 
-You can also retrieve individuals by doing for example  https://damp-reef-8180.herokuapp.com/services/productservice/product/1
+You can also retrieve individuals by doing for example  
+
+https://damp-reef-8180.herokuapp.com/services/productservice/product/1
 
 (check the getAlls to see how high the id values go for individual retrieve.) 
 
