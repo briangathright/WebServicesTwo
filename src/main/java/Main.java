@@ -40,7 +40,7 @@ public class Main {
 		HibernateSessionHelper.configHibernate();
 		ZewdieMarketClient c = new ZewdieMarketClient();
 		c.run();
-		HibernateSessionHelper.getSessionFactory().close();
+		//HibernateSessionHelper.getSessionFactory().close();
 		
 		String webappDirLocation = "WebContent/";
 

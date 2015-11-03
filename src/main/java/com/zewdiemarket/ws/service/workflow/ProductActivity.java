@@ -25,6 +25,7 @@ public class ProductActivity {
 	}
 
 	public ProductRepresentation getProduct(String id) {
+		System.out.println("Retrieving product with id " + id);
 		Product p =  ProductDAO.retrieveProduct(Long.parseLong(id));
 		ProductRepresentation prodRep = new ProductRepresentation();
 		prodRep.setID(p.getID());
