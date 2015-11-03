@@ -24,7 +24,7 @@
 		<!-- Commented out line below creates, then drops. Uncommented message 
 			only creates databases. -->
 		<!-- <property name="hibernate.hbm2ddl.auto">create-drop</property> -->
-		<property name="hibernate.hbm2ddl.auto">create-drop</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 
 		<!-- Annotated entity classes -->
 		<mapping class="com.zewdiemarket.ws.Product" />
