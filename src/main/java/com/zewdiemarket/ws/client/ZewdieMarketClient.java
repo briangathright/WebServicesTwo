@@ -205,6 +205,6 @@ public class ZewdieMarketClient {
 			System.out.println(p.getID());
 		}
 		
-		runRESTClient();
+		//runRESTClient();
 	}
 }
