@@ -58,6 +58,11 @@ public class Main {
 
 		server.start();
 		server.join();   
+		
+		HibernateSessionHelper.configHibernate();
+		ZewdieMarketClient c = new ZewdieMarketClient();
+		c.run();
+		HibernateSessionHelper.getSessionFactory().close();
 
 		//		Server server = new Server(Integer.valueOf(System.getenv("PORT")));
 		//		BasicConfigurator.configure();
