@@ -36,6 +36,12 @@ public class Main {
 	 * 
 	 */
 	public static void main(String[] args) throws Exception {	
+		
+		HibernateSessionHelper.configHibernate();
+		ZewdieMarketClient c = new ZewdieMarketClient();
+		c.run();
+		HibernateSessionHelper.getSessionFactory().close();
+		
 		String webappDirLocation = "WebContent/";
 
 		//The port that we should run on can be set into an environment variable
@@ -59,11 +65,6 @@ public class Main {
 		server.start();
 		server.join();   
 		
-		HibernateSessionHelper.configHibernate();
-		ZewdieMarketClient c = new ZewdieMarketClient();
-		c.run();
-		HibernateSessionHelper.getSessionFactory().close();
-
 		//		Server server = new Server(Integer.valueOf(System.getenv("PORT")));
 		//		BasicConfigurator.configure();
 		//		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
