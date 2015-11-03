@@ -201,5 +201,6 @@ public class ZewdieMarketClient {
 		for(Product p : rp){
 			System.out.println(p.getID());
 		}
+		run2();
 	}
 }
