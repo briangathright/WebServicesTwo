@@ -32,6 +32,7 @@ public class ZewdieMarketClient {
 	
 	public ZewdieMarketClient() {}
 	
+	//client to test like in example; currently not working; howevver if you go to the actual paths you can see that they work
 	public void runRESTClient() {
 		 List<Object> providers = new ArrayList<Object>();
          JacksonJsonProvider provider = new JacksonJsonProvider();
@@ -204,7 +205,7 @@ public class ZewdieMarketClient {
 		for(Product p : rp){
 			System.out.println(p.getID());
 		}
-		
+				
 		//runRESTClient();
 	}
 }
