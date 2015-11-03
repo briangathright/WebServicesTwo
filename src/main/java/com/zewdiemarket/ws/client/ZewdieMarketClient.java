@@ -42,7 +42,7 @@ public class ZewdieMarketClient {
           * GET METHOD invoke
           *****************************************************************************************/
          System.out.println("GET METHOD .........................................................");
-         WebClient getClient = WebClient.create("/services", providers);
+         WebClient getClient = WebClient.create("http://damp-reef-8180.herokuapp.com:8080", providers);
          
          //Configuring the CXF logging interceptor for the outgoing message
          WebClient.getConfig(getClient).getOutInterceptors().add(new LoggingOutInterceptor());
@@ -50,7 +50,7 @@ public class ZewdieMarketClient {
          WebClient.getConfig(getClient).getInInterceptors().add(new LoggingInInterceptor());
          
          // change application/xml  to get in xml format
-         getClient = getClient.accept("application/json").type("application/json").path("/productservice/product/1");
+         getClient = getClient.accept("application/json").type("application/json").path("/services/productservice/product/1");
          
          //The following lines are to show how to log messages without the CXF interceptors
          String getRequestURI = getClient.getCurrentURI().toString();
