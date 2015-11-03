@@ -15,6 +15,9 @@ import com.zewdiemarket.ws.service.representation.ProductRepresentation;
 import com.zewdiemarket.ws.service.representation.ProductRequest;
 import com.zewdiemarket.ws.service.workflow.ProductActivity;
 
+/*
+ * Sets up web service with CXF annotations for ProductService
+ */
 
 @Path("/productservice/")
 public class ProductResource implements ProductService{

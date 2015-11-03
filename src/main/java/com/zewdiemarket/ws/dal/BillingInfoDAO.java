@@ -53,6 +53,9 @@ public class BillingInfoDAO {
 		return null;
 	}
 
+	/*
+	 * Gets all Billing infos in a LinkedHashSet
+	 */
 	public static Set<BillingInfo> getAllBillingInfos() {
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
@@ -69,6 +72,9 @@ public class BillingInfoDAO {
 		return null;
 	}
 
+	/*
+	 * Adds new Billing Info to the database
+	 */
 	public static BillingInfo addNewBillingInfo(String billingName, String cardNumber) {
 		BillingInfo bi = new BillingInfo();
 		bi.setBillingName(billingName);

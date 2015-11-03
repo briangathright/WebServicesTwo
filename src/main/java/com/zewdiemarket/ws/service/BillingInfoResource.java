@@ -14,8 +14,12 @@ import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.BillingInfoRequest;
 import com.zewdiemarket.ws.service.workflow.BillingInfoActivity;
 
+/*
+ * Sets up web service with CXF annotations for BillingInfoService
+ */
 @Path("/billinginfoservice/")
 public class BillingInfoResource implements BillingInfoService {
+
 
 	@GET
 	@Produces({"application/xml" , "application/json"})
@@ -32,6 +36,7 @@ public class BillingInfoResource implements BillingInfoService {
 		BillingInfoActivity billingInfoAct = new BillingInfoActivity();
 		return billingInfoAct.getBillingInfo(billingInfoId);
 	}
+
 
 	@POST
 	@Produces({"application/xml" , "application/json"})

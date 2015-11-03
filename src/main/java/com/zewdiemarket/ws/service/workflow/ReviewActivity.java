@@ -8,6 +8,9 @@ import com.zewdiemarket.ws.Review;
 import com.zewdiemarket.ws.dal.ReviewDAO;
 import com.zewdiemarket.ws.service.representation.ReviewRepresentation;
 
+/*
+ * Activity for Review - we get, create, and delete Review representations
+ */
 public class ReviewActivity {
 
 	public Set<ReviewRepresentation> getReviews() {

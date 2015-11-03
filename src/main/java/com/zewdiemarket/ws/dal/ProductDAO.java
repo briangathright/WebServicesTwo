@@ -24,6 +24,9 @@ public class ProductDAO {
 		}
 	}
 
+	/*
+	 * Add a new product to teh database
+	 */
 	public static Product addNewProduct(String detail, double price){
 		Product p = new Product();
 		p.setDetail(detail);
@@ -62,7 +65,9 @@ public class ProductDAO {
 
 		return null;
 	}
-	
+	/*
+	 * Get all Products in a LinkedHashSet
+	 */
 	public static Set<Product> getAllProducts(){
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();

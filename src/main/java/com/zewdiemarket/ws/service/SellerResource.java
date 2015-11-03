@@ -14,6 +14,9 @@ import com.zewdiemarket.ws.service.representation.SellerRepresentation;
 import com.zewdiemarket.ws.service.representation.SellerRequest;
 import com.zewdiemarket.ws.service.workflow.SellerActivity;
 
+/*
+ * Sets up web service with CXF annotations for SellerService
+ */
 @Path("/sellerservice/")
 public class SellerResource implements SellerService {
 

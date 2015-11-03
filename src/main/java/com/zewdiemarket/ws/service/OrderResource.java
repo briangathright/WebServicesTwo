@@ -14,6 +14,9 @@ import com.zewdiemarket.ws.service.representation.OrderRepresentation;
 import com.zewdiemarket.ws.service.representation.OrderRequest;
 import com.zewdiemarket.ws.service.workflow.OrderActivity;
 
+/*
+ * Sets up web service with CXF annotations for OrderService
+ */
 @Path("/orderservice/")
 public class OrderResource implements OrderService {
 

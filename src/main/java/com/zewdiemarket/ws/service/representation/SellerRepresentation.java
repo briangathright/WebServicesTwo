@@ -5,6 +5,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+/*
+ * Representation for Seller, including id and sellerName
+ */
 @XmlRootElement(name = "Seller")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")

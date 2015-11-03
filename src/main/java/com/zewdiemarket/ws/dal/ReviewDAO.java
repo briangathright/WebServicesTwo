@@ -56,6 +56,9 @@ public class ReviewDAO {
 		return null;
 	}
 
+	/*
+	 * Get all reviews in a LinkedHashSet
+	 */
 	public static Set<Review> getAllReviews(){
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
@@ -72,6 +75,9 @@ public class ReviewDAO {
 		return null;
 	}
 
+	/*
+	 * Add a new review to the database
+	 */
 	public static Review addNewReview(String reviewDetail, float rating, Customer customer) {
 		Review r = new Review();
 		r.setReviewDetail(reviewDetail);

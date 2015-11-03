@@ -53,6 +53,9 @@ public class SellerDAO {
 		return null;
 	}
 
+	/*
+	 * Get all sellsers in a linked hash set
+	 */
 	public static Set<Seller> getAllSellers() {
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();

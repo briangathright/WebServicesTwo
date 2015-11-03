@@ -6,6 +6,9 @@ import com.zewdiemarket.ws.Seller;
 import com.zewdiemarket.ws.dal.SellerDAO;
 import com.zewdiemarket.ws.service.representation.SellerRepresentation;
 
+/*
+ * Activity for Seller - we get, create, and delete Seller representations
+ */
 public class SellerActivity {
 
 	public Set<SellerRepresentation> getSellers() {

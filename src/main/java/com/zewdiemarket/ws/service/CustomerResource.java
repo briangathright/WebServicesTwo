@@ -14,6 +14,9 @@ import com.zewdiemarket.ws.service.representation.CustomerRepresentation;
 import com.zewdiemarket.ws.service.representation.CustomerRequest;
 import com.zewdiemarket.ws.service.workflow.CustomerActivity;
 
+/*
+ * Sets up web service with CXF annotations for CustomerService
+ */
 @Path("/customerservice/")
 public class CustomerResource implements CustomerService {
 

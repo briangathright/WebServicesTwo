@@ -13,7 +13,9 @@ import com.zewdiemarket.ws.service.representation.ReviewRepresentation;
 import com.zewdiemarket.ws.service.representation.ReviewRequest;
 import com.zewdiemarket.ws.service.workflow.ReviewActivity;
 
-
+/*
+ * Sets up web service with CXF annotations for ReviewService
+ */
 @Path("/reviewservice/")
 public class ReviewResource implements ReviewService{
 

@@ -6,6 +6,9 @@ import com.zewdiemarket.ws.Order;
 import com.zewdiemarket.ws.dal.OrderDAO;
 import com.zewdiemarket.ws.service.representation.OrderRepresentation;
 
+/*
+ * Activity for Order - we get, create, and delete Order representations
+ */
 public class OrderActivity {
 	public Set<OrderRepresentation> getOrders() {
 		Set<Order> orders = new HashSet<Order>();

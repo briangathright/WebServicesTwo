@@ -50,7 +50,10 @@ public class CustomerDAO {
 
 		return null;
 	}
-
+	
+	/*
+	 * Get all customers in a LinkedHashSet using a Hibernate session
+	 */
 	public static Set<Customer> getAllCustomers() {
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
@@ -67,6 +70,9 @@ public class CustomerDAO {
 		return null;
 	}
 
+	/*
+	 * Add a new customer to the database.
+	 */
 	public static Customer addNewCustomer(String customerName) {
 		Customer c = new Customer();
 		c.setName(customerName);

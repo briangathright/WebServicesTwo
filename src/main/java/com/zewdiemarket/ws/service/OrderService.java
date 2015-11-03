@@ -5,6 +5,10 @@ import javax.jws.WebService;
 import com.zewdiemarket.ws.service.representation.OrderRepresentation;
 import com.zewdiemarket.ws.service.representation.OrderRequest;
 
+/*
+ * Interface for BillingInfoService
+ */
+
 @WebService
 public interface OrderService {
 

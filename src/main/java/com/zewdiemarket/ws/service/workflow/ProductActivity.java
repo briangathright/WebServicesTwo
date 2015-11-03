@@ -7,6 +7,9 @@ import com.zewdiemarket.ws.Product;
 import com.zewdiemarket.ws.dal.ProductDAO;
 import com.zewdiemarket.ws.service.representation.ProductRepresentation;
 
+/*
+ * Activity for Product - we get, create, and delete Product representations
+ */
 public class ProductActivity {
 
 	public Set<ProductRepresentation> getProducts() {

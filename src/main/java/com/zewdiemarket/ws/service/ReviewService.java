@@ -5,6 +5,9 @@ import javax.jws.WebService;
 import com.zewdiemarket.ws.service.representation.ReviewRepresentation;
 import com.zewdiemarket.ws.service.representation.ReviewRequest;
 
+/*
+ * Interface for ReviewService
+ */
 @WebService
 public interface ReviewService {
 		   

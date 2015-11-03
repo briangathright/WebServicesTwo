@@ -7,6 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 import com.zewdiemarket.ws.Customer;
 
+/*
+ * Representation for Review, including id, reviewDetail, rating, customerName
+ */
 @XmlRootElement(name = "Review")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")

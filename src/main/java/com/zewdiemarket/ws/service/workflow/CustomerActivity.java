@@ -6,6 +6,9 @@ import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.dal.CustomerDAO;
 import com.zewdiemarket.ws.service.representation.CustomerRepresentation;
 
+/*
+ * Activity for Customer - we get, create, and delete Customer representations
+ */
 public class CustomerActivity {
 
 	public Set<CustomerRepresentation> getCustomers() {

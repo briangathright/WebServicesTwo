@@ -53,6 +53,9 @@ public class OrderDAO {
 		return null;
 	}
 
+	/*
+	 * Get all orders in a LinkedHashSet
+	 */
 	public static Set<Order> getAllOrders() {
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
@@ -69,6 +72,9 @@ public class OrderDAO {
 		return null;
 	}
 
+	/*
+	 * Add a new Order to the database.
+	 */
 	public static Order addNewOrder(String status) {
 		Order o = new Order();
 		o.setStatus(status);
