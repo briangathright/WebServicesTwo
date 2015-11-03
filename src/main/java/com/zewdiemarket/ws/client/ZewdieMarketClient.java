@@ -51,7 +51,7 @@ public class ZewdieMarketClient {
          WebClient.getConfig(getClient).getInInterceptors().add(new LoggingInInterceptor());
          
          // change application/xml  to get in xml format
-         getClient = getClient.accept("application/json").type("application/json").path("/services/sellerservice/seller/1");
+         getClient = getClient.accept("application/xml").type("application/xml").path("/services/sellerservice/seller/1");
          
          //The following lines are to show how to log messages without the CXF interceptors
          String getRequestURI = getClient.getCurrentURI().toString();
@@ -205,6 +205,6 @@ public class ZewdieMarketClient {
 			System.out.println(p.getID());
 		}
 		
-		//runRESTClient();
+		runRESTClient();
 	}
 }
