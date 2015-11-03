@@ -26,13 +26,13 @@ import com.zewdiemarket.ws.dal.SellerDAO;
 import com.zewdiemarket.ws.BillingInfo;
 
 /**
- * Client: Tests functions and classes, and database functionality. Output can be read on Heroku
+ * Client: Tests functions and classes, and database functionality.
  */
 public class ZewdieMarketClient {
 	
 	public ZewdieMarketClient() {}
 	
-	public void run2() {
+	public void runRESTClient() {
 		 List<Object> providers = new ArrayList<Object>();
          JacksonJsonProvider provider = new JacksonJsonProvider();
          provider.addUntouchable(Response.class);
@@ -62,6 +62,8 @@ public class ZewdieMarketClient {
          //to see as raw XML/json
          String response = getClient.get(String.class);
          System.out.println("GET METHOD Response: ...." + response);
+         
+         //expand ... (not working)
 	}
 
 	public void run() {
@@ -202,6 +204,7 @@ public class ZewdieMarketClient {
 		for(Product p : rp){
 			System.out.println(p.getID());
 		}
-		run2();
+		
+		//runRESTClient();
 	}
 }
