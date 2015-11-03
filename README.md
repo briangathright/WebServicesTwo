@@ -2,42 +2,28 @@
 
 Brian Gathright - August Meyer - Nema Nemati
 
-This is our repository for Webservices Project 2. It is also hosted on Heroku at https://damp-reef-8180.herokuapp.com/ . 
-
-We are missing some commits because we had to rebase from bitbucket and gradle to github and maven for heroku deployment. 
-The old repositories are at: https://bitbucket.org/bgathright/webserviceszewdiemarket and https://bitbucket.org/august_of_wind/webservicezewdiemarket .
+This is our repository for Webservices Project 3. It is also hosted on Heroku at https://damp-reef-8180.herokuapp.com/ . 
 
 Brief Architecture Info
 
-We used Hibernate and a Postgres Database as well as deployment on Heroku and hosted on GitHub. See below
-for info on individual classes.
+We used Hibernate and a Postgres Database as well as deployment on Heroku and hosted on GitHub. We then added Apache CXF and use a Jetty Runner as our server. 
 
-Main.java --> code for Heroku deployment (setting up a server and servlet)
+We set up our architecture to be similar to your sample project (similar package naming scheme). 
 
-View Package
-------------
-Client.java --> our "testing client" it tests most of our functions and classes and tests database functionality
+We couldn't get the client working, some kind of issues with heroku. But if you go to https://damp-reef-8180.herokuapp.com/ you can view our services. 
 
-Data Package
-------------
-HibernateDao.java --> A Data Access Object to wrap our Hibernate. Its used to add, remove, and retrieve from our Postgres Database. 
+You can test our getAlls by going to the below links.
 
-HibernateSessionHelper.java --> Handles configuring hibernate and hibernate sessions
+https://damp-reef-8180.herokuapp.com/services/billinginfoservice/billinginfo
+https://damp-reef-8180.herokuapp.com/services/customerservice/customer
+https://damp-reef-8180.herokuapp.com/services/orderservice/order
+https://damp-reef-8180.herokuapp.com/services/productservice/product
+https://damp-reef-8180.herokuapp.com/services/reviewservice/review
+https://damp-reef-8180.herokuapp.com/services/sellerservice/seller
 
-Model Package
---------------
-BillingInfo.java --> billing info to be used for customers
+You can also retrieve individuals by doing for example  https://damp-reef-8180.herokuapp.com/services/productservice/product/1
 
-Customer.java --> our customer class, they can place orders on products.
-
-IReviewable.java --> Interface for any classes that can have reviews (namely products and sellers (partners))
-Order.java --> class for orders: customers place orders on products and sellers are given orders for their products from the order.
-
-Product.java --> class that represents products, contains details, prices, seller, etc.
-
-Review.java --> a review class that has a rating system and comment section for customers to rate products and sellers
-
-Seller.java --> this is our "partner" class. They sell products and get information on orders placed on their products
+(check the getAlls to see how high the id values go for individual retrieve.) 
 
 Please see code documentation and UML for more information. Please let us know if you need anything else.
 
