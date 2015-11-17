@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.dal.CustomerDAO;
+import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.CustomerRepresentation;
 
 /*
@@ -43,5 +44,9 @@ public class CustomerActivity {
 	public String deleteCustomer(String id) {
 		CustomerDAO.deleteCustomer(CustomerDAO.retrieveCustomer(Long.parseLong(id)));
 		return "OK";
+	}
+
+	public void setLinks(CustomerRepresentation customerRep){
+
 	}
 }

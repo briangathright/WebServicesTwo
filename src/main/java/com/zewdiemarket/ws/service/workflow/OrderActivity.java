@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import com.zewdiemarket.ws.Order;
 import com.zewdiemarket.ws.dal.OrderDAO;
+import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.OrderRepresentation;
 
 /*
@@ -42,5 +43,9 @@ public class OrderActivity {
 	public String deleteOrder(String id) {
 		OrderDAO.deleteOrder(OrderDAO.retrieveOrder(Long.parseLong(id)));
 		return "OK";
+	}
+
+	public void setLinks(OrderRepresentation orderRep){
+
 	}
 }

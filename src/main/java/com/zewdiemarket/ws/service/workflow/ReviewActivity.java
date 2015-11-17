@@ -6,6 +6,7 @@ import java.util.Set;
 import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.Review;
 import com.zewdiemarket.ws.dal.ReviewDAO;
+import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.ReviewRepresentation;
 
 /*
@@ -56,5 +57,9 @@ public class ReviewActivity {
 	public String deleteReview(String id) {
 		ReviewDAO.deleteReview(ReviewDAO.retrieveReview(Long.parseLong(id)));
 		return "OK";
+	}
+
+	public void setLinks(ReviewRepresentation reviewRep){
+
 	}
 }

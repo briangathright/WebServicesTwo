@@ -13,7 +13,7 @@ import com.zewdiemarket.ws.Customer;
 @XmlRootElement(name = "Review")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class ReviewRepresentation {
+public class ReviewRepresentation extends AbstractRepresentation{
 	
 	private long id;
 	private String reviewDetail;

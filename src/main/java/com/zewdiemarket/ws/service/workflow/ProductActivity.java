@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.zewdiemarket.ws.Product;
 import com.zewdiemarket.ws.dal.ProductDAO;
+import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.ProductRepresentation;
 
 /*
@@ -51,4 +52,7 @@ public class ProductActivity {
 		return "OK";
 	}
 
+	public void setLinks(ProductRepresentation prodRep){
+
+	}
 }

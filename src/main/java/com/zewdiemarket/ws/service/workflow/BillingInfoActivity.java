@@ -46,4 +46,8 @@ public class BillingInfoActivity {
 		BillingInfoDAO.deleteBillingInfo(BillingInfoDAO.retrieveBillingInfo(Long.parseLong(id)));
 		return "OK";
 	}
+	
+	public void setLinks(BillingInfoRepresentation billInfoRep){
+		
+	}
 }

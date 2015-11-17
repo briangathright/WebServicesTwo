@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "Seller")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class SellerRepresentation {
+public class SellerRepresentation extends AbstractRepresentation{
 
 	private long id;
 	private String sellerName;
