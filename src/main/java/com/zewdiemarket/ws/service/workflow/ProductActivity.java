@@ -40,13 +40,14 @@ public class ProductActivity {
 		return Response.ok(prodRep).header("Access-Control-Allow-Origin", "*").build();
 	}
 
-	public ProductRepresentation createProduct(String productDetail, double productPrice) {
+	public Response createProduct(String productDetail, double productPrice) {
 		Product p = ProductDAO.addNewProduct(productDetail, productPrice);
 		ProductRepresentation prodRep = new ProductRepresentation();
 		prodRep.setID(p.getID());
 		prodRep.setProductDetail(p.getDetail());
 		prodRep.setProductPrice(p.getPrice());
-		return prodRep;
+		return Response.ok(prodRep).header("Access-Control-Allow-Origin", "*").build();
+
 	}
 
 	public String deleteProduct(String id) {

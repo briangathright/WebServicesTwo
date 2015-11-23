@@ -24,7 +24,7 @@ public class ProductResource implements ProductService{
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/product")
-	public Set<ProductRepresentation> getProducts() {
+	public Response getProducts() {
 		ProductActivity prodAct = new ProductActivity();
 		return prodAct.getProducts();
 	}
@@ -32,7 +32,7 @@ public class ProductResource implements ProductService{
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/product/{productId}")
-	public ProductRepresentation getProduct(@PathParam("productId") String productId) {
+	public Response getProduct(@PathParam("productId") String productId) {
 		ProductActivity prodAct = new ProductActivity();
 		return prodAct.getProduct(productId);
 	}
@@ -40,7 +40,7 @@ public class ProductResource implements ProductService{
 	@POST
 	@Produces({"application/xml" , "application/json"})
 	@Path("/product")
-	public ProductRepresentation createProduct(ProductRequest productRequest) {
+	public Response createProduct(ProductRequest productRequest) {
 		ProductActivity prodAct = new ProductActivity();
 		return prodAct.createProduct(productRequest.getProductDetail(), productRequest.getProductPrice());
 	}
