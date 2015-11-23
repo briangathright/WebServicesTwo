@@ -1,6 +1,5 @@
 package com.zewdiemarket.ws.service;
 
-import java.util.HashSet;
 import java.util.Set;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -25,28 +24,25 @@ public class ProductResource implements ProductService{
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/product")
-	public Response getProducts() {
+	public Set<ProductRepresentation> getProducts() {
 		ProductActivity prodAct = new ProductActivity();
-		Set<ProductRepresentation> prodReps = prodAct.getProducts();
-		return Response.ok(prodReps).header("Access-Control-Allow-Origin", "*").build();
+		return prodAct.getProducts();
 	}
 
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/product/{productId}")
-	public Response getProduct(@PathParam("productId") String productId) {
+	public ProductRepresentation getProduct(@PathParam("productId") String productId) {
 		ProductActivity prodAct = new ProductActivity();
-		ProductRepresentation prodRep = prodAct.getProduct(productId);
-		return Response.ok(prodRep).header("Access-Control-Allow-Origin", "*").build();
+		return prodAct.getProduct(productId);
 	}
 
 	@POST
 	@Produces({"application/xml" , "application/json"})
 	@Path("/product")
-	public Response createProduct(ProductRequest productRequest) {
+	public ProductRepresentation createProduct(ProductRequest productRequest) {
 		ProductActivity prodAct = new ProductActivity();
-		ProductRepresentation prodRep = prodAct.createProduct(productRequest.getProductDetail(), productRequest.getProductPrice());
-		return Response.ok(prodRep).header("Access-Control-Allow-Origin", "*").build();
+		return prodAct.createProduct(productRequest.getProductDetail(), productRequest.getProductPrice());
 	}
 	
 	@DELETE
