@@ -26,23 +26,38 @@ $.ajax({
       		// 	curr += data.getElementsByTagName("Product")[i].childNodes[0].nodeValue + '</br>';
 
       		// };
-      		var i;
-      		var table="<tr><th>ID</th><th>Price</th></tr>";
-      		var x = data.getElementsByTagName("Product");
-      		for (i = 0; i <x.length; i++) { 
-			    table = table + "<tr><td>" +
-			    x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue +
-			    "</td><td>" +
-			    x[i].getElementsByTagName("productPrice")[0].childNodes[0].nodeValue +
-			    "</td></tr>";
-			    console.log(table);
+   //    		var i;
+   //    		var table="<tr><th>ID</th><th>Price</th></tr>";
+   //    		var x = data.getElementsByTagName("Product");
+   //    		for (i = 0; i <x.length; i++) { 
+			//     table = table + "<tr><td>" +
+			//     x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue +
+			//     "</td><td>" +
+			//     x[i].getElementsByTagName("productPrice")[0].childNodes[0].nodeValue +
+			//     "</td></tr>";
+			//     console.log(table);
 
-			  }
-      		// document.getElementById("div2").innerHTML=curr;
+
+
+
+
+
+			//   }
+   //    		// document.getElementById("div2").innerHTML=curr;
 			
 
-			document.getElementById("div2").innerHTML = table;
-
+			// document.getElementById("div2").innerHTML = table;
+        var i;
+        var table="<table class='table'><tr><th>Id</th><th>Price</th></tr>";
+        var x = data.getElementsByTagName("Product");
+        for (i = 0; i <x.length; i++) { 
+          table += "<tr><td>" +
+          x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue +
+          "</td><td>" +
+          x[i].getElementsByTagName("productPrice")[0].childNodes[0].nodeValue +
+          "</td></tr>";
+        }
+      document.getElementById("div2").innerHTML = table + "</table>";
       	// console.log(data)
       });
 }
