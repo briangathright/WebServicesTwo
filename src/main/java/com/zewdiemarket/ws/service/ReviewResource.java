@@ -9,9 +9,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
-import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
-
 import com.zewdiemarket.ws.service.representation.ReviewRepresentation;
 import com.zewdiemarket.ws.service.representation.ReviewRequest;
 import com.zewdiemarket.ws.service.workflow.ReviewActivity;
