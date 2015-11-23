@@ -3,8 +3,6 @@ package com.zewdiemarket.ws.service.workflow;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.ws.rs.core.Response;
-
 import com.zewdiemarket.ws.Product;
 import com.zewdiemarket.ws.dal.ProductDAO;
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
@@ -15,7 +13,7 @@ import com.zewdiemarket.ws.service.representation.ProductRepresentation;
  */
 public class ProductActivity {
 
-	public Response getProducts() {
+	public Set<ProductRepresentation> getProducts() {
 		// TODO Auto-generated method stub
 		Set<Product> products = new HashSet<Product>();
 		Set<ProductRepresentation> prodReps = new HashSet<ProductRepresentation>();
@@ -27,27 +25,26 @@ public class ProductActivity {
 			prodRep.setProductPrice(p.getPrice());
 			prodReps.add(prodRep);
 		}
-		return Response.ok(prodReps).header("Access-Control-Allow-Origin", "*").build();
+		return prodReps;
 	}
 
-	public Response getProduct(String id) {
+	public ProductRepresentation getProduct(String id) {
 		System.out.println("Retrieving product with id " + id);
 		Product p =  ProductDAO.retrieveProduct(Long.parseLong(id));
 		ProductRepresentation prodRep = new ProductRepresentation();
 		prodRep.setID(p.getID());
 		prodRep.setProductDetail(p.getDetail());
 		prodRep.setProductPrice(p.getPrice());
-		return Response.ok(prodRep).header("Access-Control-Allow-Origin", "*").build();
+		return prodRep;
 	}
 
-	public Response createProduct(String productDetail, double productPrice) {
+	public ProductRepresentation createProduct(String productDetail, double productPrice) {
 		Product p = ProductDAO.addNewProduct(productDetail, productPrice);
 		ProductRepresentation prodRep = new ProductRepresentation();
 		prodRep.setID(p.getID());
 		prodRep.setProductDetail(p.getDetail());
 		prodRep.setProductPrice(p.getPrice());
-		return Response.ok(prodRep).header("Access-Control-Allow-Origin", "*").build();
-
+		return prodRep;
 	}
 
 	public String deleteProduct(String id) {

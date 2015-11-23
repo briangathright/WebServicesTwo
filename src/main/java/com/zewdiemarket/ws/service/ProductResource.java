@@ -1,5 +1,6 @@
 package com.zewdiemarket.ws.service;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -26,7 +27,8 @@ public class ProductResource implements ProductService{
 	@Path("/product")
 	public Response getProducts() {
 		ProductActivity prodAct = new ProductActivity();
-		return prodAct.getProducts();
+		Set<ProductRepresentation> prodReps = prodAct.getProducts();
+		return Response.ok(prodReps).header("Access-Control-Allow-Origin", "*").build();
 	}
 
 	@GET
@@ -34,7 +36,8 @@ public class ProductResource implements ProductService{
 	@Path("/product/{productId}")
 	public Response getProduct(@PathParam("productId") String productId) {
 		ProductActivity prodAct = new ProductActivity();
-		return prodAct.getProduct(productId);
+		ProductRepresentation prodRep = prodAct.getProduct(productId);
+		return Response.ok(prodRep).header("Access-Control-Allow-Origin", "*").build();
 	}
 
 	@POST
@@ -42,7 +45,8 @@ public class ProductResource implements ProductService{
 	@Path("/product")
 	public Response createProduct(ProductRequest productRequest) {
 		ProductActivity prodAct = new ProductActivity();
-		return prodAct.createProduct(productRequest.getProductDetail(), productRequest.getProductPrice());
+		ProductRepresentation prodRep = prodAct.createProduct(productRequest.getProductDetail(), productRequest.getProductPrice());
+		return Response.ok(prodRep).header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 	@DELETE
