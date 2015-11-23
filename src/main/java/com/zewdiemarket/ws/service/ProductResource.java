@@ -9,6 +9,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
+
 import com.zewdiemarket.ws.Product;
 import com.zewdiemarket.ws.service.representation.ProductRepresentation;
 import com.zewdiemarket.ws.service.representation.ProductRequest;
@@ -18,6 +21,19 @@ import com.zewdiemarket.ws.service.workflow.ProductActivity;
  * Sets up web service with CXF annotations for ProductService
  */
 
+@CrossOriginResourceSharing(
+        allowOrigins = {
+           "http://127.0.0.1:8000"
+        }, 
+        allowCredentials = true, 
+        maxAge = 1, 
+        allowHeaders = {
+           "X-custom-1", "X-custom-2"
+        }, 
+        exposeHeaders = {
+           "X-custom-3", "X-custom-4"
+        }
+)
 @Path("/productservice/")
 public class ProductResource implements ProductService{
 
