@@ -10,6 +10,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
+
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.BillingInfoRequest;
 import com.zewdiemarket.ws.service.workflow.BillingInfoActivity;
@@ -17,6 +19,19 @@ import com.zewdiemarket.ws.service.workflow.BillingInfoActivity;
 /*
  * Sets up web service with CXF annotations for BillingInfoService
  */
+@CrossOriginResourceSharing(
+        allowOrigins = {
+           "http://127.0.0.1:8000"
+        }, 
+        allowCredentials = true, 
+        maxAge = 1, 
+        allowHeaders = {
+           "X-custom-1", "X-custom-2"
+        }, 
+        exposeHeaders = {
+           "X-custom-3", "X-custom-4"
+        }
+)
 @Path("/billinginfoservice/")
 public class BillingInfoResource implements BillingInfoService {
 

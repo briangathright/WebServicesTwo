@@ -10,6 +10,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
+
 import com.zewdiemarket.ws.service.representation.OrderRepresentation;
 import com.zewdiemarket.ws.service.representation.OrderRequest;
 import com.zewdiemarket.ws.service.workflow.OrderActivity;
@@ -17,6 +20,19 @@ import com.zewdiemarket.ws.service.workflow.OrderActivity;
 /*
  * Sets up web service with CXF annotations for OrderService
  */
+@CrossOriginResourceSharing(
+        allowOrigins = {
+           "http://127.0.0.1:8000"
+        }, 
+        allowCredentials = true, 
+        maxAge = 1, 
+        allowHeaders = {
+           "X-custom-1", "X-custom-2"
+        }, 
+        exposeHeaders = {
+           "X-custom-3", "X-custom-4"
+        }
+)
 @Path("/orderservice/")
 public class OrderResource implements OrderService {
 
