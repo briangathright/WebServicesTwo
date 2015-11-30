@@ -103,9 +103,9 @@ public class ZewdieMarketClient {
 
 		System.out.println("Making Customers");
 		System.out.println("----------------");
-		Customer c1 = new Customer("Thor Odinson", "asgaard");
+		Customer c1 = new Customer("Thor", "asgaard");
 		System.out.println("Created Customer: \n" + c1 + "\n");
-		Customer c2 = new Customer("Odin Allfather", "kitten123");
+		Customer c2 = new Customer("Odin", "kitten123");
 		System.out.println("Created Customer: \n" + c2 + "\n");
 
 		System.out.println("Adding Billing and Shipping Info to Customers");
