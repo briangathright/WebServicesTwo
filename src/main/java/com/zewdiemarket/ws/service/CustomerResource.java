@@ -60,7 +60,7 @@ public class CustomerResource implements CustomerService {
 			return customerAct.createCustomer(customerRequest.getCustomerName());
 		}
 		
-		@POST
+		@GET
 		@Produces({"application/xml" , "application/json"})
 		@Path("/customerlogin/{customerName}/{customerPassword}")
 		public CustomerRepresentation login(@PathParam("customerName") String customerName, @PathParam("customerPassword")String customerPassword){
