@@ -59,6 +59,14 @@ public class CustomerResource implements CustomerService {
 			CustomerActivity customerAct = new CustomerActivity();
 			return customerAct.createCustomer(customerRequest.getCustomerName());
 		}
+		
+		@POST
+		@Produces({"application/xml" , "application/json"})
+		@Path("/customerlogin/{customerName}/{customerPassword}")
+		public CustomerRepresentation login(@PathParam("customerName") String customerName, @PathParam("customerPassword")String customerPassword){
+			CustomerActivity customerAct = new CustomerActivity();
+			return customerAct.login(customerName, customerPassword);
+		}
 
 		@DELETE
 		@Produces({"application/xml" , "application/json"})

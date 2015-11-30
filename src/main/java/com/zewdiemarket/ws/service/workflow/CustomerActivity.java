@@ -40,6 +40,17 @@ public class CustomerActivity {
 		customerRep.setCustomerName(c.getName());
 		return customerRep;
 	}
+	
+	public CustomerRepresentation login(String customerName, String customerPassword) {
+		Set<Customer> customers = new HashSet<Customer>();
+		customers = CustomerDAO.getAllCustomers();
+		for(Customer c : customers){
+			if(c.getName().equals(customerName) && c.getPassword().equals(customerPassword)){
+				return getCustomer(String.valueOf(c.getID()));
+			}
+		}
+		return null;
+	}
 
 	public String deleteCustomer(String id) {
 		CustomerDAO.deleteCustomer(CustomerDAO.retrieveCustomer(Long.parseLong(id)));

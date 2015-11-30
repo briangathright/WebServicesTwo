@@ -33,6 +33,9 @@ public class Customer implements Serializable {
 
 	@Column(name = "customer_name")
 	private String name;
+	
+	@Column(name = "customer_password")
+	private String password;
 
 	@Column(name = "customer_shippingAddress")
 	private String shippingAddress = "N/A";
@@ -58,8 +61,9 @@ public class Customer implements Serializable {
 	/**
 	 * @param name - constructs a customer with a name
 	 */
-	public Customer(String name) {
+	public Customer(String name, String password) {
 		this.name=name;
+		this.password=password;
 	}
 
 	public long getID() {
@@ -76,6 +80,14 @@ public class Customer implements Serializable {
 
 	public void setName(String name) {
 		this.name=name;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password=password;
 	}
 
 	public String getAddress() {
