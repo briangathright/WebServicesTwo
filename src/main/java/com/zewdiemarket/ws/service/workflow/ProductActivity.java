@@ -25,6 +25,7 @@ public class ProductActivity {
 			prodRep.setID(p.getID());
 			prodRep.setProductDetail(p.getDetail());
 			prodRep.setProductPrice(p.getPrice());
+			setLinks(prodRep);
 			prodReps.add(prodRep);
 		}
 		return prodReps;
@@ -37,6 +38,7 @@ public class ProductActivity {
 		prodRep.setID(p.getID());
 		prodRep.setProductDetail(p.getDetail());
 		prodRep.setProductPrice(p.getPrice());
+		setLinks(prodRep);
 		return prodRep;
 	}
 
@@ -46,6 +48,7 @@ public class ProductActivity {
 		prodRep.setID(p.getID());
 		prodRep.setProductDetail(p.getDetail());
 		prodRep.setProductPrice(p.getPrice());
+		setLinks(prodRep);
 		return prodRep;
 	}
 
