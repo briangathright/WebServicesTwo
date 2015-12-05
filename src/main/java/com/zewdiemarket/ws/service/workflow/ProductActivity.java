@@ -1,5 +1,6 @@
 package com.zewdiemarket.ws.service.workflow;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
@@ -60,7 +61,9 @@ public class ProductActivity {
 	public void setLinks(ProductRepresentation prodRep){
 		Link buy = new Link("buy", System.getenv("PRODUCTSERVICE_URL"));
 		Link review = new Link("review", System.getenv("PRODUCTSERVICE_URL"));
-		prodRep.setLinks(buy);
-		prodRep.setLinks(review);
+		Link[] links = new Link[2];
+		links[0] = buy;
+		links[1] = review;
+		prodRep.setLinks(links);
 	}
 }
