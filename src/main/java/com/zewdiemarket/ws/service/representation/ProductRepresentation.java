@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "Product")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class ProductRepresentation extends AbstractRepresentation{
+public class ProductRepresentation extends AbstractRepresentation implements Comparable<ProductRepresentation>{
 	
 	private long id;
 	private String productDetail;
@@ -41,5 +41,9 @@ public class ProductRepresentation extends AbstractRepresentation{
 	
 	public void setProductPrice(double productPrice){
 		this.productPrice = productPrice;
+	}
+
+	public int compareTo(ProductRepresentation o) {
+		return (int) (id - o.getID());
 	}
 }

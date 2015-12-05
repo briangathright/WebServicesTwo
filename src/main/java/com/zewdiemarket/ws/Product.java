@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "product")
 @XmlRootElement
-public class Product implements Serializable, IReviewable {
+public class Product implements Serializable, Comparable<Product>, IReviewable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -137,5 +137,9 @@ public class Product implements Serializable, IReviewable {
 				"\nPrice: " + price +
 				"\nRating: " + calcAverageRating() + 
 				"\nNumber of Reviews: " + reviewList.size();
+	}
+
+	public int compareTo(Product o) {
+		return (int) (product_id - o.getID());
 	}
 }

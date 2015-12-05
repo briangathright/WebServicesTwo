@@ -2,10 +2,12 @@ package com.zewdiemarket.ws.service.workflow;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import com.zewdiemarket.ws.Product;
 import com.zewdiemarket.ws.dal.ProductDAO;
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
+import com.zewdiemarket.ws.service.representation.Link;
 import com.zewdiemarket.ws.service.representation.ProductRepresentation;
 
 /*
@@ -15,8 +17,8 @@ public class ProductActivity {
 
 	public Set<ProductRepresentation> getProducts() {
 		// TODO Auto-generated method stub
-		Set<Product> products = new HashSet<Product>();
-		Set<ProductRepresentation> prodReps = new HashSet<ProductRepresentation>();
+		Set<Product> products = new TreeSet<Product>();
+		Set<ProductRepresentation> prodReps = new TreeSet<ProductRepresentation>();
 		products = ProductDAO.getAllProducts();
 		for(Product p : products){
 			ProductRepresentation prodRep= new ProductRepresentation();
@@ -53,6 +55,9 @@ public class ProductActivity {
 	}
 
 	public void setLinks(ProductRepresentation prodRep){
-
+		Link buy = new Link("buy", System.getenv("PRODUCTSERVICE_URL"));
+		Link review = new Link("review", System.getenv("PRODUCTSERVICE_URL"));
+		prodRep.setLinks(buy);
+		prodRep.setLinks(review);
 	}
 }

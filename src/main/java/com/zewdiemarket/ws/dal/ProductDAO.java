@@ -2,6 +2,7 @@ package com.zewdiemarket.ws.dal;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.hibernate.Session;
 
@@ -74,7 +75,7 @@ public class ProductDAO {
 			
 			session.beginTransaction();
 			
-			Set<Product> allProducts = new LinkedHashSet<Product>(session.createCriteria(Product.class).list());
+			Set<Product> allProducts = new TreeSet<Product>(session.createCriteria(Product.class).list());
 			
 			session.getTransaction().commit();
 			return allProducts;
