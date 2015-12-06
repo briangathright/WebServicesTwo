@@ -35,17 +35,9 @@ public class Order implements Serializable
 	@Column(name="status")
 	String status;
 
-	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="product_id")
-	Set <Product> orderedProducts = new HashSet<Product>();
-
-	/**
-	 * Suborders is a set of orders, where the main order is split into 
-	 * orders for each seller in the order.
-	 */
-	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-	@JoinColumn(name="order_id")
-	Set <Order> subOrders = new HashSet<Order>();
+	Product orderedProduct;
 
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="customer_id")
@@ -60,8 +52,8 @@ public class Order implements Serializable
 	/**
 	 * Constructs an Order object with product list and customer
 	 */
-	public Order(Customer customer, Set<Product> productList) {
-		this.orderedProducts=productList;
+	public Order(Customer customer, Product product) {
+		this.orderedProduct=product;
 		this.customer=customer;
 	}
 
@@ -74,12 +66,12 @@ public class Order implements Serializable
 	}
 
 
-	public Set<Product> getProductList(){
-		return orderedProducts;
+	public Product getOrderedProduct(){
+		return orderedProduct;
 	}
 
-	public void setProductList(Set<Product> productList){
-		this.orderedProducts=productList;
+	public void setOrderProduct(Product product){
+		this.orderedProduct=product;
 	}
 
 	public String getStatus(){
@@ -97,19 +89,18 @@ public class Order implements Serializable
 	public void setCustomer(Customer customer){
 		this.customer=customer;
 	}
-	
+
 	/**
 	 * 
 	 * @return - Checks fulfillment of order by checking that each suborder (described above) is completely fulfilled, and returns
 	 * true or false
 	 */
 	public boolean checkFulfillment() {
-		for(Order o : subOrders){
-			if(!o.getStatus().equals("DELIEVERED"))
-			{
-				return false;
-			}
+		if(!this.getStatus().equals("DELIEVERED"))
+		{
+			return false;
 		}
+
 		return true;
 	}
 	/**
@@ -118,9 +109,7 @@ public class Order implements Serializable
 	 */
 	public double calculateCost() {
 		double total = 0.0;
-		for(Product p : orderedProducts) {
-			total += p.getPrice();
-		}
+		total += orderedProduct.getPrice();
 		return total;
 	}
 	/**
@@ -128,13 +117,7 @@ public class Order implements Serializable
 	 */
 	public void place() {
 		status = "PLACED";
-
-		for(Product p : orderedProducts){
-			Order o = new Order(customer, new HashSet<Product>(Arrays.asList(p)));
-			o.setStatus("PLACED");
-			subOrders.add(o);
-			p.getSeller().getOrderList().add(o);
-		}
+		orderedProduct.getSeller().getOrderList().add(this);
 	}
 
 	public void ship() {
@@ -148,7 +131,7 @@ public class Order implements Serializable
 	public void cancel() {
 		status = "CANCELLED";
 	}
-	
+
 	/**
 	 *toString method that allows us to show that our application works when testing its output in the client
 	 */
@@ -156,7 +139,7 @@ public class Order implements Serializable
 	public String toString()
 	{
 		return "Order:" + 
-				"\nProductList:\n" + orderedProducts +
+				"\nOrderedProduct:\n" + orderedProduct +
 				"\nStatus: " + status;
 	}
 

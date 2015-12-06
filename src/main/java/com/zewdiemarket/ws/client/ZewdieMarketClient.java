@@ -140,9 +140,8 @@ public class ZewdieMarketClient {
 
 		System.out.println("\nPlacing Orders");
 		System.out.println("-------------");
-		c1.addToShoppingCart(p1);
-		c1.addToShoppingCart(p2);
-		c1.placeOrder();
+		c1.placeOrder(p1);
+		c1.placeOrder(p2);
 		System.out.println("Made order:\n" + c1.getOrderList());
 
 		System.out.println("\nStoring Everything in Database");

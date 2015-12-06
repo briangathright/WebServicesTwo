@@ -45,10 +45,6 @@ public class Customer implements Serializable {
 	private BillingInfo billingInfo;
 
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-	@JoinColumn(name="product_id")
-	private Set<Product> shoppingCart = new HashSet<Product>();
-
-	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="order_id")
 	private Set<Order> orderList = new HashSet<Order>();
 	
@@ -107,44 +103,13 @@ public class Customer implements Serializable {
 	}
 	
 	/**
-	 * Adds a product to the customer's Shopping Cart, which is then changed into
-	 * an order, shared with sellers.
-	 */
-	public void addToShoppingCart(Product p) {
-		shoppingCart.add(p);
-	}
-
-	/**
-	 *Removes an item from the customer's shopping cart if they don't want it to be included 
-	 *in the compeleted order
-	 */
-	public void removeFromShoppingCart(Product p) {
-		shoppingCart.remove(p);
-	}
-	/**
-	 * Clears the shopping cart, creating a new empty shopping cart
-	 */
-	public void clearShoppingCart() {
-		shoppingCart = new HashSet<Product>();
-	}
-
-	public Set<Product> getShoppingCart() {
-		return shoppingCart;
-	}
-
-	public void setShoppingCart(Set<Product> shoppingCart) {
-		this.shoppingCart = shoppingCart;
-	}
-
-	/**
 	 * Places an order, filled with the items from the customer's shopping cart
 	 * Calls Order's place method, marking the order as placed, then clears the shopping cart
 	 */
-	public void placeOrder() {
-		Order o = new Order(this, shoppingCart);
+	public void placeOrder(Product p) {
+		Order o = new Order(this, p);
 		orderList.add(o);
 		o.place();
-		clearShoppingCart();
 	}
 
 	/**

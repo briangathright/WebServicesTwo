@@ -6,6 +6,7 @@ import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.dal.CustomerDAO;
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.CustomerRepresentation;
+import com.zewdiemarket.ws.service.representation.Link;
 
 /*
  * Activity for Customer - we get, create, and delete Customer representations
@@ -58,6 +59,13 @@ public class CustomerActivity {
 	}
 
 	public void setLinks(CustomerRepresentation customerRep){
-
+		Link[] links = new Link[3];
+		Link updateInfo = new Link("update_info", System.getenv("PRODUCTSERVICE_URL"));
+		Link search = new Link("search", System.getenv("PRODUCTSERVICE_URL"));
+		Link orders = new Link("view_orders", System.getenv("PRODUCTSERVICE_URL"));
+		Link reviews = new Link("view_reviews", System.getenv("PRODUCTSERVICE_URL"));
+		links[0] = orders;
+		links[1] = reviews;
+		customerRep.setLinks(links);
 	}
 }

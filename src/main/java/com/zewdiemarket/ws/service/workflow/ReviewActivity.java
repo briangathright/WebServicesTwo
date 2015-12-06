@@ -7,6 +7,8 @@ import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.Review;
 import com.zewdiemarket.ws.dal.ReviewDAO;
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
+import com.zewdiemarket.ws.service.representation.Link;
+import com.zewdiemarket.ws.service.representation.ProductRepresentation;
 import com.zewdiemarket.ws.service.representation.ReviewRepresentation;
 
 /*
@@ -60,6 +62,6 @@ public class ReviewActivity {
 	}
 
 	public void setLinks(ReviewRepresentation reviewRep){
-
+		
 	}
 }

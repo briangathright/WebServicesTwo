@@ -5,6 +5,7 @@ import java.util.Set;
 import com.zewdiemarket.ws.Order;
 import com.zewdiemarket.ws.dal.OrderDAO;
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
+import com.zewdiemarket.ws.service.representation.Link;
 import com.zewdiemarket.ws.service.representation.OrderRepresentation;
 
 /*
@@ -46,6 +47,11 @@ public class OrderActivity {
 	}
 
 	public void setLinks(OrderRepresentation orderRep){
-
+		Link[] links = new Link[2];
+		Link buy = new Link("buy", System.getenv("PRODUCTSERVICE_URL"));
+		Link review = new Link("review", System.getenv("PRODUCTSERVICE_URL"));
+		links[0] = buy;
+		links[1] = review;
+		orderRep.setLinks(links);
 	}
 }

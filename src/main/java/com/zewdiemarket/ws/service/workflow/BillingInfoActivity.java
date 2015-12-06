@@ -5,6 +5,7 @@ import java.util.Set;
 import com.zewdiemarket.ws.BillingInfo;
 import com.zewdiemarket.ws.dal.BillingInfoDAO;
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
+import com.zewdiemarket.ws.service.representation.Link;
 /*
  * Activity for BillingInfo - we get, create, and delete BillingInfo representations
  */
