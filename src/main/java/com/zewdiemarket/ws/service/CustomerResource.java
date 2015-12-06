@@ -76,7 +76,7 @@ public class CustomerResource implements CustomerService {
 		public CustomerRepresentation updateCustomerAddress(@PathParam("customerId") String customerId,
 																@QueryParam("address") String address) {
 			CustomerActivity customerAct = new CustomerActivity();
-			return customerAct.updateCustomerPassword(customerId, address);
+			return customerAct.updateCustomerAddress(customerId, address);
 		}
 		
 		@GET

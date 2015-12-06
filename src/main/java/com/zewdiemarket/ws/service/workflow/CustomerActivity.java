@@ -91,7 +91,7 @@ public class CustomerActivity {
 	
 	public CustomerRepresentation updateCustomerAddress(String customerId, String addr) {
 		Customer c = CustomerDAO.retrieveCustomer(Long.parseLong(customerId));
-		c.setAddress(addr);;
+		c.setAddress(addr);
 		CustomerDAO.addCustomer(c);
 		return this.getCustomer(customerId);
 	}
