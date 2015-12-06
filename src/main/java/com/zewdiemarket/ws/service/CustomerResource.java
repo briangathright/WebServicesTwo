@@ -63,9 +63,9 @@ public class CustomerResource implements CustomerService {
 		
 		@POST
 		@Produces({"application/xml" , "application/json"})
-		@Path("/customer/{customerId}")
+		@Path("/customer/{customerId}/password/{password}")
 		public CustomerRepresentation updateCustomerPassword(@PathParam("customerId") String customerId,
-																@QueryParam("password") String pass) {
+																@PathParam("password") String pass) {
 			CustomerActivity customerAct = new CustomerActivity();
 			return customerAct.updateCustomerPassword(customerId, pass);
 		}
