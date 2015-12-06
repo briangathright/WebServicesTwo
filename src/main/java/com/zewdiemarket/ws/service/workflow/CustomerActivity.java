@@ -66,19 +66,17 @@ public class CustomerActivity {
 	}
 
 	public void setLinks(CustomerRepresentation customerRep){
-		Link[] links = new Link[6];
+		Link[] links = new Link[5];
 		Link updatePass = new Link("update_password", System.getenv("CUSTOMERSERVICE_URL") + customerRep.getID() + "/password/");
 		Link updateAddr = new Link("update_address", System.getenv("CUSTOMERSERVICE_URL") + customerRep.getID() + "/address/");
 		Link billingInfo = new Link("view_billingInfo", System.getenv("BILLINGINFOSERVICE_URL") + customerRep.getBillingInfoID());
 		Link orders = new Link("view_orders", System.getenv("ORDERSERVICE_URL")+ "customerorders/" + customerRep.getID());
-		Link cancel_order = new Link("cancel_order", System.getenv("ORDERSERVICE_URL") + "cancel/");
 		Link search = new Link("search", System.getenv("PRODUCTSERVICE_URL"));
 		links[0] = orders;
 		links[1] = updatePass;
 		links[2] = updateAddr;
-		links[3] = cancel_order;
-		links[4] = search;
-		links[5] = billingInfo;
+		links[3] = search;
+		links[4] = billingInfo;
 		customerRep.setLinks(links);
 	}
 

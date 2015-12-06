@@ -22,7 +22,7 @@ public class OrderActivity {
 			orderRep.setStatus(o.getStatus());
 			orderRep.setProductID(o.getOrderedProduct().getID());
 			orderRep.setCustomerID(o.getCustomer().getID());
-
+			setLinks(orderRep);
 			orderReps.add(orderRep);
 		}
 		return orderReps;
@@ -35,7 +35,7 @@ public class OrderActivity {
 		orderRep.setStatus(o.getStatus());
 		orderRep.setProductID(o.getOrderedProduct().getID());
 		orderRep.setCustomerID(o.getCustomer().getID());
-
+		setLinks(orderRep);
 		return orderRep;
 	}
 	
@@ -49,7 +49,7 @@ public class OrderActivity {
 			orderRep.setStatus(o.getStatus());
 			orderRep.setProductID(o.getOrderedProduct().getID());
 			orderRep.setCustomerID(o.getCustomer().getID());
-
+			setLinks(orderRep);
 			orderReps.add(orderRep);
 		}
 		return orderReps;
@@ -69,7 +69,10 @@ public class OrderActivity {
 	}
 
 	public void setLinks(OrderRepresentation orderRep){
-		
+		Link[] links = new Link[1];
+		Link cancel_order = new Link("cancel_order", System.getenv("ORDERSERVICE_URL") + "cancel/" + orderRep.getID());
+		links[0] = cancel_order;
+		orderRep.setLinks(links);
 	}
 
 	public OrderRepresentation cancelCustomerOrders(String orderId) {
