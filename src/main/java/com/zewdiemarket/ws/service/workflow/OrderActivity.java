@@ -21,6 +21,8 @@ public class OrderActivity {
 			orderRep.setID(o.getID());
 			orderRep.setStatus(o.getStatus());
 			orderRep.setProductID(o.getOrderedProduct().getID());
+			orderRep.setCustomerID(o.getCustomer().getID());
+
 			orderReps.add(orderRep);
 		}
 		return orderReps;
@@ -32,18 +34,22 @@ public class OrderActivity {
 		orderRep.setID(o.getID());
 		orderRep.setStatus(o.getStatus());
 		orderRep.setProductID(o.getOrderedProduct().getID());
+		orderRep.setCustomerID(o.getCustomer().getID());
+
 		return orderRep;
 	}
 	
 	public Set<OrderRepresentation> getCustomerOrders(String customerId){
 		Set<Order> orders = new HashSet<Order>();
 		Set<OrderRepresentation> orderReps = new HashSet<OrderRepresentation>();
-		orders = OrderDAO.getCustomersOrders(Long.parseLong(customerId));
+		orders = OrderDAO.getCustomersOrders(customerId);
 		for(Order o : orders){
 			OrderRepresentation orderRep = new OrderRepresentation();
 			orderRep.setID(o.getID());
 			orderRep.setStatus(o.getStatus());
 			orderRep.setProductID(o.getOrderedProduct().getID());
+			orderRep.setCustomerID(o.getCustomer().getID());
+
 			orderReps.add(orderRep);
 		}
 		return orderReps;

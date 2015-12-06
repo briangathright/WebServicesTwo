@@ -75,7 +75,7 @@ public class OrderDAO {
 		return null;
 	}
 	
-	public static Set<Order> getCustomersOrders(long id) {
+	public static Set<Order> getCustomersOrders(String id) {
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
 

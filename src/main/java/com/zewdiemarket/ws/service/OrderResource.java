@@ -54,7 +54,7 @@ public class OrderResource implements OrderService {
 	
 	@GET
 	@Produces({"application/xml" , "application/json"})
-	@Path("/order/customerOrders/{customerId}")
+	@Path("/order/customerorders/{customerId}")
 	public Set<OrderRepresentation> getCustomerOrders(@PathParam("customerId") String customerId) {
 		OrderActivity orderAct = new OrderActivity();
 		return orderAct.getCustomerOrders(customerId);
