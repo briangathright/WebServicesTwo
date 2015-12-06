@@ -42,7 +42,7 @@ public class OrderActivity {
 	public Set<OrderRepresentation> getCustomerOrders(String customerId){
 		Set<Order> orders = new HashSet<Order>();
 		Set<OrderRepresentation> orderReps = new HashSet<OrderRepresentation>();
-		orders = OrderDAO.getCustomersOrders(customerId);
+		orders = OrderDAO.getCustomersOrders(Long.parseLong(customerId));
 		for(Order o : orders){
 			OrderRepresentation orderRep = new OrderRepresentation();
 			orderRep.setID(o.getID());

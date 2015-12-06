@@ -75,22 +75,15 @@ public class OrderDAO {
 		return null;
 	}
 	
-	public static Set<Order> getCustomersOrders(String id) {
-		try {
-			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
-
-			session.beginTransaction();
-
-			Criteria criteria = session.createCriteria(Order.class);
-			Set<Order> allOrders = new LinkedHashSet<Order>(criteria.add(Restrictions.eq("customer_id", id)).list());
-			//Set<Order> allOrders = new LinkedHashSet<Order>(session.createCriteria(Order.class).list());
-
-			session.getTransaction().commit();
-			return allOrders;
-		} catch (Exception e) {
-			e.printStackTrace();
+	public static Set<Order> getCustomersOrders(long id) {
+		Set<Order> allOrders = getAllOrders();
+		Set<Order> customerOrders = new LinkedHashSet<Order>();
+		for(Order o : allOrders){
+			if(o.getCustomer().getID() == id){
+				customerOrders.add(o);
+			}
 		}
-		return null;
+		return customerOrders;
 	}
 
 	/*
