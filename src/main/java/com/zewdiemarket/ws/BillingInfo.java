@@ -73,6 +73,13 @@ public class BillingInfo implements Serializable {
 		this.billingInfo_id = id;
 	}
 
+	public String getBillingAddress() {
+		return this.billingAddress;
+	}
+	
+	public void setBillingAddress(String billingAddress) {
+		this.billingAddress = billingAddress;
+	}
 	public String getCardType() {
 		return cardType;
 	}

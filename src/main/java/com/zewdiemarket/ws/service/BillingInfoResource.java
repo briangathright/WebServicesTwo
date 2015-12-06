@@ -7,6 +7,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -52,14 +53,6 @@ public class BillingInfoResource implements BillingInfoService {
 		return billingInfoAct.getBillingInfo(billingInfoId);
 	}
 	
-	@GET
-	@Produces({"application/xml" , "application/json"})
-	@Path("/billinginfo/customerbillinginfo/{customerId}")
-	public BillingInfoRepresentation getCustomerBillingInfo(@PathParam("customerId") String customerId) {
-		BillingInfoActivity billingInfoAct = new BillingInfoActivity();
-		return billingInfoAct.getCustomerBillingInfo(customerId);
-	}
-
 
 	@POST
 	@Produces({"application/xml" , "application/json"})
@@ -67,6 +60,32 @@ public class BillingInfoResource implements BillingInfoService {
 	public BillingInfoRepresentation createBillingInfo(BillingInfoRequest billingInfoRequest) {
 		BillingInfoActivity billingInfoAct = new BillingInfoActivity();
 		return billingInfoAct.createBillingInfo(billingInfoRequest.getBillingName(), billingInfoRequest.getCardNumber());
+	}
+	
+	@POST
+	@Produces({"application/xml" , "application/json"})
+	@Path("/billinginfo/{billinginfoId}")
+	public Response updateBillingInfo( @PathParam("billinginfoId") String billingInfoId,
+			@QueryParam("cardType") String cardType,
+			@QueryParam("billingName") String billingName,
+			@QueryParam("billingAddress") String billingAddress,
+			@QueryParam("cardNumber") String cardNumber,
+			@QueryParam("expDate") String expDate,
+			@QueryParam("cvcNumber") String cvcNumber
+			) {
+		BillingInfoActivity billingInfoAct = new BillingInfoActivity();
+		BillingInfoRequest billingInfoRequest = new BillingInfoRequest();
+		billingInfoRequest.setCardType(cardType);
+		billingInfoRequest.setBillingName(billingName);
+		billingInfoRequest.setBillingAddress(billingAddress);
+		billingInfoRequest.setCardNumber(cardNumber);
+		billingInfoRequest.setExpDate(expDate);
+		billingInfoRequest.setCvcNumber(cvcNumber);
+		String res = billingInfoAct.updateBillingInfo(billingInfoId, billingInfoRequest);
+		if (res.equals("OK")) {
+			return Response.status(Status.OK).build();
+		}
+		return null;
 	}
 
 	@DELETE

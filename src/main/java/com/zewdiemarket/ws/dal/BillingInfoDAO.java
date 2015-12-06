@@ -75,10 +75,17 @@ public class BillingInfoDAO {
 	/*
 	 * Adds new Billing Info to the database
 	 */
-	public static BillingInfo addNewBillingInfo(String billingName, String cardNumber) {
-		BillingInfo bi = new BillingInfo();
+	public static BillingInfo updateBillingInfo(Long billingId,
+			String cardType, String billingName, 
+			String billingAddress, String cardNumber,
+			String expDate, String cvcNumber) {
+		BillingInfo bi = retrieveBillingInfo(billingId);
+		bi.setCardType(cardType);
 		bi.setBillingName(billingName);
+		bi.setBillingAddress(billingAddress);
 		bi.setCardNumber(cardNumber);
+		bi.setExpDate(expDate);
+		bi.setCvcNumber(cvcNumber);
 		addBillingInfo(bi);
 		return bi;
 	}

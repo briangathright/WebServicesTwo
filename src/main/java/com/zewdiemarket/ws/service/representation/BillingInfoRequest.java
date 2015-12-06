@@ -16,6 +16,15 @@ public class BillingInfoRequest {
 	private String billingName;
 
 	private String cardNumber;
+	
+	private String cardType;
+	
+	private String billingAddress;
+		
+	private String expDate;
+	
+	private String cvcNumber;
+
 
 	public BillingInfoRequest() {}
 
@@ -34,4 +43,50 @@ public class BillingInfoRequest {
 	public void setCardNumber(String cardNumber){
 		this.cardNumber = cardNumber;
 	}
+	
+	public String getCardType(){
+		return cardType;
+	}
+
+	public void setCardType(String cardType){
+		this.cardType = cardType;
+	}
+	
+	public String getBillingAddress(){
+		return billingAddress;
+	}
+
+	public void setBillingAddress(String billingAddress){
+		this.billingAddress = billingAddress;
+	}
+	
+	public String getExpDate(){
+		return expDate;
+	}
+
+	public void setExpDate(String expDate){
+		this.expDate = expDate;
+	}
+	
+	public String getCvcNumber(){
+		return cvcNumber;
+	}
+
+	public void setCvcNumber(String cvcNumber){
+		this.cvcNumber = cvcNumber;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
