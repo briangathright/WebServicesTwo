@@ -3,7 +3,10 @@ package com.zewdiemarket.ws.dal;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+
 import com.zewdiemarket.ws.Order;
 
 public class OrderDAO {
@@ -63,6 +66,24 @@ public class OrderDAO {
 			session.beginTransaction();
 
 			Set<Order> allOrders = new LinkedHashSet<Order>(session.createCriteria(Order.class).list());
+
+			session.getTransaction().commit();
+			return allOrders;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static Set<Order> getCustomersOrders(long id) {
+		try {
+			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
+
+			session.beginTransaction();
+
+			Criteria criteria = session.createCriteria(Order.class);
+			Set<Order> allOrders = new LinkedHashSet<Order>(criteria.add(Restrictions.eq("customer_id", id)).list());
+			//Set<Order> allOrders = new LinkedHashSet<Order>(session.createCriteria(Order.class).list());
 
 			session.getTransaction().commit();
 			return allOrders;

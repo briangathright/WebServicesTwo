@@ -51,6 +51,14 @@ public class OrderResource implements OrderService {
 		OrderActivity orderAct = new OrderActivity();
 		return orderAct.getOrder(orderId);
 	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/order/customerOrders/{customerId}")
+	public Set<OrderRepresentation> getCustomerOrders(@PathParam("customerId") String customerId) {
+		OrderActivity orderAct = new OrderActivity();
+		return orderAct.getCustomerOrders(customerId);
+	}
 
 	@POST
 	@Produces({"application/xml" , "application/json"})

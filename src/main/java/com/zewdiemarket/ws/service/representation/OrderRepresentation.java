@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 public class OrderRepresentation extends AbstractRepresentation{
 
 	private long id;
+	private long productId;
 	private String status;
 
 	public OrderRepresentation() {}
@@ -32,5 +33,13 @@ public class OrderRepresentation extends AbstractRepresentation{
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	public long getProductID() {
+		return this.productId;
+	}
+	
+	public void setProductID(long productId) {
+		this.productId = productId;
 	}
 }

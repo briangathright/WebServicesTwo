@@ -60,8 +60,8 @@ public class ProductActivity {
 
 	public void setLinks(ProductRepresentation prodRep){
 		Link[] links = new Link[2];
-		Link buy = new Link("buy", System.getenv("PRODUCTSERVICE_URL"));
-		Link review = new Link("review", System.getenv("PRODUCTSERVICE_URL"));
+		Link buy = new Link("buy", System.getenv("ORDERSERVICE_URL"));
+		Link review = new Link("review", System.getenv("REVIEWSERVICE_URL"));
 		links[0] = buy;
 		links[1] = review;
 		prodRep.setLinks(links);

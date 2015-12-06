@@ -50,8 +50,8 @@ public class SellerActivity {
 	public void setLinks(SellerRepresentation sellerRep){
 		Link[] links = new Link[3];
 		Link add_product = new Link("add product", System.getenv("PRODUCTSERVICE_URL"));
-		Link view_reviews = new Link("view reviews", System.getenv("PRODUCTSERVICE_URL"));
-		Link fulfill_order = new Link("fulfill order", System.getenv("PRODUCTSERVICE_URL"));
+		Link view_reviews = new Link("view reviews", System.getenv("REVIEWSERVICE_URL"));
+		Link fulfill_order = new Link("fulfill order", System.getenv("ORDERSERVICE_URL"));
 		links[0] = add_product;
 		links[1] = view_reviews;
 		links[3] = fulfill_order;

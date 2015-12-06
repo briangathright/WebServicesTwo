@@ -59,13 +59,15 @@ public class CustomerActivity {
 	}
 
 	public void setLinks(CustomerRepresentation customerRep){
-		Link[] links = new Link[3];
-		Link updateInfo = new Link("update_info", System.getenv("PRODUCTSERVICE_URL"));
+		Link[] links = new Link[4];
+		Link updateInfo = new Link("update_info", System.getenv("CUSTOMERSERVICE_URL") + customerRep.getID());
 		Link search = new Link("search", System.getenv("PRODUCTSERVICE_URL"));
-		Link orders = new Link("view_orders", System.getenv("PRODUCTSERVICE_URL"));
-		Link reviews = new Link("view_reviews", System.getenv("PRODUCTSERVICE_URL"));
+		Link orders = new Link("view_orders", System.getenv("ORDERSERVICE_URL"+ "customerOrders/" + customerRep.getID()));
+		Link reviews = new Link("view_reviews", System.getenv("REVIEWSERVICE_URL"+ "customerReviews/" + customerRep.getID()));
 		links[0] = orders;
 		links[1] = reviews;
+		links[2] = search;
+		links[3] = updateInfo;
 		customerRep.setLinks(links);
 	}
 }

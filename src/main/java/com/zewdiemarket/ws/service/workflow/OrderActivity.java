@@ -20,6 +20,7 @@ public class OrderActivity {
 			OrderRepresentation orderRep = new OrderRepresentation();
 			orderRep.setID(o.getID());
 			orderRep.setStatus(o.getStatus());
+			orderRep.setProductID(o.getOrderedProduct().getID());
 			orderReps.add(orderRep);
 		}
 		return orderReps;
@@ -30,7 +31,22 @@ public class OrderActivity {
 		OrderRepresentation orderRep = new OrderRepresentation();
 		orderRep.setID(o.getID());
 		orderRep.setStatus(o.getStatus());
+		orderRep.setProductID(o.getOrderedProduct().getID());
 		return orderRep;
+	}
+	
+	public Set<OrderRepresentation> getCustomerOrders(String customerId){
+		Set<Order> orders = new HashSet<Order>();
+		Set<OrderRepresentation> orderReps = new HashSet<OrderRepresentation>();
+		orders = OrderDAO.getCustomersOrders(Long.parseLong(customerId));
+		for(Order o : orders){
+			OrderRepresentation orderRep = new OrderRepresentation();
+			orderRep.setID(o.getID());
+			orderRep.setStatus(o.getStatus());
+			orderRep.setProductID(o.getOrderedProduct().getID());
+			orderReps.add(orderRep);
+		}
+		return orderReps;
 	}
 
 	public OrderRepresentation createOrder(String status) {
@@ -47,11 +63,6 @@ public class OrderActivity {
 	}
 
 	public void setLinks(OrderRepresentation orderRep){
-		Link[] links = new Link[2];
-		Link buy = new Link("buy", System.getenv("PRODUCTSERVICE_URL"));
-		Link review = new Link("review", System.getenv("PRODUCTSERVICE_URL"));
-		links[0] = buy;
-		links[1] = review;
-		orderRep.setLinks(links);
+		
 	}
 }
