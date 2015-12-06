@@ -17,8 +17,16 @@ public class ProductRequest {
 	
 	private double productPrice;
 	
+	private String productSellerId;
+	
 	public ProductRequest() {}
 	
+	public ProductRequest(String detail, String price, String sellerId) {
+		this.productDetail = detail;
+		this.productPrice = Double.parseDouble(price);
+		this.productSellerId = sellerId;
+	}
+
 	public String getProductDetail(){
 		return productDetail;
 	}
@@ -33,5 +41,13 @@ public class ProductRequest {
 	
 	public void setProductPrice(double productPrice){
 		this.productPrice = productPrice;
+	}
+	
+	public String getSellerId(){
+		return this.productSellerId;
+	}
+	
+	public void setSellerId(String id){
+		this.productSellerId = id;
 	}
 }

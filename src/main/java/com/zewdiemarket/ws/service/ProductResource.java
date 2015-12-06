@@ -6,6 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -55,10 +56,16 @@ public class ProductResource implements ProductService{
 
 	@POST
 	@Produces({"application/xml" , "application/json"})
-	@Path("/product")
-	public ProductRepresentation createProduct(ProductRequest productRequest) {
+	@Path("/product/seller/{sellerId}")
+	public Response createProduct(@QueryParam("productDetail") String detail, 
+													@QueryParam("price") String price, @PathParam("sellerId") String sellerId) {
 		ProductActivity prodAct = new ProductActivity();
-		return prodAct.createProduct(productRequest.getProductDetail(), productRequest.getProductPrice());
+		ProductRequest productRequest = new ProductRequest(detail, price, sellerId);
+		String res = prodAct.createProduct(productRequest);
+		if (res.equals("OK")) {
+			return Response.status(Status.OK).build();
+		}
+		return null;
 	}
 	
 	@DELETE

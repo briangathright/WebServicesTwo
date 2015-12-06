@@ -51,6 +51,14 @@ public class BillingInfoResource implements BillingInfoService {
 		BillingInfoActivity billingInfoAct = new BillingInfoActivity();
 		return billingInfoAct.getBillingInfo(billingInfoId);
 	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/billinginfo/customerbillinginfo/{customerId}")
+	public BillingInfoRepresentation getCustomerBillingInfo(@PathParam("customerId") String customerId) {
+		BillingInfoActivity billingInfoAct = new BillingInfoActivity();
+		return billingInfoAct.getCustomerBillingInfo(customerId);
+	}
 
 
 	@POST

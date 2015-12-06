@@ -7,6 +7,7 @@ import java.util.TreeSet;
 import org.hibernate.Session;
 
 import com.zewdiemarket.ws.Product;
+import com.zewdiemarket.ws.Seller;
 
 public class ProductDAO {
 		
@@ -28,10 +29,11 @@ public class ProductDAO {
 	/*
 	 * Add a new product to teh database
 	 */
-	public static Product addNewProduct(String detail, double price){
+	public static Product addNewProduct(String detail, double price, String sellerId){
 		Product p = new Product();
 		p.setDetail(detail);
 		p.setPrice(price);
+		p.setSeller(SellerDAO.retrieveSeller(Long.parseLong(sellerId)));
 		addProduct(p);
 		return p;
 	}

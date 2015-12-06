@@ -71,4 +71,11 @@ public class OrderActivity {
 	public void setLinks(OrderRepresentation orderRep){
 		
 	}
+
+	public OrderRepresentation cancelCustomerOrders(String orderId) {
+		Order o = OrderDAO.retrieveOrder(Long.parseLong(orderId));
+		o.setStatus("CANCELLED");
+		OrderDAO.addOrder(o);
+		return this.getOrder(orderId);
+	}
 }

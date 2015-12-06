@@ -59,6 +59,14 @@ public class OrderResource implements OrderService {
 		OrderActivity orderAct = new OrderActivity();
 		return orderAct.getCustomerOrders(customerId);
 	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/order/cancel/{orderId}")
+	public OrderRepresentation cancelCustomerOrder(@PathParam("orderId") String orderId) {
+		OrderActivity orderAct = new OrderActivity();
+		return orderAct.cancelCustomerOrders(orderId);
+	}
 
 	@POST
 	@Produces({"application/xml" , "application/json"})

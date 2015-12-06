@@ -15,6 +15,8 @@ public class CustomerRepresentation extends AbstractRepresentation{
 
 	private long id;
 	private String customerName;
+	private String customerAddr;
+	private long billingId;
 	
 	public CustomerRepresentation(){}
 	
@@ -32,5 +34,21 @@ public class CustomerRepresentation extends AbstractRepresentation{
 	
 	public void setCustomerName(String customerName){
 		this.customerName = customerName;
+	}
+	
+	public long getBillingInfoID(){
+		return this.billingId;
+	}
+	
+	public void setCustomerBillingInfoID(long billingInfoId){
+		this.billingId = billingInfoId;
+	}
+	
+	public String getCustomerAddress(){
+		return this.customerAddr;
+	}
+	
+	public void setCustomerAddress(String customerAddr){
+		this.customerAddr = customerAddr;
 	}
 }

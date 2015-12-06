@@ -21,7 +21,10 @@ public class CustomerActivity {
 			CustomerRepresentation customerRep = new CustomerRepresentation();
 			customerRep.setID(c.getID());
 			customerRep.setCustomerName(c.getName());
+			customerRep.setCustomerAddress(c.getAddress());
+			customerRep.setCustomerBillingInfoID(c.getBillingInfo().getID());
 			customerReps.add(customerRep);
+			setLinks(customerRep);
 		}
 		return customerReps;
 	}
@@ -31,6 +34,9 @@ public class CustomerActivity {
 		CustomerRepresentation customerRep = new CustomerRepresentation();
 		customerRep.setID(c.getID());
 		customerRep.setCustomerName(c.getName());
+		customerRep.setCustomerAddress(c.getAddress());
+		customerRep.setCustomerBillingInfoID(c.getBillingInfo().getID());
+		setLinks(customerRep);
 		return customerRep;
 	}
 
@@ -39,6 +45,7 @@ public class CustomerActivity {
 		CustomerRepresentation customerRep = new CustomerRepresentation();
 		customerRep.setID(c.getID());
 		customerRep.setCustomerName(c.getName());
+		setLinks(customerRep);
 		return customerRep;
 	}
 	
@@ -59,15 +66,32 @@ public class CustomerActivity {
 	}
 
 	public void setLinks(CustomerRepresentation customerRep){
-		Link[] links = new Link[4];
-		Link updateInfo = new Link("update_info", System.getenv("CUSTOMERSERVICE_URL") + customerRep.getID());
+		Link[] links = new Link[5];
+		Link updatePass = new Link("update_password", System.getenv("CUSTOMERSERVICE_URL") + customerRep.getID() + "?password=");
+		Link updateAddr = new Link("update_address", System.getenv("CUSTOMERSERVICE_URL") + customerRep.getID() + "?address=");
+		Link billingInfo = new Link("view_billingInfo", System.getenv("BILLINGINFO_URL") + customerRep.getBillingInfoID());
+		Link orders = new Link("view_orders", System.getenv("ORDERSERVICE_URL"+ "customerorders/" + customerRep.getID()));
+		Link cancel_order = new Link("cancel_order", System.getenv("ORDERSERVICE_URL" + "cancel/"));
 		Link search = new Link("search", System.getenv("PRODUCTSERVICE_URL"));
-		Link orders = new Link("view_orders", System.getenv("ORDERSERVICE_URL"+ "customerOrders/" + customerRep.getID()));
-		Link reviews = new Link("view_reviews", System.getenv("REVIEWSERVICE_URL"+ "customerReviews/" + customerRep.getID()));
 		links[0] = orders;
-		links[1] = reviews;
-		links[2] = search;
-		links[3] = updateInfo;
+		links[1] = updatePass;
+		links[2] = updateAddr;
+		links[3] = cancel_order;
+		links[4] = search;
 		customerRep.setLinks(links);
+	}
+
+	public CustomerRepresentation updateCustomerPassword(String customerId, String pass) {
+		Customer c = CustomerDAO.retrieveCustomer(Long.parseLong(customerId));
+		c.setPassword(pass);
+		CustomerDAO.addCustomer(c);
+		return this.getCustomer(customerId);
+	}
+	
+	public CustomerRepresentation updateCustomerAddress(String customerId, String addr) {
+		Customer c = CustomerDAO.retrieveCustomer(Long.parseLong(customerId));
+		c.setAddress(addr);;
+		CustomerDAO.addCustomer(c);
+		return this.getCustomer(customerId);
 	}
 }

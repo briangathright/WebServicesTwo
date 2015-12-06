@@ -8,6 +8,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -58,6 +59,24 @@ public class CustomerResource implements CustomerService {
 		public CustomerRepresentation createCustomer(CustomerRequest customerRequest) {
 			CustomerActivity customerAct = new CustomerActivity();
 			return customerAct.createCustomer(customerRequest.getCustomerName());
+		}
+		
+		@POST
+		@Produces({"application/xml" , "application/json"})
+		@Path("/customer/{customerId}")
+		public CustomerRepresentation updateCustomerPassword(@PathParam("customerId") String customerId,
+																@QueryParam("password") String pass) {
+			CustomerActivity customerAct = new CustomerActivity();
+			return customerAct.updateCustomerPassword(customerId, pass);
+		}
+		
+		@POST
+		@Produces({"application/xml" , "application/json"})
+		@Path("/customer/{customerId}")
+		public CustomerRepresentation updateCustomerAddress(@PathParam("customerId") String customerId,
+																@QueryParam("address") String address) {
+			CustomerActivity customerAct = new CustomerActivity();
+			return customerAct.updateCustomerPassword(customerId, address);
 		}
 		
 		@GET

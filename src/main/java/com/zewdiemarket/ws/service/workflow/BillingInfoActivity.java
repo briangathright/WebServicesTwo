@@ -51,4 +51,9 @@ public class BillingInfoActivity {
 	public void setLinks(BillingInfoRepresentation billInfoRep){
 		
 	}
+
+	public BillingInfoRepresentation getCustomerBillingInfo(String customerId) {
+		
+		return null;
+	}
 }
