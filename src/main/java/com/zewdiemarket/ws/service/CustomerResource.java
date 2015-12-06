@@ -72,9 +72,9 @@ public class CustomerResource implements CustomerService {
 		
 		@POST
 		@Produces({"application/xml" , "application/json"})
-		@Path("/customer/{customerId}")
+		@Path("/customer/{customerId}/address/{address}")
 		public CustomerRepresentation updateCustomerAddress(@PathParam("customerId") String customerId,
-																@QueryParam("address") String address) {
+																@PathParam("address") String address) {
 			CustomerActivity customerAct = new CustomerActivity();
 			return customerAct.updateCustomerAddress(customerId, address);
 		}
