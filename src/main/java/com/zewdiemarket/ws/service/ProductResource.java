@@ -58,7 +58,7 @@ public class ProductResource implements ProductService{
 	@Produces({"application/xml" , "application/json"})
 	@Path("/product/seller/{sellerId}/productdetail/{productDetail}/productprice/{productPrice}")
 	public Response createProduct(@PathParam("productDetail") String detail, 
-													@PathParam("price") String price, @PathParam("sellerId") String sellerId) {
+													@PathParam("productPrice") String price, @PathParam("sellerId") String sellerId) {
 		ProductActivity prodAct = new ProductActivity();
 		ProductRequest productRequest = new ProductRequest(detail, price, sellerId);
 		String res = prodAct.createProduct(productRequest);
