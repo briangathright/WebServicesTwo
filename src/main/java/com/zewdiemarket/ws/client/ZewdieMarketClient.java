@@ -70,11 +70,11 @@ public class ZewdieMarketClient {
 	public void run() {
 		System.out.println("Making Sellers (Partners)");
 		System.out.println("-------------------------");
-		Seller s1 = new Seller("LuTech Inc.");
+		Seller s1 = new Seller("LuTech Inc.", "august");
 		System.out.println("Created Seller: \n" + s1 + "\n");
-		Seller s2 = new Seller("Zewdie and Co.");
+		Seller s2 = new Seller("Zewdie and Co.", "prof");
 		System.out.println("Created Seller: \n" + s2 + "\n");
-		Seller s3 = new Seller("Nema Nemati");
+		Seller s3 = new Seller("Nema Nemati", "dad");
 		System.out.println("Created Seller: \n" + s3 + "\n");
 
 		System.out.println("Making Products");

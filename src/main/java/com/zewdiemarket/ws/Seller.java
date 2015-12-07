@@ -53,8 +53,9 @@ public class Seller implements Serializable, IReviewable {
 	public Seller() {
 	}
 
-	public Seller(String name) {
+	public Seller(String name, String password) {
 		this.name=name;
+		this.password = password;
 	}
 
 	public long getID() {
