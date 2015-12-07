@@ -69,9 +69,11 @@ public class OrderActivity {
 	}
 
 	public void setLinks(OrderRepresentation orderRep){
-		Link[] links = new Link[1];
+		Link[] links = new Link[2];
 		Link cancel_order = new Link("cancel_order", System.getenv("ORDERSERVICE_URL") + "cancel/" + orderRep.getID());
+		Link view_product = new Link("view_product", System.getenv("PRODUCTSERVICE_URL") + orderRep.getProductID());
 		links[0] = cancel_order;
+		links[1] = view_product;
 		orderRep.setLinks(links);
 	}
 

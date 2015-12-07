@@ -79,7 +79,7 @@ public class OrderResource implements OrderService {
 	@DELETE
 	@Produces({"application/xml" , "application/json"})
 	@Path("/order/{orderId}")
-	public Response deleteOrder(@PathParam("oderId") String orderId) {
+	public Response deleteOrder(@PathParam("orderId") String orderId) {
 		OrderActivity orderAct = new OrderActivity();
 		String res = orderAct.deleteOrder(orderId);
 		if (res.equals("OK")) {
