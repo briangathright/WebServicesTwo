@@ -1,5 +1,6 @@
 package com.zewdiemarket.ws.dal;
 
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.TreeSet;
@@ -7,6 +8,7 @@ import java.util.TreeSet;
 import org.hibernate.Session;
 
 import com.zewdiemarket.ws.Product;
+import com.zewdiemarket.ws.Review;
 import com.zewdiemarket.ws.Seller;
 
 public class ProductDAO {
@@ -31,10 +33,14 @@ public class ProductDAO {
 	 */
 	public static Product addNewProduct(String detail, double price, String sellerId){
 		Product p = new Product();
+		Seller s = SellerDAO.retrieveSeller(Long.parseLong(sellerId));
 		p.setDetail(detail);
 		p.setPrice(price);
-		p.setSeller(SellerDAO.retrieveSeller(Long.parseLong(sellerId)));
+		p.setSeller(s);
+		p.setReviewList(new HashSet<Review>());
+		s.addProduct(p);
 		addProduct(p);
+		SellerDAO.addSeller(s);
 		return p;
 	}
 	

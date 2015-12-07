@@ -3,6 +3,8 @@ package com.zewdiemarket.ws.dal;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.hibernate.Session;
+
+import com.zewdiemarket.ws.Order;
 import com.zewdiemarket.ws.Seller;
 
 public class SellerDAO {
@@ -70,6 +72,12 @@ public class SellerDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static Set<Order> getSellerOrders(long id) {
+		Seller s = retrieveSeller(id);
+		Set<Order> sellerOrders = s.getOrderList();
+		return sellerOrders;
 	}
 
 	public static Seller addNewSeller(String sellerName) {

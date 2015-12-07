@@ -96,4 +96,8 @@ public class OrderDAO {
 		addOrder(o);
 		return o;
 	}
+
+	public static Set<Order> getSellerOrders(long id) {
+		return SellerDAO.getSellerOrders(id);
+	}
 }

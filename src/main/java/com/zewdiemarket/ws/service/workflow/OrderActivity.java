@@ -60,6 +60,23 @@ public class OrderActivity {
 		}
 		return orderReps;
 	}
+	
+	public Set<OrderRepresentation> getSellerOrders(String sellerId){
+		Set<Order> orders = new TreeSet<Order>();
+		Set<OrderRepresentation> orderReps = new TreeSet<OrderRepresentation>();
+		orders = OrderDAO.getSellerOrders(Long.parseLong(sellerId));
+		for(Order o : orders){
+			OrderRepresentation orderRep = new OrderRepresentation();
+			orderRep.setID(o.getID());
+			orderRep.setStatus(o.getStatus());
+			orderRep.setProductID(o.getOrderedProduct().getID());
+			orderRep.setCustomerID(o.getCustomer().getID());
+			orderRep.setProductName(o.getProductName());
+			setLinks(orderRep);
+			orderReps.add(orderRep);
+		}
+		return orderReps;
+	}
 
 	public OrderRepresentation createOrder(String status) {
 		Order o = OrderDAO.addNewOrder(status);
