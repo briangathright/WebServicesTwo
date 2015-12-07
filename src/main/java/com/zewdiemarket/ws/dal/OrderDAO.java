@@ -2,6 +2,7 @@ package com.zewdiemarket.ws.dal;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -65,7 +66,7 @@ public class OrderDAO {
 
 			session.beginTransaction();
 
-			Set<Order> allOrders = new LinkedHashSet<Order>(session.createCriteria(Order.class).list());
+			Set<Order> allOrders = new TreeSet<Order>(session.createCriteria(Order.class).list());
 
 			session.getTransaction().commit();
 			return allOrders;

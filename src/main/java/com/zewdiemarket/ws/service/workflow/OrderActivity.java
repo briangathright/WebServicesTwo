@@ -2,6 +2,8 @@ package com.zewdiemarket.ws.service.workflow;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
+
 import com.zewdiemarket.ws.Order;
 import com.zewdiemarket.ws.dal.OrderDAO;
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
@@ -13,8 +15,8 @@ import com.zewdiemarket.ws.service.representation.OrderRepresentation;
  */
 public class OrderActivity {
 	public Set<OrderRepresentation> getOrders() {
-		Set<Order> orders = new HashSet<Order>();
-		Set<OrderRepresentation> orderReps = new HashSet<OrderRepresentation>();
+		Set<Order> orders = new TreeSet<Order>();
+		Set<OrderRepresentation> orderReps = new TreeSet<OrderRepresentation>();
 		orders = OrderDAO.getAllOrders();
 		for(Order o : orders){
 			OrderRepresentation orderRep = new OrderRepresentation();
@@ -43,8 +45,8 @@ public class OrderActivity {
 	}
 	
 	public Set<OrderRepresentation> getCustomerOrders(String customerId){
-		Set<Order> orders = new HashSet<Order>();
-		Set<OrderRepresentation> orderReps = new HashSet<OrderRepresentation>();
+		Set<Order> orders = new TreeSet<Order>();
+		Set<OrderRepresentation> orderReps = new TreeSet<OrderRepresentation>();
 		orders = OrderDAO.getCustomersOrders(Long.parseLong(customerId));
 		for(Order o : orders){
 			OrderRepresentation orderRep = new OrderRepresentation();

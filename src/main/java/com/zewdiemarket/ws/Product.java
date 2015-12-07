@@ -139,7 +139,7 @@ public class Product implements Serializable, Comparable<Product>, IReviewable {
 				"\nNumber of Reviews: " + reviewList.size();
 	}
 
-	public int compareTo(Product o) {
-		return (int) (product_id - o.getID());
+	public int compareTo(Product p) {
+		return (int) (product_id - p.getID());
 	}
 }

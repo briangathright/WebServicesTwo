@@ -43,7 +43,7 @@ public class ProductRepresentation extends AbstractRepresentation implements Com
 		this.productPrice = productPrice;
 	}
 
-	public int compareTo(ProductRepresentation o) {
-		return (int) (id - o.getID());
+	public int compareTo(ProductRepresentation pr) {
+		return (int) (id - pr.getID());
 	}
 }

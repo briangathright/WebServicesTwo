@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name="orders")
 @XmlRootElement
-public class Order implements Serializable
+public class Order implements Comparable<Order>, Serializable
 {
 	private static final long serialVersionUID = 1L;
 
@@ -153,6 +153,10 @@ public class Order implements Serializable
 		return "Order:" + 
 				"\nOrderedProduct:\n" + orderedProduct +
 				"\nStatus: " + status;
+	}
+	
+	public int compareTo(Order o) {
+		return (int) (order_id - o.getID());
 	}
 
 
