@@ -26,6 +26,8 @@ public class SellerActivity {
 			sellerRep.setID(s.getID());
 			sellerRep.setSellerName(s.getName());
 			sellerReps.add(sellerRep);
+			setLinks(sellerRep);
+
 		}
 		return sellerReps;
 	}
@@ -35,6 +37,8 @@ public class SellerActivity {
 		SellerRepresentation sellerRep = new SellerRepresentation();
 		sellerRep.setID(s.getID());
 		sellerRep.setSellerName(s.getName());
+		setLinks(sellerRep);
+
 		return sellerRep;
 	}
 	
@@ -54,6 +58,8 @@ public class SellerActivity {
 		SellerRepresentation sellerRep = new SellerRepresentation();
 		sellerRep.setID(s.getID());
 		sellerRep.setSellerName(s.getName());
+		setLinks(sellerRep);
+
 		return sellerRep;
 	}
 
