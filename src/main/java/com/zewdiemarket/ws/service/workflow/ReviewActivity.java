@@ -2,12 +2,16 @@ package com.zewdiemarket.ws.service.workflow;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import com.zewdiemarket.ws.Customer;
+import com.zewdiemarket.ws.Order;
 import com.zewdiemarket.ws.Review;
+import com.zewdiemarket.ws.dal.OrderDAO;
 import com.zewdiemarket.ws.dal.ReviewDAO;
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.Link;
+import com.zewdiemarket.ws.service.representation.OrderRepresentation;
 import com.zewdiemarket.ws.service.representation.ProductRepresentation;
 import com.zewdiemarket.ws.service.representation.ReviewRepresentation;
 
@@ -44,6 +48,21 @@ public class ReviewActivity {
 		String currentCustomerName = currentCustomer.getName();
 		reviewRep.setCustomerName(currentCustomerName);
 		return reviewRep;
+	}
+	
+	public Set<ReviewRepresentation> getSellerReviews(String sellerId){
+		Set<Review> reviews = new TreeSet<Review>();
+		Set<ReviewRepresentation> reviewReps = new TreeSet<ReviewRepresentation>();
+		reviews = ReviewDAO.getSellerReviews(Long.parseLong(sellerId));
+		for(Review r : reviews){
+			ReviewRepresentation reviewRep = new ReviewRepresentation();
+			reviewRep.setID(r.getID());
+			reviewRep.setCustomerName(r.getCustomer().getName());
+			reviewRep.setRating(r.getRating());
+			reviewRep.setReviewDetail(r.getReviewDetail());
+			reviewReps.add(reviewRep);
+		}
+		return reviewReps;
 	}
 
 	public ReviewRepresentation createReview(String reviewDetail, float rating, Customer customer) {

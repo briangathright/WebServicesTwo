@@ -64,7 +64,7 @@ public class SellerResource implements SellerService {
 
 	@POST
 	@Produces({"application/xml" , "application/json"})
-	@Path("/seller/sellername/{sellerName}/sellerpassword/{sellerPassword}")
+	@Path("/seller/sellersignup/sellername/{sellerName}/sellerpassword/{sellerPassword}")
 	public Response createSeller(@PathParam("sellerName") String sellerName, @PathParam("sellerPassword") String sellerPassword) {
 		SellerActivity sellerAct = new SellerActivity();
 		SellerRequest sellerRequest = new SellerRequest();

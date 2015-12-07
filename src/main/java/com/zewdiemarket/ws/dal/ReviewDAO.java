@@ -6,6 +6,7 @@ import java.util.Set;
 import org.hibernate.Session;
 
 import com.zewdiemarket.ws.Customer;
+import com.zewdiemarket.ws.Order;
 import com.zewdiemarket.ws.Review;
 
 public class ReviewDAO {
@@ -85,6 +86,10 @@ public class ReviewDAO {
 		r.setCustomer(customer);
 		addReview(r);
 		return r;
+	}
+
+	public static Set<Review> getSellerReviews(long id) {
+		return SellerDAO.getSellerReviews(id);
 	}
 }
 

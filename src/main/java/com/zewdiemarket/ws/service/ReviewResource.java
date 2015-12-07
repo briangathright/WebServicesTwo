@@ -12,8 +12,10 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 
+import com.zewdiemarket.ws.service.representation.OrderRepresentation;
 import com.zewdiemarket.ws.service.representation.ReviewRepresentation;
 import com.zewdiemarket.ws.service.representation.ReviewRequest;
+import com.zewdiemarket.ws.service.workflow.OrderActivity;
 import com.zewdiemarket.ws.service.workflow.ReviewActivity;
 
 /*
@@ -49,6 +51,14 @@ public class ReviewResource implements ReviewService{
 	public ReviewRepresentation getReview(@PathParam("reviewId") String reviewId) {
 		ReviewActivity reviewAct = new ReviewActivity();
 		return reviewAct.getReview(reviewId);
+	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/review/sellerreviews/{sellerId}")
+	public Set<ReviewRepresentation> getSellerOrders(@PathParam("sellerId") String sellerId) {
+		ReviewActivity reviewAct = new ReviewActivity();
+		return reviewAct.getSellerReviews(sellerId);
 	}
 
 	@POST
