@@ -64,10 +64,17 @@ public class SellerResource implements SellerService {
 
 	@POST
 	@Produces({"application/xml" , "application/json"})
-	@Path("/seller")
-	public SellerRepresentation createSeller(SellerRequest sellerRequest) {
+	@Path("/seller/sellername/{sellerName}/sellerpassword/{sellerPassword}")
+	public Response createSeller(@PathParam("sellerName") String sellerName, @PathParam("sellerPassword") String sellerPassword) {
 		SellerActivity sellerAct = new SellerActivity();
-		return sellerAct.createSeller(sellerRequest.getSellerName());
+		SellerRequest sellerRequest = new SellerRequest();
+		sellerRequest.setSellerName(sellerName);
+		sellerRequest.setSellerPass(sellerPassword);
+		String res = sellerAct.createSeller(sellerRequest);
+		if (res.equals("OK")) {
+			return Response.status(Status.OK).build();
+		}
+		return null;
 	}
 	
 	@POST

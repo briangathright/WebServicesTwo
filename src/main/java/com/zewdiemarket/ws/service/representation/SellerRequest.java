@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "")
 public class SellerRequest {
 	String sellerName;
+	String sellerPass;
 
 	public SellerRequest(){}
 
@@ -22,5 +23,13 @@ public class SellerRequest {
 
 	public void setSellerName(String sellerName){
 		this.sellerName = sellerName;
+	}
+	
+	public String getSellerPass(){
+		return sellerPass;
+	}
+
+	public void setSellerPass(String sellerPass){
+		this.sellerPass = sellerPass;
 	}
 }

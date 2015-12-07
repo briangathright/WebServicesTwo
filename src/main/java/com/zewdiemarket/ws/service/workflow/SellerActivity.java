@@ -11,6 +11,7 @@ import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.CustomerRepresentation;
 import com.zewdiemarket.ws.service.representation.Link;
 import com.zewdiemarket.ws.service.representation.SellerRepresentation;
+import com.zewdiemarket.ws.service.representation.SellerRequest;
 
 /*
  * Activity for Seller - we get, create, and delete Seller representations
@@ -53,14 +54,9 @@ public class SellerActivity {
 		return null;
 	}
 
-	public SellerRepresentation createSeller(String sellerName) {
-		Seller s = SellerDAO.addNewSeller(sellerName);
-		SellerRepresentation sellerRep = new SellerRepresentation();
-		sellerRep.setID(s.getID());
-		sellerRep.setSellerName(s.getName());
-		setLinks(sellerRep);
-
-		return sellerRep;
+	public String createSeller(SellerRequest sellerRequest) {
+		Seller s = SellerDAO.addNewSeller(sellerRequest.getSellerName(), sellerRequest.getSellerPass());
+		return "OK";
 	}
 
 	public String deleteSeller(String id) {

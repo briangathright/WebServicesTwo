@@ -73,7 +73,15 @@ public class OrderResource implements OrderService {
 	@Path("/order/cancel/{orderId}")
 	public OrderRepresentation cancelCustomerOrder(@PathParam("orderId") String orderId) {
 		OrderActivity orderAct = new OrderActivity();
-		return orderAct.cancelCustomerOrders(orderId);
+		return orderAct.cancelCustomerOrder(orderId);
+	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/order/fulfill/{orderId}")
+	public OrderRepresentation fulfillCustomerOrder(@PathParam("orderId") String orderId) {
+		OrderActivity orderAct = new OrderActivity();
+		return orderAct.fulfillCustomerOrder(orderId);
 	}
 
 	@POST

@@ -13,6 +13,5 @@ public interface SellerService {
 
 	public Set<SellerRepresentation> getSellers();
 	public SellerRepresentation getSeller(String sellerId);
-	public SellerRepresentation createSeller(SellerRequest sellerRequest);
 
 }

@@ -1,10 +1,13 @@
 package com.zewdiemarket.ws.dal;
 
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.hibernate.Session;
 
 import com.zewdiemarket.ws.Order;
+import com.zewdiemarket.ws.Product;
+import com.zewdiemarket.ws.Review;
 import com.zewdiemarket.ws.Seller;
 
 public class SellerDAO {
@@ -80,9 +83,13 @@ public class SellerDAO {
 		return sellerOrders;
 	}
 
-	public static Seller addNewSeller(String sellerName) {
+	public static Seller addNewSeller(String sellerName, String sellerPassword) {
 		Seller s = new Seller();
 		s.setName(sellerName);
+		s.setPassword(sellerPassword);
+		s.setOrderList(new HashSet<Order>());
+		s.setProductList(new HashSet<Product>());
+		s.setReviewList(new HashSet<Review>());
 		addSeller(s);
 		return s;
 	}

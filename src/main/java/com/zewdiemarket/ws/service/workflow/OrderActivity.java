@@ -93,17 +93,26 @@ public class OrderActivity {
 	}
 
 	public void setLinks(OrderRepresentation orderRep){
-		Link[] links = new Link[2];
+		Link[] links = new Link[3];
 		Link cancel_order = new Link("cancel_order", System.getenv("ORDERSERVICE_URL") + "cancel/" + orderRep.getID());
 		Link view_product = new Link("view_product", System.getenv("PRODUCTSERVICE_URL") + orderRep.getProductID());
+		Link fulfill_order = new Link("fulfill_order", System.getenv("ORDERSERVICE_URL") + "fulfill/" + orderRep.getID());
 		links[0] = cancel_order;
 		links[1] = view_product;
+		links[2] = fulfill_order;
 		orderRep.setLinks(links);
 	}
 
-	public OrderRepresentation cancelCustomerOrders(String orderId) {
+	public OrderRepresentation cancelCustomerOrder(String orderId) {
 		Order o = OrderDAO.retrieveOrder(Long.parseLong(orderId));
 		o.setStatus("CANCELLED");
+		OrderDAO.addOrder(o);
+		return this.getOrder(orderId);
+	}
+	
+	public OrderRepresentation fulfillCustomerOrder(String orderId) {
+		Order o = OrderDAO.retrieveOrder(Long.parseLong(orderId));
+		o.setStatus("FULFILLED");
 		OrderDAO.addOrder(o);
 		return this.getOrder(orderId);
 	}
