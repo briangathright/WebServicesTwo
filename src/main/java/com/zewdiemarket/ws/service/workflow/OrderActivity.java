@@ -22,6 +22,8 @@ public class OrderActivity {
 			orderRep.setStatus(o.getStatus());
 			orderRep.setProductID(o.getOrderedProduct().getID());
 			orderRep.setCustomerID(o.getCustomer().getID());
+			orderRep.setProductName(o.getProductName());
+
 			setLinks(orderRep);
 			orderReps.add(orderRep);
 		}
@@ -35,6 +37,7 @@ public class OrderActivity {
 		orderRep.setStatus(o.getStatus());
 		orderRep.setProductID(o.getOrderedProduct().getID());
 		orderRep.setCustomerID(o.getCustomer().getID());
+		orderRep.setProductName(o.getProductName());
 		setLinks(orderRep);
 		return orderRep;
 	}
@@ -49,6 +52,7 @@ public class OrderActivity {
 			orderRep.setStatus(o.getStatus());
 			orderRep.setProductID(o.getOrderedProduct().getID());
 			orderRep.setCustomerID(o.getCustomer().getID());
+			orderRep.setProductName(o.getProductName());
 			setLinks(orderRep);
 			orderReps.add(orderRep);
 		}
@@ -60,6 +64,7 @@ public class OrderActivity {
 		OrderRepresentation orderRep = new OrderRepresentation();
 		orderRep.setID(o.getID());
 		orderRep.setStatus(o.getStatus());
+		orderRep.setProductName(o.getProductName());
 		return orderRep;
 	}
 

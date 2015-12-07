@@ -38,6 +38,9 @@ public class Order implements Serializable
 	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="product_id")
 	Product orderedProduct;
+	
+	@Column(name="product_name")
+	String productName;
 
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="customer_id")
@@ -54,6 +57,7 @@ public class Order implements Serializable
 	 */
 	public Order(Customer customer, Product product) {
 		this.orderedProduct=product;
+		this.productName = orderedProduct.getDetail();
 		this.customer=customer;
 	}
 
@@ -72,6 +76,14 @@ public class Order implements Serializable
 
 	public void setOrderProduct(Product product){
 		this.orderedProduct=product;
+	}
+	
+	public String getProductName(){
+		return productName;
+	}
+	
+	public void setProductName(String name){
+		this.productName = name;
 	}
 
 	public String getStatus(){

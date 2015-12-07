@@ -16,6 +16,7 @@ public class OrderRepresentation extends AbstractRepresentation{
 	private long id;
 	private long productId;
 	private long customerId;
+	private String productName;
 	private String status;
 
 	public OrderRepresentation() {}
@@ -34,6 +35,14 @@ public class OrderRepresentation extends AbstractRepresentation{
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	public String getProductName(){
+		return productName;
+	}
+
+	public void setProductName(String name) {
+		this.productName = name;
 	}
 	
 	public long getProductID() {
