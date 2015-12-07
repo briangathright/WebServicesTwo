@@ -65,13 +65,20 @@ public class SellerActivity {
 	public void setLinks(SellerRepresentation sellerRep){
 		Link[] links = new Link[4];
 		Link add_product = new Link("add product", System.getenv("PRODUCTSERVICE_URL") + "/seller" + sellerRep.getID());
+		Link updatePass = new Link("update_password", System.getenv("SELLERSERVICE_URL") + sellerRep.getID() + "/password/");
 		Link view_reviews = new Link("view reviews", System.getenv("REVIEWSERVICE_URL") + "/sellerreviews/" + sellerRep.getID());
 		Link view_orders = new Link("view orders", System.getenv("ORDERSERVICE_URL") + "/sellerorders/" + sellerRep.getID());
-		Link fulfill_order = new Link("fulfill order", System.getenv("ORDERSERVICE_URL")+ "/sellerorders/" + sellerRep.getID());
 		links[0] = add_product;
-		links[1] = view_reviews;
-		links[2] = fulfill_order;
+		links[1] = updatePass;
+		links[2] = view_reviews;
 		links[3] = view_orders;
 		sellerRep.setLinks(links);
+	}
+
+	public SellerRepresentation updateSellerPassword(String sellerId, String pass) {
+		Seller s = SellerDAO.retrieveSeller(Long.parseLong(sellerId));
+		s.setPassword(pass);
+		SellerDAO.addSeller(s);
+		return this.getSeller(sellerId);
 	}
 }

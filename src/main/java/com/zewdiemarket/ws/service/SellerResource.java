@@ -69,6 +69,15 @@ public class SellerResource implements SellerService {
 		SellerActivity sellerAct = new SellerActivity();
 		return sellerAct.createSeller(sellerRequest.getSellerName());
 	}
+	
+	@POST
+	@Produces({"application/xml" , "application/json"})
+	@Path("/seller/{sellerId}/password/{password}")
+	public SellerRepresentation updateSellerPassword(@PathParam("sellerId") String sellerId,
+															@PathParam("password") String pass) {
+		SellerActivity sellerAct = new SellerActivity();
+		return sellerAct.updateSellerPassword(sellerId, pass);
+	}
 
 	@DELETE
 	@Produces({"application/xml" , "application/json"})
