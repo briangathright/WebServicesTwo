@@ -31,6 +31,9 @@ public class Seller implements Serializable, IReviewable {
 
 	@Column(name = "seller_name")
 	private String name;
+	
+	@Column(name = "seller_password")
+	private String password;
 
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="product_id")
@@ -68,6 +71,14 @@ public class Seller implements Serializable, IReviewable {
 
 	public void setName(String name) {
 		this.name=name;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password=password;
 	}
 
 	/**

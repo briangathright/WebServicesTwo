@@ -13,8 +13,10 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 
+import com.zewdiemarket.ws.service.representation.CustomerRepresentation;
 import com.zewdiemarket.ws.service.representation.SellerRepresentation;
 import com.zewdiemarket.ws.service.representation.SellerRequest;
+import com.zewdiemarket.ws.service.workflow.CustomerActivity;
 import com.zewdiemarket.ws.service.workflow.SellerActivity;
 
 /*
@@ -50,6 +52,14 @@ public class SellerResource implements SellerService {
 	public SellerRepresentation getSeller(@PathParam("sellerId") String sellerId) {
 		SellerActivity sellerAct = new SellerActivity();
 		return sellerAct.getSeller(sellerId);
+	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/sellerlogin/{sellerName}/{sellerPassword}")
+	public SellerRepresentation login(@PathParam("sellerName") String sellerName, @PathParam("sellerPassword")String sellerPassword){
+		SellerActivity sellerAct = new SellerActivity();
+		return sellerAct.login(sellerName, sellerPassword);
 	}
 
 	@POST

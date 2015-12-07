@@ -2,9 +2,13 @@ package com.zewdiemarket.ws.service.workflow;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.Seller;
+import com.zewdiemarket.ws.dal.CustomerDAO;
 import com.zewdiemarket.ws.dal.SellerDAO;
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
+import com.zewdiemarket.ws.service.representation.CustomerRepresentation;
 import com.zewdiemarket.ws.service.representation.Link;
 import com.zewdiemarket.ws.service.representation.SellerRepresentation;
 
@@ -32,6 +36,17 @@ public class SellerActivity {
 		sellerRep.setID(s.getID());
 		sellerRep.setSellerName(s.getName());
 		return sellerRep;
+	}
+	
+	public SellerRepresentation login(String sellerName, String sellerPassword) {
+		Set<Seller> sellers = new HashSet<Seller>();
+		sellers = SellerDAO.getAllSellers();
+		for(Seller s : sellers){
+			if(s.getName().equals(sellerName) && s.getPassword().equals(sellerPassword)){
+				return getSeller(String.valueOf(s.getID()));
+			}
+		}
+		return null;
 	}
 
 	public SellerRepresentation createSeller(String sellerName) {
