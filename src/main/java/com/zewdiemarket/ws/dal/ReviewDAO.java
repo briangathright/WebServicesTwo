@@ -95,7 +95,7 @@ public class ReviewDAO {
 		return SellerDAO.getSellerReviews(id);
 	}
 
-	public static Review addNewSellerReview(String sellerId, String reviewDetail, float rating, String customerId) {
+	public static Review addNewSellerReview(String sellerId, String reviewDetail, double rating, String customerId) {
 		Review r = new Review();
 		r.setCustomer(CustomerDAO.retrieveCustomer(Long.parseLong(customerId)));
 		r.setRating(rating);
@@ -107,7 +107,7 @@ public class ReviewDAO {
 		return null;
 	}
 
-	public static Review addNewProductReview(String productId, String reviewDetail, float rating, String customerId) {
+	public static Review addNewProductReview(String productId, String reviewDetail, double rating, String customerId) {
 		Review r = new Review();
 		r.setCustomer(CustomerDAO.retrieveCustomer(Long.parseLong(customerId)));
 		r.setRating(rating);
