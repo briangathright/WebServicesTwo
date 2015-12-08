@@ -18,7 +18,6 @@ public class ReviewRequest {
 	private String reviewDetail;
 	private double rating;
 	private String customerId;
-	private String sellerId;
 	private String productId;
 
 
@@ -26,15 +25,6 @@ public class ReviewRequest {
 
 	public ReviewRequest(String productId, String reviewDetail, String rating, String customerId){
 		this.productId = productId;
-		this.reviewDetail = reviewDetail;
-		this.sellerId = "-1";
-		this.rating = Double.parseDouble(rating);
-		this.customerId = customerId;
-	}
-
-	public ReviewRequest(boolean x, String sellerId, String reviewDetail, String rating, String customerId){
-		this.sellerId = sellerId;
-		this.productId = "-1";
 		this.reviewDetail = reviewDetail;
 		this.rating = Double.parseDouble(rating);
 		this.customerId = customerId;
@@ -62,14 +52,6 @@ public class ReviewRequest {
 
 	public void setCustomerId(String customerId){
 		this.customerId = customerId;
-	}
-	
-	public String getSellerId(){
-		return sellerId;
-	}
-
-	public void setSellerId(String sellerId){
-		this.sellerId = sellerId;
 	}
 	
 	public String getProductId(){

@@ -55,21 +55,6 @@ public class ReviewActivity {
 		reviewRep.setCustomerName(currentCustomerName);
 		return reviewRep;
 	}
-
-	public Set<ReviewRepresentation> getSellerReviews(String sellerId){
-		Set<Review> reviews = new TreeSet<Review>();
-		Set<ReviewRepresentation> reviewReps = new TreeSet<ReviewRepresentation>();
-		reviews = ReviewDAO.getSellerReviews(Long.parseLong(sellerId));
-		for(Review r : reviews){
-			ReviewRepresentation reviewRep = new ReviewRepresentation();
-			reviewRep.setID(r.getID());
-			reviewRep.setCustomerName(r.getCustomer().getName());
-			reviewRep.setRating(r.getRating());
-			reviewRep.setReviewDetail(r.getReviewDetail());
-			reviewReps.add(reviewRep);
-		}
-		return reviewReps;
-	}
 	
 	public Set<ReviewRepresentation> getProductReviews(String productId){
 		Set<Review> reviews = new TreeSet<Review>();
@@ -95,10 +80,6 @@ public class ReviewActivity {
 
 	}
 
-	public String createSellerReview(ReviewRequest reviewRequest) {
-		Review r = ReviewDAO.addNewSellerReview(reviewRequest.getSellerId(), reviewRequest.getReviewDetail(), reviewRequest.getRating(), reviewRequest.getCustomerId());
-		return "OK";
-	}
 	public String createProductReview(ReviewRequest reviewRequest) {
 		Review r = ReviewDAO.addNewProductReview(reviewRequest.getProductId(), reviewRequest.getReviewDetail(), reviewRequest.getRating(), reviewRequest.getCustomerId());
 		return "OK";

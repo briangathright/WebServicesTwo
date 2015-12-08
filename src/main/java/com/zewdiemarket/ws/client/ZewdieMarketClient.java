@@ -122,12 +122,12 @@ public class ZewdieMarketClient {
 		System.out.println(c2.getName() + "'s billing info set to " + c2.getBillingInfo());
 
 
-		System.out.println("\nMaking Reviews for Products and Sellers");
+		System.out.println("\nMaking Reviews for Products");
 		System.out.println("-----------------------------------------");
 		Review r1 = new Review(5, c1, "Just phenomenal!", p1);
 		Review r2 = new Review(2, c1, "It's pretty bad.", p5);
 		Review r3 = new Review(-5, c2, "Meh.", p1);
-		Review r4 = new Review(12, c2, "Outstanding!", s1);
+		Review r4 = new Review(12, c2, "Outstanding!", p3);
 
 		p1.addReview(r1);
 		System.out.println("Added review to " + p1.getDetail() + "\n" + r1 + "\n");
@@ -135,8 +135,8 @@ public class ZewdieMarketClient {
 		System.out.println("Added review to " + p5.getDetail() + "\n" + r2 + "\n");
 		p1.addReview(r3);
 		System.out.println("Added review to " + p1.getDetail() + "\n" + r3 + "\n");
-		s1.addReview(r4);
-		System.out.println("Added review to " + s1.getName() + "\n" + r4 + "\n");
+		p3.addReview(r4);
+		System.out.println("Added review to " + p3.getDetail() + "\n" + r4 + "\n");
 
 		System.out.println("\nPlacing Orders");
 		System.out.println("-------------");
@@ -184,9 +184,6 @@ public class ZewdieMarketClient {
 		System.out.println("\nRetrieved Product list for Retrieved Seller contains: ");
 		for(Product p : retS1.getProductList()) {
 			System.out.println("\n" + p);
-			for(Review r : p.getReviewList()) {
-				System.out.println("\n" + r);
-			}
 		}
 		
 		System.out.println("\nRetrieving Customer with ID: 1");

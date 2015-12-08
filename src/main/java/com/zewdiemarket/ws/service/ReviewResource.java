@@ -56,33 +56,10 @@ public class ReviewResource implements ReviewService{
 	
 	@GET
 	@Produces({"application/xml" , "application/json"})
-	@Path("/review/sellerreviews/{sellerId}")
-	public Set<ReviewRepresentation> getSellerReviews(@PathParam("sellerId") String sellerId) {
-		ReviewActivity reviewAct = new ReviewActivity();
-		return reviewAct.getSellerReviews(sellerId);
-	}
-	
-	@GET
-	@Produces({"application/xml" , "application/json"})
 	@Path("/review/productreviews/{productId}")
 	public Set<ReviewRepresentation> getProductReviews(@PathParam("productId") String productId) {
 		ReviewActivity reviewAct = new ReviewActivity();
 		return reviewAct.getProductReviews(productId);
-	}
-
-	
-	@POST
-	@Produces({"application/xml" , "application/json"})
-	@Path("/review/seller/{sellerId}/customer/{customerId}/detail/{detail}/rating/{rating}")
-	public Response createSellerReview(@PathParam("sellerId") String sellerId, @PathParam("customerId") String customerId,
-			@PathParam("detail") String detail, @PathParam("rating") String rating) {
-		ReviewActivity reviewAct = new ReviewActivity();
-		ReviewRequest reviewRequest = new ReviewRequest(true, sellerId, detail, rating, customerId);
-		String res = reviewAct.createSellerReview(reviewRequest);
-		if (res.equals("OK")) {
-			return Response.status(Status.OK).build();
-		}
-		return null;
 	}
 	
 	@POST

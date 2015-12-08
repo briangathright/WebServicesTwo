@@ -39,10 +39,6 @@ public class Review implements Serializable, Comparable<Review> {
 	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="product_id")
 	private Product product;	
-	
-	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-	@JoinColumn(name="seller_id")
-	private Seller seller;	
 
 	/**
 	 * Hibernate requires an empty constructor
@@ -56,18 +52,12 @@ public class Review implements Serializable, Comparable<Review> {
 	 * @param rating
 	 * @param customer
 	 */
-	public Review(double rating, Customer customer, String review_detail, IReviewable ir) {
+	public Review(double rating, Customer customer, String review_detail, Product p) {
 		this.rating = boundRating(rating);
 		this.customer = customer;
 		this.review_detail = review_detail;
-		if(ir.getClass() == Product.class){
-			this.product = (Product) ir;
-			this.seller = null;
-		}
-		else{
-			this.seller = (Seller) ir;
-			this.product = null;
-		}
+		this.product = p;
+		
 	}
 
 	/**
@@ -112,13 +102,6 @@ public class Review implements Serializable, Comparable<Review> {
 
 	public Customer getCustomer() {
 		return customer;
-	}
-	public void setSeller(Seller seller) {
-		this.seller = seller;
-	}
-
-	public Seller getSeller() {
-		return seller;
 	}
 	public void setProduct(Product product) {
 		this.product = product;

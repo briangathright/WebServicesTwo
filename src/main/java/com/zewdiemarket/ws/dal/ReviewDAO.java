@@ -91,21 +91,6 @@ public class ReviewDAO {
 		return r;
 	}
 
-
-	public static Review addNewSellerReview(String sellerId, String reviewDetail, double rating, String customerId) {
-		Review r = new Review();
-		r.setCustomer(CustomerDAO.retrieveCustomer(Long.parseLong(customerId)));
-		r.setRating(rating);
-		r.setReviewDetail(reviewDetail);
-		Seller s = SellerDAO.retrieveSeller(Long.parseLong(sellerId));
-		s.addReview(r);
-		r.setSeller(s);
-		r.setProduct(null);
-		addReview(r);
-		SellerDAO.addSeller(s);
-		return r;
-	}
-
 	public static Review addNewProductReview(String productId, String reviewDetail, double rating, String customerId) {
 		Review r = new Review();
 		Customer c = CustomerDAO.retrieveCustomer(Long.parseLong(customerId));
@@ -115,7 +100,6 @@ public class ReviewDAO {
 		Product p = ProductDAO.retrieveProduct(Long.parseLong(productId));
 		p.addReview(r);
 		r.setProduct(p);
-		r.setSeller(null);
 		addReview(r);
 		ProductDAO.addProduct(p);
 		CustomerDAO.addCustomer(c);
@@ -126,28 +110,12 @@ public class ReviewDAO {
 		Set<Review> allReviews = getAllReviews();
 		Set<Review> productReviews = new LinkedHashSet<Review>();
 		for(Review r : allReviews){
-			if(r.getProduct() != null){
-				if(r.getProduct().getID() == id){
-					productReviews.add(r);
-				}
+			if(r.getProduct().getID() == id){
+				productReviews.add(r);
 			}
 		}
 		return productReviews;	
 	}
-
-	public static Set<Review> getSellerReviews(long id) {
-		Set<Review> allReviews = getAllReviews();
-		Set<Review> sellerReviews = new LinkedHashSet<Review>();
-		for(Review r : allReviews){
-			if(r.getSeller() != null){
-				if(r.getSeller().getID() == id){
-					sellerReviews.add(r);
-				}
-			}
-		}
-		return sellerReviews;	
-	}
-
 }
 
 

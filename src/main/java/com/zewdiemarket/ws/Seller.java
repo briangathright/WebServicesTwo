@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "seller")
 @XmlRootElement
-public class Seller implements Serializable, IReviewable {
+public class Seller implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -38,10 +38,6 @@ public class Seller implements Serializable, IReviewable {
 	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="product_id")
 	private Set<Product> productList = new HashSet<Product>();
-
-	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-	@JoinColumn(name="review_id")
-	private Set<Review> reviewList = new HashSet<Review>();
 
 	/**
 	 * Orderlist is the list of orders that have been placed to the seller from customers
@@ -105,24 +101,6 @@ public class Seller implements Serializable, IReviewable {
 		return productList;
 	}
 
-
-	public void addReview(Review r) {
-		reviewList.add(r);
-	}
-
-	public void removeReview(Review r){
-		reviewList.remove(r);
-	}
-
-	public Set<Review> getReviewList() {
-		return reviewList;
-	}
-
-	public void setReviewList(HashSet<Review> rl) {
-		this.reviewList = rl;
-	}
-
-
 	public Set<Order> getOrderList() {
 		return orderList;
 	}
@@ -143,17 +121,7 @@ public class Seller implements Serializable, IReviewable {
 	/**
 	 * Calculates the average ratings of a seller based on reviews
 	 */
-	public double calcAverageRating() {
-		if(reviewList.isEmpty()) {
-			return 0;
-		}
-		double total = 0;
-		for(Review r : reviewList) {
-			total += r.getRating();
-		}
-		return total/reviewList.size();
-	}
-
+	
 	/**
 	 *toString method that allows us to show that our application works when testing its output in the client
 	 */
@@ -161,8 +129,6 @@ public class Seller implements Serializable, IReviewable {
 	public String toString() {
 		return "Seller:" +
 				"\nName: " + name + 
-				"\nRating: " + calcAverageRating() + 
-				"\nNumber of Reviews: " + reviewList.size() + 
 				"\nProduct List:\n" + productList;
 	}
 }

@@ -77,12 +77,6 @@ public class SellerDAO {
 		return null;
 	}
 	
-	public static Set<Review> getSellerReviews(long id) {
-		Seller s = retrieveSeller(id);
-		Set<Review> sellerReviews = s.getReviewList();
-		return sellerReviews;
-	}
-	
 	public static Set<Product> getSellerProducts(long id) {
 		Seller s = retrieveSeller(id);
 		Set<Product> sellerProducts = s.getProductList();
@@ -95,7 +89,6 @@ public class SellerDAO {
 		s.setPassword(sellerPassword);
 		s.setOrderList(new HashSet<Order>());
 		s.setProductList(new HashSet<Product>());
-		s.setReviewList(new HashSet<Review>());
 		addSeller(s);
 		return s;
 	}
