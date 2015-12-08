@@ -77,12 +77,6 @@ public class SellerDAO {
 		return null;
 	}
 	
-	public static Set<Order> getSellerOrders(long id) {
-		Seller s = retrieveSeller(id);
-		Set<Order> sellerOrders = s.getOrderList();
-		return sellerOrders;
-	}
-	
 	public static Set<Review> getSellerReviews(long id) {
 		Seller s = retrieveSeller(id);
 		Set<Review> sellerReviews = s.getReviewList();

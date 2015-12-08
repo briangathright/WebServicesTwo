@@ -113,6 +113,13 @@ public class OrderDAO {
 	}
 
 	public static Set<Order> getSellerOrders(long id) {
-		return SellerDAO.getSellerOrders(id);
+		Set<Order> allOrders = getAllOrders();
+		Set<Order> sellerOrders = new LinkedHashSet<Order>();
+		for(Order o : allOrders){
+			if(o.getSeller().getID() == id){
+				sellerOrders.add(o);
+			}
+		}
+		return sellerOrders;
 	}
 }
