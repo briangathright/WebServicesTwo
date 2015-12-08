@@ -27,12 +27,14 @@ public class ReviewRequest {
 	public ReviewRequest(String productId, String reviewDetail, String rating, String customerId){
 		this.productId = productId;
 		this.reviewDetail = reviewDetail;
+		this.sellerId = "-1";
 		this.rating = Double.parseDouble(rating);
 		this.customerId = customerId;
 	}
 
 	public ReviewRequest(boolean x, String sellerId, String reviewDetail, String rating, String customerId){
 		this.sellerId = sellerId;
+		this.productId = "-1";
 		this.reviewDetail = reviewDetail;
 		this.rating = Double.parseDouble(rating);
 		this.customerId = customerId;

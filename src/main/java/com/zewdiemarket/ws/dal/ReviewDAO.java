@@ -109,13 +109,15 @@ public class ReviewDAO {
 
 	public static Review addNewProductReview(String productId, String reviewDetail, double rating, String customerId) {
 		Review r = new Review();
-		r.setCustomer(CustomerDAO.retrieveCustomer(Long.parseLong(customerId)));
+		Customer c = CustomerDAO.retrieveCustomer(Long.parseLong(customerId));
+		r.setCustomer(c);
 		r.setRating(rating);
 		r.setReviewDetail(reviewDetail);
 		Product p = ProductDAO.retrieveProduct(Long.parseLong(productId));
 		p.addReview(r);
 		addReview(r);
 		ProductDAO.addProduct(p);
+		CustomerDAO.addCustomer(c);
 		return r;
 	}
 
