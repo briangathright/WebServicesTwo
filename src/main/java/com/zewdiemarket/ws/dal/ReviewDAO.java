@@ -124,8 +124,10 @@ public class ReviewDAO {
 		Set<Review> allReviews = getAllReviews();
 		Set<Review> productReviews = new LinkedHashSet<Review>();
 		for(Review r : allReviews){
-			if(r.getProduct().getID() == id){
-				productReviews.add(r);
+			if(r.getProduct() != null){
+				if(r.getProduct().getID() == id){
+					productReviews.add(r);
+				}
 			}
 		}
 		return productReviews;	
@@ -135,8 +137,10 @@ public class ReviewDAO {
 		Set<Review> allReviews = getAllReviews();
 		Set<Review> sellerReviews = new LinkedHashSet<Review>();
 		for(Review r : allReviews){
-			if(r.getSeller().getID() == id){
-				sellerReviews.add(r);
+			if(r.getSeller() != null){
+				if(r.getSeller().getID() == id){
+					sellerReviews.add(r);
+				}
 			}
 		}
 		return sellerReviews;	

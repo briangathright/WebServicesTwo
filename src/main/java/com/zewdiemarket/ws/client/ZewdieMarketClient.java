@@ -124,10 +124,10 @@ public class ZewdieMarketClient {
 
 		System.out.println("\nMaking Reviews for Products and Sellers");
 		System.out.println("-----------------------------------------");
-		Review r1 = new Review(5, c1, "Just phenomenal!");
-		Review r2 = new Review(2, c1, "It's pretty bad.");
-		Review r3 = new Review(-5, c2, "Meh.");
-		Review r4 = new Review(12, c2, "Outstanding!");
+		Review r1 = new Review(5, c1, "Just phenomenal!", p1);
+		Review r2 = new Review(2, c1, "It's pretty bad.", p5);
+		Review r3 = new Review(-5, c2, "Meh.", p1);
+		Review r4 = new Review(12, c2, "Outstanding!", s1);
 
 		p1.addReview(r1);
 		System.out.println("Added review to " + p1.getDetail() + "\n" + r1 + "\n");
