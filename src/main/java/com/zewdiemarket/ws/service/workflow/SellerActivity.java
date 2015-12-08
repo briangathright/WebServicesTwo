@@ -64,6 +64,7 @@ public class SellerActivity {
 		return "OK";
 	}
 
+	//seller links
 	public void setLinks(SellerRepresentation sellerRep){
 		Link[] links = new Link[5];
 		Link add_product = new Link("add product", System.getenv("PRODUCTSERVICE_URL") + "seller/" + sellerRep.getID());
