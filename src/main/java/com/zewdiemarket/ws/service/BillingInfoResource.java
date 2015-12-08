@@ -64,14 +64,15 @@ public class BillingInfoResource implements BillingInfoService {
 	
 	@POST
 	@Produces({"application/xml" , "application/json"})
-	@Path("/billinginfo/{billinginfoId}")
+	@Path("/billinginfo/{billinginfoId}/update/cardtype/{cardType}/billingname/{billingName}/"
+			+ "/")
 	public Response updateBillingInfo( @PathParam("billinginfoId") String billingInfoId,
-			@QueryParam("cardType") String cardType,
-			@QueryParam("billingName") String billingName,
-			@QueryParam("billingAddress") String billingAddress,
-			@QueryParam("cardNumber") String cardNumber,
-			@QueryParam("expDate") String expDate,
-			@QueryParam("cvcNumber") String cvcNumber
+			@PathParam("cardType") String cardType,
+			@PathParam("billingName") String billingName,
+			@PathParam("billingAddress") String billingAddress,
+			@PathParam("cardNumber") String cardNumber,
+			@PathParam("expDate") String expDate,
+			@PathParam("cvcNumber") String cvcNumber
 			) {
 		BillingInfoActivity billingInfoAct = new BillingInfoActivity();
 		BillingInfoRequest billingInfoRequest = new BillingInfoRequest();

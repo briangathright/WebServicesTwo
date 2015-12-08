@@ -14,31 +14,68 @@ import com.zewdiemarket.ws.Customer;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 public class ReviewRequest {
-	
+
 	private String reviewDetail;
 	private float rating;
-	private Customer customer;
-		
+	private String customerId;
+	private String sellerId;
+	private String productId;
+
+
 	public ReviewRequest() {}
-	
+
+	public ReviewRequest(String productId, String reviewDetail, String rating, String customerId){
+		this.productId = productId;
+		this.reviewDetail = reviewDetail;
+		this.rating = Float.parseFloat(rating);
+		this.customerId = customerId;
+	}
+
+	public ReviewRequest(boolean x, String sellerId, String reviewDetail, String rating, String customerId){
+		this.sellerId = sellerId;
+		this.reviewDetail = reviewDetail;
+		this.rating = Float.parseFloat(rating);
+		this.customerId = customerId;
+	}
+
 	public String getReviewDetail(){
 		return reviewDetail;
 	}
-	
+
 	public void setReviewDetail(String reviewDetail){
 		this.reviewDetail = reviewDetail;
 	}
-	
+
 	public float getRating(){
 		return rating;
 	}
-	
+
 	public void setRating(float rating){
 		this.rating = rating;
 	}
-	
-	public Customer getCustomer(){
-		return customer;
+
+	public String getCustomerId(){
+		return customerId;
+	}
+
+	public void setCustomerId(String customerId){
+		this.customerId = customerId;
 	}
 	
+	public String getSellerId(){
+		return sellerId;
+	}
+
+	public void setSellerId(String sellerId){
+		this.sellerId = sellerId;
+	}
+	
+	public String getProductId(){
+		return productId;
+	}
+
+	public void setProductId(String productId){
+		this.productId = productId;
+	}
+
 }

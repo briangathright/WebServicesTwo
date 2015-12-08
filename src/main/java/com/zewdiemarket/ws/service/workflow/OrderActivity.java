@@ -24,7 +24,9 @@ public class OrderActivity {
 			orderRep.setStatus(o.getStatus());
 			orderRep.setProductID(o.getOrderedProduct().getID());
 			orderRep.setCustomerID(o.getCustomer().getID());
+			orderRep.setSellerName(o.getOrderedProduct().getSeller().getName());
 			orderRep.setProductName(o.getProductName());
+			orderRep.setSellerID(o.getOrderedProduct().getSeller().getID());
 
 			setLinks(orderRep);
 			orderReps.add(orderRep);
@@ -38,8 +40,11 @@ public class OrderActivity {
 		orderRep.setID(o.getID());
 		orderRep.setStatus(o.getStatus());
 		orderRep.setProductID(o.getOrderedProduct().getID());
+		orderRep.setSellerID(o.getOrderedProduct().getSeller().getID());
 		orderRep.setCustomerID(o.getCustomer().getID());
 		orderRep.setProductName(o.getProductName());
+		orderRep.setSellerName(o.getOrderedProduct().getSeller().getName());
+
 		setLinks(orderRep);
 		return orderRep;
 	}
@@ -53,8 +58,11 @@ public class OrderActivity {
 			orderRep.setID(o.getID());
 			orderRep.setStatus(o.getStatus());
 			orderRep.setProductID(o.getOrderedProduct().getID());
+			orderRep.setSellerID(o.getOrderedProduct().getSeller().getID());
 			orderRep.setCustomerID(o.getCustomer().getID());
 			orderRep.setProductName(o.getProductName());
+			orderRep.setSellerName(o.getOrderedProduct().getSeller().getName());
+
 			setLinks(orderRep);
 			orderReps.add(orderRep);
 		}
@@ -70,8 +78,11 @@ public class OrderActivity {
 			orderRep.setID(o.getID());
 			orderRep.setStatus(o.getStatus());
 			orderRep.setProductID(o.getOrderedProduct().getID());
+			orderRep.setSellerID(o.getOrderedProduct().getSeller().getID());
 			orderRep.setCustomerID(o.getCustomer().getID());
 			orderRep.setProductName(o.getProductName());
+			orderRep.setSellerName(o.getOrderedProduct().getSeller().getName());
+
 			setLinks(orderRep);
 			orderReps.add(orderRep);
 		}
@@ -84,6 +95,8 @@ public class OrderActivity {
 		orderRep.setID(o.getID());
 		orderRep.setStatus(o.getStatus());
 		orderRep.setProductName(o.getProductName());
+		orderRep.setSellerName(o.getOrderedProduct().getSeller().getName());
+
 		return orderRep;
 	}
 
@@ -93,13 +106,17 @@ public class OrderActivity {
 	}
 
 	public void setLinks(OrderRepresentation orderRep){
-		Link[] links = new Link[3];
+		Link[] links = new Link[5];
 		Link cancel_order = new Link("cancel_order", System.getenv("ORDERSERVICE_URL") + "cancel/" + orderRep.getID());
 		Link view_product = new Link("view_product", System.getenv("PRODUCTSERVICE_URL") + orderRep.getProductID());
 		Link fulfill_order = new Link("fulfill_order", System.getenv("ORDERSERVICE_URL") + "fulfill/" + orderRep.getID());
+		Link review_product = new Link("review_product", System.getenv("REVIEWSERVICE_URL") + "product/" + orderRep.getProductID());
+		Link review_seller = new Link("review_seller", System.getenv("REVIEWSERVICE_URL") + "seller/" + orderRep.getSellerID());
 		links[0] = cancel_order;
 		links[1] = view_product;
 		links[2] = fulfill_order;
+		links[3] = review_product;
+		links[4] = review_seller;
 		orderRep.setLinks(links);
 	}
 

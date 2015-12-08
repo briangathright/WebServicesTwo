@@ -13,6 +13,5 @@ public interface ReviewService {
 		   
 		public Set<ReviewRepresentation> getReviews();
 		public ReviewRepresentation getReview(String reviewId);
-		public ReviewRepresentation createReview(ReviewRequest reviewRequest);
 	   	
 }

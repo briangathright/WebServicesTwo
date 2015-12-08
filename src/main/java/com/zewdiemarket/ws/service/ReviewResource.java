@@ -61,13 +61,35 @@ public class ReviewResource implements ReviewService{
 		return reviewAct.getSellerReviews(sellerId);
 	}
 
+	
 	@POST
 	@Produces({"application/xml" , "application/json"})
-	@Path("/review")
-	public ReviewRepresentation createReview(ReviewRequest reviewRequest) {
+	@Path("/review/seller/{sellerId}/customer/{customerId}/detail/{detail}/rating/{rating}")
+	public Response createSellerReview(@PathParam("sellerId") String sellerId, @PathParam("customerId") String customerId,
+			@PathParam("detail") String detail, @PathParam("rating") String rating) {
 		ReviewActivity reviewAct = new ReviewActivity();
-		return reviewAct.createReview(reviewRequest.getReviewDetail(), reviewRequest.getRating(), reviewRequest.getCustomer());
+		ReviewRequest reviewRequest = new ReviewRequest(true, sellerId, detail, rating, customerId);
+		String res = reviewAct.createSellerReview(reviewRequest);
+		if (res.equals("OK")) {
+			return Response.status(Status.OK).build();
+		}
+		return null;
 	}
+	
+	@POST
+	@Produces({"application/xml" , "application/json"})
+	@Path("/review/product/{productId}/customer/{customerId}/detail/{detail}/rating/{rating}")
+	public Response createProductReview(@PathParam("productId") String productId, @PathParam("customerId") String customerId,
+			@PathParam("detail") String detail, @PathParam("rating") String rating) {
+		ReviewActivity reviewAct = new ReviewActivity();
+		ReviewRequest reviewRequest = new ReviewRequest(productId, detail, rating, customerId);
+		String res = reviewAct.createProductReview(reviewRequest);
+		if (res.equals("OK")) {
+			return Response.status(Status.OK).build();
+		}
+		return null;
+	}
+
 	
 	@DELETE
 	@Produces({"application/xml" , "application/json"})

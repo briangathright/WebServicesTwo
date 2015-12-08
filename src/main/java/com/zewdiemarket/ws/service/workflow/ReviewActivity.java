@@ -14,6 +14,7 @@ import com.zewdiemarket.ws.service.representation.Link;
 import com.zewdiemarket.ws.service.representation.OrderRepresentation;
 import com.zewdiemarket.ws.service.representation.ProductRepresentation;
 import com.zewdiemarket.ws.service.representation.ReviewRepresentation;
+import com.zewdiemarket.ws.service.representation.ReviewRequest;
 
 /*
  * Activity for Review - we get, create, and delete Review representations
@@ -82,5 +83,14 @@ public class ReviewActivity {
 
 	public void setLinks(ReviewRepresentation reviewRep){
 		
+	}
+
+	public String createSellerReview(ReviewRequest reviewRequest) {
+		Review r = ReviewDAO.addNewSellerReview(reviewRequest.getSellerId(), reviewRequest.getReviewDetail(), reviewRequest.getRating(), reviewRequest.getCustomerId());
+		return "OK";
+	}
+	public String createProductReview(ReviewRequest reviewRequest) {
+		Review r = ReviewDAO.addNewProductReview(reviewRequest.getProductId(), reviewRequest.getReviewDetail(), reviewRequest.getRating(), reviewRequest.getCustomerId());
+		return "OK";
 	}
 }

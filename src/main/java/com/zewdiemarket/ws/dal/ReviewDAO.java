@@ -8,7 +8,9 @@ import org.hibernate.Session;
 
 import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.Order;
+import com.zewdiemarket.ws.Product;
 import com.zewdiemarket.ws.Review;
+import com.zewdiemarket.ws.Seller;
 
 public class ReviewDAO {
 
@@ -91,6 +93,30 @@ public class ReviewDAO {
 
 	public static Set<Review> getSellerReviews(long id) {
 		return SellerDAO.getSellerReviews(id);
+	}
+
+	public static Review addNewSellerReview(String sellerId, String reviewDetail, float rating, String customerId) {
+		Review r = new Review();
+		r.setCustomer(CustomerDAO.retrieveCustomer(Long.parseLong(customerId)));
+		r.setRating(rating);
+		r.setReviewDetail(reviewDetail);
+		Seller s = SellerDAO.retrieveSeller(Long.parseLong(sellerId));
+		s.addReview(r);
+		addReview(r);
+		SellerDAO.addSeller(s);
+		return null;
+	}
+
+	public static Review addNewProductReview(String productId, String reviewDetail, float rating, String customerId) {
+		Review r = new Review();
+		r.setCustomer(CustomerDAO.retrieveCustomer(Long.parseLong(customerId)));
+		r.setRating(rating);
+		r.setReviewDetail(reviewDetail);
+		Product p = ProductDAO.retrieveProduct(Long.parseLong(productId));
+		p.addReview(r);
+		addReview(r);
+		ProductDAO.addProduct(p);
+		return null;
 	}
 }
 

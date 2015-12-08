@@ -16,6 +16,8 @@ public class OrderRepresentation extends AbstractRepresentation implements Compa
 	private long id;
 	private long productId;
 	private long customerId;
+	private long sellerId;
+	private String sellerName;
 	private String productName;
 	private String status;
 
@@ -45,12 +47,28 @@ public class OrderRepresentation extends AbstractRepresentation implements Compa
 		this.productName = name;
 	}
 	
+	public String getSellerName(){
+		return sellerName;
+	}
+
+	public void setSellerName(String name) {
+		this.sellerName = name;
+	}
+	
 	public long getProductID() {
 		return this.productId;
 	}
 	
 	public void setProductID(long productId) {
 		this.productId = productId;
+	}
+	
+	public long getSellerID() {
+		return this.sellerId;
+	}
+	
+	public void setSellerID(long sellerId) {
+		this.sellerId = sellerId;
 	}
 	
 	public long getCustomerID() {
