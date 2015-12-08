@@ -70,6 +70,21 @@ public class ReviewActivity {
 		}
 		return reviewReps;
 	}
+	
+	public Set<ReviewRepresentation> getProductReviews(String productId){
+		Set<Review> reviews = new TreeSet<Review>();
+		Set<ReviewRepresentation> reviewReps = new TreeSet<ReviewRepresentation>();
+		reviews = ReviewDAO.getProductReviews(Long.parseLong(productId));
+		for(Review r : reviews){
+			ReviewRepresentation reviewRep = new ReviewRepresentation();
+			reviewRep.setID(r.getID());
+			reviewRep.setCustomerName(r.getCustomer().getName());
+			reviewRep.setRating(r.getRating());
+			reviewRep.setReviewDetail(r.getReviewDetail());
+			reviewReps.add(reviewRep);
+		}
+		return reviewReps;
+	}
 
 	public String deleteReview(String id) {
 		ReviewDAO.deleteReview(ReviewDAO.retrieveReview(Long.parseLong(id)));

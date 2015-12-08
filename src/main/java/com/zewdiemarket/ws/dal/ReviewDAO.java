@@ -118,6 +118,10 @@ public class ReviewDAO {
 		ProductDAO.addProduct(p);
 		return null;
 	}
+
+	public static Set<Review> getProductReviews(long id) {
+		return ProductDAO.getProductReviews(id);
+	}
 }
 
 

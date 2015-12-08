@@ -60,10 +60,10 @@ public class ProductActivity {
 
 	public void setLinks(ProductRepresentation prodRep){
 		Link[] links = new Link[2];
-		Link buy = new Link("buy", System.getenv("ORDERSERVICE_URL") + "?product_id=" + prodRep.getID() + "&customer_id=");
-		Link review = new Link("review", System.getenv("REVIEWSERVICE_URL") + "product/" + prodRep.getID());
+		Link buy = new Link("buy", System.getenv("ORDERSERVICE_URL") + "product/" + prodRep.getID());
+		Link view_reviews = new Link("review", System.getenv("REVIEWSERVICE_URL") + "productreviews/" + prodRep.getID());
 		links[0] = buy;
-		links[1] = review;
+		links[1] = view_reviews;
 		prodRep.setLinks(links);
 	}
 

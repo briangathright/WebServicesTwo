@@ -96,4 +96,10 @@ public class ProductDAO {
 	public static Set<Product> getSellerProducts(long id) {
 		return SellerDAO.getSellerProducts(id);
 	}
+
+	public static Set<Review> getProductReviews(long id) {
+		Product p = retrieveProduct(id);
+		Set<Review> productReviews = p.getReviewList();
+		return productReviews;
+	}
 }

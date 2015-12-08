@@ -60,6 +60,14 @@ public class ReviewResource implements ReviewService{
 		ReviewActivity reviewAct = new ReviewActivity();
 		return reviewAct.getSellerReviews(sellerId);
 	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/review/productreviews/{productId}")
+	public Set<ReviewRepresentation> getProductReviews(@PathParam("productId") String productId) {
+		ReviewActivity reviewAct = new ReviewActivity();
+		return reviewAct.getProductReviews(productId);
+	}
 
 	
 	@POST
