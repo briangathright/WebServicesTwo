@@ -100,7 +100,6 @@ public class ReviewDAO {
 		Seller s = SellerDAO.retrieveSeller(Long.parseLong(sellerId));
 		s.addReview(r);
 		r.setSeller(s);
-		r.setProduct(null);
 		addReview(r);
 		SellerDAO.addSeller(s);
 		return r;
@@ -115,7 +114,6 @@ public class ReviewDAO {
 		Product p = ProductDAO.retrieveProduct(Long.parseLong(productId));
 		p.addReview(r);
 		addReview(r);
-		r.setSeller(null);
 		r.setProduct(p);
 		ProductDAO.addProduct(p);
 		CustomerDAO.addCustomer(c);
@@ -137,7 +135,7 @@ public class ReviewDAO {
 		Set<Review> allReviews = getAllReviews();
 		Set<Review> sellerReviews = new LinkedHashSet<Review>();
 		for(Review r : allReviews){
-			if(r.getProduct().getID() == id){
+			if(r.getSeller().getID() == id){
 				sellerReviews.add(r);
 			}
 		}
