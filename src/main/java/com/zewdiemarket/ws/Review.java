@@ -27,7 +27,7 @@ public class Review implements Serializable, Comparable<Review> {
 	private long review_id;
 
 	@Column(name = "rating")
-	private float rating;
+	private double rating;
 
 	@Column(name = "review_detail")
 	private String review_detail;
@@ -48,7 +48,7 @@ public class Review implements Serializable, Comparable<Review> {
 	 * @param rating
 	 * @param customer
 	 */
-	public Review(float rating, Customer customer) {
+	public Review(double rating, Customer customer) {
 		this.rating = boundRating(rating);
 		this.customer = customer;
 	}
@@ -59,7 +59,7 @@ public class Review implements Serializable, Comparable<Review> {
 	 * @param customer
 	 * @param review_detail
 	 */
-	public Review(float rating, Customer customer, String review_detail) {
+	public Review(double rating, Customer customer, String review_detail) {
 		this.rating = boundRating(rating);
 		this.customer = customer;
 		this.review_detail = review_detail;
@@ -73,7 +73,7 @@ public class Review implements Serializable, Comparable<Review> {
 		return review_id;
 	}
 
-	public void setRating(float rating) {
+	public void setRating(double rating) {
 		boundRating(rating);
 	}
 
@@ -102,7 +102,7 @@ public class Review implements Serializable, Comparable<Review> {
 	 * @param rating
 	 * @return
 	 */
-	public float boundRating(float rating) {
+	public double boundRating(double rating) {
 		if(rating<0) {
 			return 0;
 		}

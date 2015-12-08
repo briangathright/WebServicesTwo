@@ -16,7 +16,7 @@ import com.zewdiemarket.ws.Customer;
 public class ReviewRequest {
 
 	private String reviewDetail;
-	private float rating;
+	private double rating;
 	private String customerId;
 	private String sellerId;
 	private String productId;
@@ -27,14 +27,14 @@ public class ReviewRequest {
 	public ReviewRequest(String productId, String reviewDetail, String rating, String customerId){
 		this.productId = productId;
 		this.reviewDetail = reviewDetail;
-		this.rating = Float.parseFloat(rating);
+		this.rating = Double.parseDouble(rating);
 		this.customerId = customerId;
 	}
 
 	public ReviewRequest(boolean x, String sellerId, String reviewDetail, String rating, String customerId){
 		this.sellerId = sellerId;
 		this.reviewDetail = reviewDetail;
-		this.rating = Float.parseFloat(rating);
+		this.rating = Double.parseDouble(rating);
 		this.customerId = customerId;
 	}
 
@@ -46,11 +46,11 @@ public class ReviewRequest {
 		this.reviewDetail = reviewDetail;
 	}
 
-	public float getRating(){
+	public double getRating(){
 		return rating;
 	}
 
-	public void setRating(float rating){
+	public void setRating(double rating){
 		this.rating = rating;
 	}
 
