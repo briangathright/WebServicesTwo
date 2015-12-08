@@ -21,19 +21,20 @@ import com.zewdiemarket.ws.service.workflow.ReviewActivity;
 /*
  * Sets up web service with CXF annotations for ReviewService
  */
-@CrossOriginResourceSharing(
-        allowOrigins = {
-           "http://127.0.0.1:8000"
-        }, 
-        allowCredentials = true, 
-        maxAge = 1, 
-        allowHeaders = {
-           "X-custom-1", "X-custom-2"
-        }, 
-        exposeHeaders = {
-           "X-custom-3", "X-custom-4"
-        }
-)
+//@CrossOriginResourceSharing(
+//allowOrigins = {
+// "http://127.0.0.1:8000"
+//}, 
+//allowCredentials = true, 
+//maxAge = 1, 
+//allowHeaders = {
+// "X-custom-1", "X-custom-2"
+//}, 
+//exposeHeaders = {
+// "X-custom-3", "X-custom-4"
+//}
+//)
+@CrossOriginResourceSharing(allowAllOrigins = true)
 @Path("/reviewservice/")
 public class ReviewResource implements ReviewService{
 

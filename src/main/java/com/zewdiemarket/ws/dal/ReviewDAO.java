@@ -114,9 +114,9 @@ public class ReviewDAO {
 		r.setReviewDetail(reviewDetail);
 		Product p = ProductDAO.retrieveProduct(Long.parseLong(productId));
 		p.addReview(r);
-		addReview(r);
 		r.setProduct(p);
 		r.setSeller(null);
+		addReview(r);
 		ProductDAO.addProduct(p);
 		CustomerDAO.addCustomer(c);
 		return r;

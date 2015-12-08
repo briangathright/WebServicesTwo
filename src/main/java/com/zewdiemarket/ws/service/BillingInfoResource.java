@@ -20,19 +20,20 @@ import com.zewdiemarket.ws.service.workflow.BillingInfoActivity;
 /*
  * Sets up web service with CXF annotations for BillingInfoService
  */
-@CrossOriginResourceSharing(
-        allowOrigins = {
-           "http://127.0.0.1:8000"
-        }, 
-        allowCredentials = true, 
-        maxAge = 1, 
-        allowHeaders = {
-           "X-custom-1", "X-custom-2"
-        }, 
-        exposeHeaders = {
-           "X-custom-3", "X-custom-4"
-        }
-)
+//@CrossOriginResourceSharing(
+//        allowOrigins = {
+//           "http://127.0.0.1:8000"
+//        }, 
+//        allowCredentials = true, 
+//        maxAge = 1, 
+//        allowHeaders = {
+//           "X-custom-1", "X-custom-2"
+//        }, 
+//        exposeHeaders = {
+//           "X-custom-3", "X-custom-4"
+//        }
+//)
+@CrossOriginResourceSharing(allowAllOrigins = true)
 @Path("/billinginfoservice/")
 public class BillingInfoResource implements BillingInfoService {
 

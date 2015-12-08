@@ -24,19 +24,20 @@ import com.zewdiemarket.ws.service.workflow.ProductActivity;
  * Sets up web service with CXF annotations for ProductService
  */
 
-@CrossOriginResourceSharing(
-        allowOrigins = {
-           "http://127.0.0.1:8000"
-        }, 
-        allowCredentials = true, 
-        maxAge = 1, 
-        allowHeaders = {
-           "X-custom-1", "X-custom-2"
-        }, 
-        exposeHeaders = {
-           "X-custom-3", "X-custom-4"
-        }
-)
+//@CrossOriginResourceSharing(
+//allowOrigins = {
+// "http://127.0.0.1:8000"
+//}, 
+//allowCredentials = true, 
+//maxAge = 1, 
+//allowHeaders = {
+// "X-custom-1", "X-custom-2"
+//}, 
+//exposeHeaders = {
+// "X-custom-3", "X-custom-4"
+//}
+//)
+@CrossOriginResourceSharing(allowAllOrigins = true)
 @Path("/productservice/")
 public class ProductResource implements ProductService{
 
