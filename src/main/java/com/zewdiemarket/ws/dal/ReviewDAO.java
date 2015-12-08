@@ -39,7 +39,7 @@ public class ReviewDAO {
 		session.delete(r);
 		session.getTransaction().commit();
 	}
-	
+
 	/**
 	 * Retrieve a review from the database
 	 **/
@@ -66,11 +66,11 @@ public class ReviewDAO {
 	public static Set<Review> getAllReviews(){
 		try {
 			Session session = HibernateSessionHelper.getSessionFactory().getCurrentSession();
-			
+
 			session.beginTransaction();
-			
+
 			Set<Review> allReviews = new TreeSet<Review>(session.createCriteria(Review.class).list());
-			
+
 			session.getTransaction().commit();
 			return allReviews;
 		} catch (Exception e) {
@@ -91,9 +91,6 @@ public class ReviewDAO {
 		return r;
 	}
 
-	public static Set<Review> getSellerReviews(long id) {
-		return SellerDAO.getSellerReviews(id);
-	}
 
 	public static Review addNewSellerReview(String sellerId, String reviewDetail, double rating, String customerId) {
 		Review r = new Review();
@@ -102,6 +99,8 @@ public class ReviewDAO {
 		r.setReviewDetail(reviewDetail);
 		Seller s = SellerDAO.retrieveSeller(Long.parseLong(sellerId));
 		s.addReview(r);
+		r.setSeller(s);
+		r.setProduct(null);
 		addReview(r);
 		SellerDAO.addSeller(s);
 		return r;
@@ -116,14 +115,35 @@ public class ReviewDAO {
 		Product p = ProductDAO.retrieveProduct(Long.parseLong(productId));
 		p.addReview(r);
 		addReview(r);
+		r.setSeller(null);
+		r.setProduct(p);
 		ProductDAO.addProduct(p);
 		CustomerDAO.addCustomer(c);
 		return r;
 	}
 
 	public static Set<Review> getProductReviews(long id) {
-		return ProductDAO.getProductReviews(id);
+		Set<Review> allReviews = getAllReviews();
+		Set<Review> productReviews = new LinkedHashSet<Review>();
+		for(Review r : allReviews){
+			if(r.getProduct().getID() == id){
+				productReviews.add(r);
+			}
+		}
+		return productReviews;	
 	}
+
+	public static Set<Review> getSellerReviews(long id) {
+		Set<Review> allReviews = getAllReviews();
+		Set<Review> sellerReviews = new LinkedHashSet<Review>();
+		for(Review r : allReviews){
+			if(r.getProduct().getID() == id){
+				sellerReviews.add(r);
+			}
+		}
+		return sellerReviews;	
+	}
+
 }
 
 
