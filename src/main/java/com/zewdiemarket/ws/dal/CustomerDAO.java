@@ -1,9 +1,15 @@
 package com.zewdiemarket.ws.dal;
 
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.hibernate.Session;
+
+import com.zewdiemarket.ws.BillingInfo;
 import com.zewdiemarket.ws.Customer;
+import com.zewdiemarket.ws.Order;
+import com.zewdiemarket.ws.Product;
+import com.zewdiemarket.ws.Seller;
 
 public class CustomerDAO {
 	/**
@@ -76,6 +82,19 @@ public class CustomerDAO {
 	public static Customer addNewCustomer(String customerName) {
 		Customer c = new Customer();
 		c.setName(customerName);
+		addCustomer(c);
+		return c;
+	}
+	
+	public static Customer addNewCustomer(String customerName, String customerPassword) {
+		Customer c = new Customer();
+		c.setName(customerName);
+		c.setPassword(customerPassword);
+		c.setAddress("PLEASE SET");
+		BillingInfo bi = new BillingInfo();
+		c.setBillingInfo(bi);
+		c.setOrderList(new HashSet<Order>());
+		BillingInfoDAO.addBillingInfo(bi);
 		addCustomer(c);
 		return c;
 	}

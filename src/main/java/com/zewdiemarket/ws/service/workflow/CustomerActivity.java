@@ -3,10 +3,14 @@ package com.zewdiemarket.ws.service.workflow;
 import java.util.HashSet;
 import java.util.Set;
 import com.zewdiemarket.ws.Customer;
+import com.zewdiemarket.ws.Seller;
 import com.zewdiemarket.ws.dal.CustomerDAO;
+import com.zewdiemarket.ws.dal.SellerDAO;
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.CustomerRepresentation;
+import com.zewdiemarket.ws.service.representation.CustomerRequest;
 import com.zewdiemarket.ws.service.representation.Link;
+import com.zewdiemarket.ws.service.representation.SellerRequest;
 
 /*
  * Activity for Customer - we get, create, and delete Customer representations
@@ -60,11 +64,17 @@ public class CustomerActivity {
 		return null;
 	}
 
+	public String createCustomer(CustomerRequest customerRequest) {
+		Customer c = CustomerDAO.addNewCustomer(customerRequest.getCustomerName(), customerRequest.getCustomerPass());
+		return "OK";
+	}
+	
 	public String deleteCustomer(String id) {
 		CustomerDAO.deleteCustomer(CustomerDAO.retrieveCustomer(Long.parseLong(id)));
 		return "OK";
 	}
 
+	
 	public void setLinks(CustomerRepresentation customerRep){
 		Link[] links = new Link[5];
 		Link updatePass = new Link("update_password", System.getenv("CUSTOMERSERVICE_URL") + customerRep.getID() + "/password/");

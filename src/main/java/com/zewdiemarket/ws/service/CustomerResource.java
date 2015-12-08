@@ -16,7 +16,9 @@ import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 
 import com.zewdiemarket.ws.service.representation.CustomerRepresentation;
 import com.zewdiemarket.ws.service.representation.CustomerRequest;
+import com.zewdiemarket.ws.service.representation.SellerRequest;
 import com.zewdiemarket.ws.service.workflow.CustomerActivity;
+import com.zewdiemarket.ws.service.workflow.SellerActivity;
 
 /*
  * Sets up web service with CXF annotations for CustomerService
@@ -78,6 +80,21 @@ public class CustomerResource implements CustomerService {
 																@PathParam("address") String address) {
 			CustomerActivity customerAct = new CustomerActivity();
 			return customerAct.updateCustomerAddress(customerId, address);
+		}
+		
+		@POST
+		@Produces({"application/xml" , "application/json"})
+		@Path("/customer/customersignup/customername/{customerName}/customerpassword/{customerPassword}")
+		public Response createCustomer(@PathParam("customerName") String customerName, @PathParam("customerPassword") String customerPassword) {
+			CustomerActivity customerAct = new CustomerActivity();
+			CustomerRequest customerRequest = new CustomerRequest();
+			customerRequest.setCustomerName(customerName);
+			customerRequest.setCustomerPass(customerPassword);
+			String res = customerAct.createCustomer(customerRequest);
+			if (res.equals("OK")) {
+				return Response.status(Status.OK).build();
+			}
+			return null;
 		}
 		
 		@GET

@@ -71,6 +71,12 @@ public class BillingInfoDAO {
 		}
 		return null;
 	}
+	
+	public static BillingInfo createBillingInfo(){
+		BillingInfo bi = new BillingInfo();
+		addBillingInfo(bi);
+		return bi;
+	}
 
 	/*
 	 * Adds new Billing Info to the database

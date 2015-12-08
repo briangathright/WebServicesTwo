@@ -13,14 +13,24 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "")
 public class CustomerRequest {
 	String customerName;
-	
+	String customerPass;
+
 	public CustomerRequest(){}
-	
+
 	public String getCustomerName(){
 		return customerName;
 	}
-	
+
 	public void setCustomerName(String customerName){
 		this.customerName = customerName;
 	}
+	
+	public String getCustomerPass(){
+		return customerPass;
+	}
+
+	public void setCustomerPass(String customerPass){
+		this.customerPass = customerPass;
+	}
 }
+

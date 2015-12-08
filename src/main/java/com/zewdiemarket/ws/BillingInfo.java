@@ -24,25 +24,25 @@ public class BillingInfo implements Serializable {
 	private long billingInfo_id;
 
 	@Column(name = "cardType")
-	private String cardType;
+	private String cardType = "NA";
 
 	@Column(name = "billingName") 
-	private String billingName;
+	private String billingName = "NA";
 
 	@Column(name = "billingAddress")
-	private String billingAddress;
+	private String billingAddress = "NA";
 
 	@Column(name = "cardNumber")
-	private String cardNumber;
+	private String cardNumber = "NA";
 
 	@Column(name = "expDate")
-	private String expDate;
+	private String expDate = "NA";
 	
 	/**
 	 * Hibernate requires an empty constructor
 	 */
 	@Column(name = "cvcNumber")
-	private String cvcNumber;
+	private String cvcNumber = "NA";
 	
 	public BillingInfo() {
 
