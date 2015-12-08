@@ -115,7 +115,7 @@ public class ReviewDAO {
 		Product p = ProductDAO.retrieveProduct(Long.parseLong(productId));
 		p.addReview(r);
 		addReview(r);
-		ProductDAO.addProduct(p);
+		//ProductDAO.addProduct(p);
 		return null;
 	}
 
