@@ -66,16 +66,6 @@ public class ReviewActivity {
 		return reviewReps;
 	}
 
-	public ReviewRepresentation createReview(String reviewDetail, float rating, Customer customer) {
-		Review r = ReviewDAO.addNewReview(reviewDetail, rating, customer);
-		ReviewRepresentation reviewRep = new ReviewRepresentation();
-		reviewRep.setID(r.getID());
-		reviewRep.setReviewDetail(r.getReviewDetail());
-		String currentCustomerName = customer.getName();
-		reviewRep.setCustomerName(currentCustomerName);
-		return reviewRep;
-	}
-
 	public String deleteReview(String id) {
 		ReviewDAO.deleteReview(ReviewDAO.retrieveReview(Long.parseLong(id)));
 		return "OK";
