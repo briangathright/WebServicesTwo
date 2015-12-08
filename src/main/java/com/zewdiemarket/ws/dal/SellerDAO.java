@@ -88,6 +88,12 @@ public class SellerDAO {
 		Set<Review> sellerReviews = s.getReviewList();
 		return sellerReviews;
 	}
+	
+	public static Set<Product> getSellerProducts(long id) {
+		Seller s = retrieveSeller(id);
+		Set<Product> sellerProducts = s.getProductList();
+		return sellerProducts;
+	}
 
 	public static Seller addNewSeller(String sellerName, String sellerPassword) {
 		Seller s = new Seller();

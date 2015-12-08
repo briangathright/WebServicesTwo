@@ -14,8 +14,10 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 
 import com.zewdiemarket.ws.Product;
+import com.zewdiemarket.ws.service.representation.OrderRepresentation;
 import com.zewdiemarket.ws.service.representation.ProductRepresentation;
 import com.zewdiemarket.ws.service.representation.ProductRequest;
+import com.zewdiemarket.ws.service.workflow.OrderActivity;
 import com.zewdiemarket.ws.service.workflow.ProductActivity;
 
 /*
@@ -52,6 +54,14 @@ public class ProductResource implements ProductService{
 	public ProductRepresentation getProduct(@PathParam("productId") String productId) {
 		ProductActivity prodAct = new ProductActivity();
 		return prodAct.getProduct(productId);
+	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/product/sellerproducts/{sellerId}")
+	public Set<ProductRepresentation> getSellerProducts(@PathParam("sellerId") String sellerId) {
+		ProductActivity prodAct = new ProductActivity();
+		return prodAct.getSellerProducts(sellerId);
 	}
 
 	@POST

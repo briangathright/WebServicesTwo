@@ -5,10 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+import com.zewdiemarket.ws.Order;
 import com.zewdiemarket.ws.Product;
+import com.zewdiemarket.ws.dal.OrderDAO;
 import com.zewdiemarket.ws.dal.ProductDAO;
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.Link;
+import com.zewdiemarket.ws.service.representation.OrderRepresentation;
 import com.zewdiemarket.ws.service.representation.ProductRepresentation;
 import com.zewdiemarket.ws.service.representation.ProductRequest;
 
@@ -62,5 +65,16 @@ public class ProductActivity {
 		links[0] = buy;
 		links[1] = review;
 		prodRep.setLinks(links);
+	}
+
+	public Set<ProductRepresentation> getSellerProducts(String sellerId) {
+		Set<Product> products = new TreeSet<Product>();
+		Set<ProductRepresentation> prodReps = new TreeSet<ProductRepresentation>();
+		products = ProductDAO.getSellerProducts(Long.parseLong(sellerId));
+		for(Product p : products){
+			ProductRepresentation prodRep = getProduct(String.valueOf(p.getID()));
+			prodReps.add(prodRep);
+		}
+		return prodReps;
 	}
 }

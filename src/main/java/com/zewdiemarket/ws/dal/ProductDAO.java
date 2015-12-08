@@ -92,4 +92,8 @@ public class ProductDAO {
 		}
 		return null;
 	}
+
+	public static Set<Product> getSellerProducts(long id) {
+		return SellerDAO.getSellerProducts(id);
+	}
 }
