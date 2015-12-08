@@ -97,11 +97,12 @@ public class OrderDAO {
 		Order o = new Order();
 		Customer c = CustomerDAO.retrieveCustomer(Long.parseLong(custId));
 		Product p = ProductDAO.retrieveProduct(Long.parseLong(productId));
-		long sellerId = p.getSeller().getID();
-		Seller s = SellerDAO.retrieveSeller(sellerId);
+		String sellerId = p.getSeller().getID()+"";
+		Seller s = SellerDAO.retrieveSeller(Long.parseLong(sellerId));
 		o.setOrderProduct(p);
 		o.setProductName(p.getDetail());
 		o.setCustomer(c);
+		o.setSeller(s);
 		s.getOrderList().add(o);
 		c.addOrder(o);
 		o.setStatus("PLACED");

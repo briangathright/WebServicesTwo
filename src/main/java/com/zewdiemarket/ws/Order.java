@@ -45,6 +45,10 @@ public class Order implements Comparable<Order>, Serializable
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="customer_id")
 	Customer customer;
+	
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="seller_id")
+	Seller seller;
 
 	/**
 	 * Hibernate requires an empty constructor
@@ -58,6 +62,7 @@ public class Order implements Comparable<Order>, Serializable
 	public Order(Customer customer, Product product) {
 		this.orderedProduct=product;
 		this.productName = orderedProduct.getDetail();
+		this.seller = product.getSeller();
 		this.customer=customer;
 	}
 
@@ -101,6 +106,14 @@ public class Order implements Comparable<Order>, Serializable
 	public void setCustomer(Customer customer){
 		this.customer=customer;
 	}
+	
+	public Seller getSeller(){
+		return seller;
+	}
+
+	public void setSeller(Seller seller){
+		this.seller=seller;
+	}
 
 	/**
 	 * 
@@ -129,7 +142,7 @@ public class Order implements Comparable<Order>, Serializable
 	 */
 	public void place() {
 		status = "PLACED";
-		orderedProduct.getSeller().getOrderList().add(this);
+		seller.getOrderList().add(this);
 	}
 
 	public void ship() {
