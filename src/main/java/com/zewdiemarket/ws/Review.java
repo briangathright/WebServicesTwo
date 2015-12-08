@@ -77,7 +77,7 @@ public class Review implements Serializable, Comparable<Review> {
 		boundRating(rating);
 	}
 
-	public float getRating() {
+	public double getRating() {
 		return rating;
 	}
 
