@@ -59,7 +59,7 @@ public class SellerDAO {
 	}
 
 	/*
-	 * Get all sellsers in a linked hash set
+	 * Get all sellers in a linked hash set
 	 */
 	public static Set<Seller> getAllSellers() {
 		try {
@@ -77,12 +77,18 @@ public class SellerDAO {
 		return null;
 	}
 	
+	/*
+	 * get all of a sellers products
+	 */
 	public static Set<Product> getSellerProducts(long id) {
 		Seller s = retrieveSeller(id);
 		Set<Product> sellerProducts = s.getProductList();
 		return sellerProducts;
 	}
 
+	/*
+	 * add a new seller
+	 */
 	public static Seller addNewSeller(String sellerName, String sellerPassword) {
 		Seller s = new Seller();
 		s.setName(sellerName);

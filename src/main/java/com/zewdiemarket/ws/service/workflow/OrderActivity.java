@@ -101,19 +101,6 @@ public class OrderActivity {
 		return "OK";
 	}
 
-	public void setLinks(OrderRepresentation orderRep){
-		Link[] links = new Link[4];
-		Link cancel_order = new Link("cancel_order", System.getenv("ORDERSERVICE_URL") + "cancel/" + orderRep.getID());
-		Link view_product = new Link("view_product", System.getenv("PRODUCTSERVICE_URL") + orderRep.getProductID());
-		Link fulfill_order = new Link("fulfill_order", System.getenv("ORDERSERVICE_URL") + "fulfill/" + orderRep.getID());
-		Link review_product = new Link("review_product", System.getenv("REVIEWSERVICE_URL") + "product/" + orderRep.getProductID());
-		links[0] = cancel_order;
-		links[1] = view_product;
-		links[2] = fulfill_order;
-		links[3] = review_product;
-		orderRep.setLinks(links);
-	}
-
 	public OrderRepresentation cancelCustomerOrder(String orderId) {
 		Order o = OrderDAO.retrieveOrder(Long.parseLong(orderId));
 		o.setStatus("CANCELLED");
@@ -126,5 +113,18 @@ public class OrderActivity {
 		o.setStatus("FULFILLED");
 		OrderDAO.addOrder(o);
 		return this.getOrder(orderId);
+	}
+	
+	public void setLinks(OrderRepresentation orderRep){
+		Link[] links = new Link[4];
+		Link cancel_order = new Link("cancel_order", System.getenv("ORDERSERVICE_URL") + "cancel/" + orderRep.getID());
+		Link view_product = new Link("view_product", System.getenv("PRODUCTSERVICE_URL") + orderRep.getProductID());
+		Link fulfill_order = new Link("fulfill_order", System.getenv("ORDERSERVICE_URL") + "fulfill/" + orderRep.getID());
+		Link review_product = new Link("review_product", System.getenv("REVIEWSERVICE_URL") + "product/" + orderRep.getProductID());
+		links[0] = cancel_order;
+		links[1] = view_product;
+		links[2] = fulfill_order;
+		links[3] = review_product;
+		orderRep.setLinks(links);
 	}
 }

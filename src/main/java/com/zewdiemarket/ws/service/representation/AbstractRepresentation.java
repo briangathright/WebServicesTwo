@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 
+/*
+ * abstract class that adds link features to all representations
+ */
 public abstract class AbstractRepresentation {
 	
 	@XmlElement(name="link", namespace="")

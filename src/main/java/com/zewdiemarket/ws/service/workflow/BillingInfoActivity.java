@@ -50,7 +50,7 @@ public class BillingInfoActivity {
 	
 	public void setLinks(BillingInfoRepresentation billInfoRep){
 		Link[] links = new Link[1];
-		Link update_info = new Link("update_info", System.getenv("BILLINGINFOSERVICE_URL") + billInfoRep.getID());
+		Link update_info = new Link("update_info", System.getenv("BILLINGINFOSERVICE_URL") + billInfoRep.getID() + "/update/");
 		links[0] = update_info;
 		billInfoRep.setLinks(links);
 	}

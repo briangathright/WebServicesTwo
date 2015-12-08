@@ -75,13 +75,13 @@ public class ReviewActivity {
 		ReviewDAO.deleteReview(ReviewDAO.retrieveReview(Long.parseLong(id)));
 		return "OK";
 	}
-
-	public void setLinks(ReviewRepresentation reviewRep){
-
-	}
-
+	
 	public String createProductReview(ReviewRequest reviewRequest) {
 		Review r = ReviewDAO.addNewProductReview(reviewRequest.getProductId(), reviewRequest.getReviewDetail(), reviewRequest.getRating(), reviewRequest.getCustomerId());
 		return "OK";
+	}
+
+	public void setLinks(ReviewRepresentation reviewRep){
+
 	}
 }

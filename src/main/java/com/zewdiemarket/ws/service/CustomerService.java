@@ -14,7 +14,6 @@ public interface CustomerService {
 
 	public Set<CustomerRepresentation> getCustomers();
 	public CustomerRepresentation getCustomer(String customerId);
-	public CustomerRepresentation createCustomer(CustomerRequest customerRequest);
 	public CustomerRepresentation login(String customerName, String customerPassword);
 	
 }

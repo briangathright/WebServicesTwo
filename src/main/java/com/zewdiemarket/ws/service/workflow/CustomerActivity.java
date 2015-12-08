@@ -43,15 +43,6 @@ public class CustomerActivity {
 		setLinks(customerRep);
 		return customerRep;
 	}
-
-	public CustomerRepresentation createCustomer(String customerName) {
-		Customer c = CustomerDAO.addNewCustomer(customerName);
-		CustomerRepresentation customerRep = new CustomerRepresentation();
-		customerRep.setID(c.getID());
-		customerRep.setCustomerName(c.getName());
-		setLinks(customerRep);
-		return customerRep;
-	}
 	
 	public CustomerRepresentation login(String customerName, String customerPassword) {
 		Set<Customer> customers = new HashSet<Customer>();
@@ -74,6 +65,19 @@ public class CustomerActivity {
 		return "OK";
 	}
 
+	public CustomerRepresentation updateCustomerPassword(String customerId, String pass) {
+		Customer c = CustomerDAO.retrieveCustomer(Long.parseLong(customerId));
+		c.setPassword(pass);
+		CustomerDAO.addCustomer(c);
+		return this.getCustomer(customerId);
+	}
+	
+	public CustomerRepresentation updateCustomerAddress(String customerId, String addr) {
+		Customer c = CustomerDAO.retrieveCustomer(Long.parseLong(customerId));
+		c.setAddress(addr);
+		CustomerDAO.addCustomer(c);
+		return this.getCustomer(customerId);
+	}
 	
 	public void setLinks(CustomerRepresentation customerRep){
 		Link[] links = new Link[5];
@@ -90,17 +94,4 @@ public class CustomerActivity {
 		customerRep.setLinks(links);
 	}
 
-	public CustomerRepresentation updateCustomerPassword(String customerId, String pass) {
-		Customer c = CustomerDAO.retrieveCustomer(Long.parseLong(customerId));
-		c.setPassword(pass);
-		CustomerDAO.addCustomer(c);
-		return this.getCustomer(customerId);
-	}
-	
-	public CustomerRepresentation updateCustomerAddress(String customerId, String addr) {
-		Customer c = CustomerDAO.retrieveCustomer(Long.parseLong(customerId));
-		c.setAddress(addr);
-		CustomerDAO.addCustomer(c);
-		return this.getCustomer(customerId);
-	}
 }

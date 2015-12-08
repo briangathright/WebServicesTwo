@@ -79,6 +79,9 @@ public class OrderDAO {
 		return null;
 	}
 	
+	/**
+	 * retrieve all orders for a specific customer
+	 */
 	public static Set<Order> getCustomersOrders(long id) {
 		Set<Order> allOrders = getAllOrders();
 		Set<Order> customerOrders = new LinkedHashSet<Order>();
@@ -112,6 +115,9 @@ public class OrderDAO {
 		return o;
 	}
 
+	/**
+	 * retrieve all orders for a particular seller
+	 */
 	public static Set<Order> getSellerOrders(long id) {
 		Set<Order> allOrders = getAllOrders();
 		Set<Order> sellerOrders = new LinkedHashSet<Order>();

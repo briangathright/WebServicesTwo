@@ -63,6 +63,13 @@ public class SellerActivity {
 		SellerDAO.deleteSeller(SellerDAO.retrieveSeller(Long.parseLong(id)));
 		return "OK";
 	}
+	
+	public SellerRepresentation updateSellerPassword(String sellerId, String pass) {
+		Seller s = SellerDAO.retrieveSeller(Long.parseLong(sellerId));
+		s.setPassword(pass);
+		SellerDAO.addSeller(s);
+		return this.getSeller(sellerId);
+	}
 
 	//seller links
 	public void setLinks(SellerRepresentation sellerRep){
@@ -78,12 +85,5 @@ public class SellerActivity {
 		links[3] = view_orders;
 		links[4] = view_products;
 		sellerRep.setLinks(links);
-	}
-
-	public SellerRepresentation updateSellerPassword(String sellerId, String pass) {
-		Seller s = SellerDAO.retrieveSeller(Long.parseLong(sellerId));
-		s.setPassword(pass);
-		SellerDAO.addSeller(s);
-		return this.getSeller(sellerId);
 	}
 }

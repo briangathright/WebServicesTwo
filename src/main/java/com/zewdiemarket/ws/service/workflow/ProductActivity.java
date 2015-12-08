@@ -57,16 +57,7 @@ public class ProductActivity {
 		ProductDAO.deleteProduct(ProductDAO.retrieveProduct(Long.parseLong(id)));
 		return "OK";
 	}
-
-	public void setLinks(ProductRepresentation prodRep){
-		Link[] links = new Link[2];
-		Link buy = new Link("buy", System.getenv("ORDERSERVICE_URL") + "product/" + prodRep.getID());
-		Link view_reviews = new Link("review", System.getenv("REVIEWSERVICE_URL") + "productreviews/" + prodRep.getID());
-		links[0] = buy;
-		links[1] = view_reviews;
-		prodRep.setLinks(links);
-	}
-
+	
 	public Set<ProductRepresentation> getSellerProducts(String sellerId) {
 		Set<Product> products = new TreeSet<Product>();
 		Set<ProductRepresentation> prodReps = new TreeSet<ProductRepresentation>();
@@ -76,5 +67,14 @@ public class ProductActivity {
 			prodReps.add(prodRep);
 		}
 		return prodReps;
+	}
+
+	public void setLinks(ProductRepresentation prodRep){
+		Link[] links = new Link[2];
+		Link buy = new Link("buy", System.getenv("ORDERSERVICE_URL") + "product/" + prodRep.getID());
+		Link view_reviews = new Link("review", System.getenv("REVIEWSERVICE_URL") + "productreviews/" + prodRep.getID());
+		links[0] = buy;
+		links[1] = view_reviews;
+		prodRep.setLinks(links);
 	}
 }

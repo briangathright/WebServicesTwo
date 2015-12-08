@@ -76,16 +76,10 @@ public class CustomerDAO {
 		return null;
 	}
 
-	/*
-	 * Add a new customer to the database.
-	 */
-	public static Customer addNewCustomer(String customerName) {
-		Customer c = new Customer();
-		c.setName(customerName);
-		addCustomer(c);
-		return c;
-	}
 	
+	/*
+	 * add a new customer to the database
+	 */
 	public static Customer addNewCustomer(String customerName, String customerPassword) {
 		Customer c = new Customer();
 		c.setName(customerName);

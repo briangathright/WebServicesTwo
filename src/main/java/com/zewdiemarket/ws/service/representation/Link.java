@@ -2,6 +2,9 @@ package com.zewdiemarket.ws.service.representation;
 
 import javax.xml.bind.annotation.XmlRootElement; 
 
+/*
+ * link class for all representations
+ */
 @XmlRootElement(name="Link")
 public class Link {
 	private String action;

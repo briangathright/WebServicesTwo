@@ -55,13 +55,13 @@ public class CustomerResource implements CustomerService {
 			CustomerActivity customerAct = new CustomerActivity();
 			return customerAct.getCustomer(customerId);
 		}
-
-		@POST
+		
+		@GET
 		@Produces({"application/xml" , "application/json"})
-		@Path("/customer")
-		public CustomerRepresentation createCustomer(CustomerRequest customerRequest) {
+		@Path("/customerlogin/{customerName}/{customerPassword}")
+		public CustomerRepresentation login(@PathParam("customerName") String customerName, @PathParam("customerPassword")String customerPassword){
 			CustomerActivity customerAct = new CustomerActivity();
-			return customerAct.createCustomer(customerRequest.getCustomerName());
+			return customerAct.login(customerName, customerPassword);
 		}
 		
 		@POST
@@ -97,13 +97,6 @@ public class CustomerResource implements CustomerService {
 			return null;
 		}
 		
-		@GET
-		@Produces({"application/xml" , "application/json"})
-		@Path("/customerlogin/{customerName}/{customerPassword}")
-		public CustomerRepresentation login(@PathParam("customerName") String customerName, @PathParam("customerPassword")String customerPassword){
-			CustomerActivity customerAct = new CustomerActivity();
-			return customerAct.login(customerName, customerPassword);
-		}
 
 		@DELETE
 		@Produces({"application/xml" , "application/json"})

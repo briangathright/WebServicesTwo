@@ -29,7 +29,7 @@ public class ProductDAO {
 	}
 
 	/*
-	 * Add a new product to teh database
+	 * Add a new product to the database
 	 */
 	public static Product addNewProduct(String detail, double price, String sellerId){
 		Product p = new Product();
@@ -93,13 +93,10 @@ public class ProductDAO {
 		return null;
 	}
 
+	/*
+	 * get all sellers products
+	 */
 	public static Set<Product> getSellerProducts(long id) {
 		return SellerDAO.getSellerProducts(id);
-	}
-
-	public static Set<Review> getProductReviews(long id) {
-		Product p = retrieveProduct(id);
-		Set<Review> productReviews = p.getReviewList();
-		return productReviews;
 	}
 }

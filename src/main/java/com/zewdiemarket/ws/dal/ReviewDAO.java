@@ -91,6 +91,9 @@ public class ReviewDAO {
 		return r;
 	}
 
+	/*
+	 * add new review for a product
+	 */
 	public static Review addNewProductReview(String productId, String reviewDetail, double rating, String customerId) {
 		Review r = new Review();
 		Customer c = CustomerDAO.retrieveCustomer(Long.parseLong(customerId));
@@ -106,6 +109,9 @@ public class ReviewDAO {
 		return r;
 	}
 
+	/*
+	 * retrieve all reviews for a product
+	 */
 	public static Set<Review> getProductReviews(long id) {
 		Set<Review> allReviews = getAllReviews();
 		Set<Review> productReviews = new LinkedHashSet<Review>();

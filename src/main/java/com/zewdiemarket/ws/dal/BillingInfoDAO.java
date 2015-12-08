@@ -72,6 +72,9 @@ public class BillingInfoDAO {
 		return null;
 	}
 	
+	/*
+	 * create a new billinginfo (for a new customer)
+	 */
 	public static BillingInfo createBillingInfo(){
 		BillingInfo bi = new BillingInfo();
 		addBillingInfo(bi);
@@ -79,9 +82,9 @@ public class BillingInfoDAO {
 	}
 
 	/*
-	 * Adds new Billing Info to the database
+	 * updates Billing Info in the database
 	 */
-	public static BillingInfo updateBillingInfo(Long billingId,
+	public static BillingInfo updateBillingInfo(long billingId,
 			String cardType, String billingName, 
 			String billingAddress, String cardNumber,
 			String expDate, String cvcNumber) {
