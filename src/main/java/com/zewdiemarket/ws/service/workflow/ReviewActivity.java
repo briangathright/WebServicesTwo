@@ -23,18 +23,23 @@ public class ReviewActivity {
 
 	public Set<ReviewRepresentation> getReviews() {
 		// TODO Auto-generated method stub
-		Set<Review> reviews = new HashSet<Review>();
-		Set<ReviewRepresentation> reviewReps = new HashSet<ReviewRepresentation>();
+		Set<Review> reviews = new TreeSet<Review>();
+		Set<ReviewRepresentation> reviewReps = new TreeSet<ReviewRepresentation>();
 		reviews = ReviewDAO.getAllReviews();
+		if(reviews == null){
+			return null;
+		}
 		for(Review r : reviews){
-			ReviewRepresentation reviewRep = new ReviewRepresentation();
-			reviewRep.setID(r.getID());
-			reviewRep.setReviewDetail(r.getReviewDetail());
-			reviewRep.setRating(r.getRating());
-			Customer currentCustomer = r.getCustomer();
-			String currentCustomerName = currentCustomer.getName();
-			reviewRep.setCustomerName(currentCustomerName);
-			reviewReps.add(reviewRep);
+			if(r != null){
+				ReviewRepresentation reviewRep = new ReviewRepresentation();
+				reviewRep.setID(r.getID());
+				reviewRep.setReviewDetail(r.getReviewDetail());
+				reviewRep.setRating(r.getRating());
+				Customer currentCustomer = r.getCustomer();
+				String currentCustomerName = currentCustomer.getName();
+				reviewRep.setCustomerName(currentCustomerName);
+				reviewReps.add(reviewRep);
+			}
 		}
 		return reviewReps;
 	}
@@ -50,7 +55,7 @@ public class ReviewActivity {
 		reviewRep.setCustomerName(currentCustomerName);
 		return reviewRep;
 	}
-	
+
 	public Set<ReviewRepresentation> getSellerReviews(String sellerId){
 		Set<Review> reviews = new TreeSet<Review>();
 		Set<ReviewRepresentation> reviewReps = new TreeSet<ReviewRepresentation>();
@@ -72,7 +77,7 @@ public class ReviewActivity {
 	}
 
 	public void setLinks(ReviewRepresentation reviewRep){
-		
+
 	}
 
 	public String createSellerReview(ReviewRequest reviewRequest) {

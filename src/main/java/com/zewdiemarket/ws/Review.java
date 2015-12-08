@@ -74,7 +74,7 @@ public class Review implements Serializable, Comparable<Review> {
 	}
 
 	public void setRating(double rating) {
-		boundRating(rating);
+		this.rating = boundRating(rating);
 	}
 
 	public double getRating() {
