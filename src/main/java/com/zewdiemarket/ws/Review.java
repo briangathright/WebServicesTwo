@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Review: Class that represents reviews that customers write for sellers and products
+ * Review: Class that represents reviews that customers write products
  */
 @Entity
 @Table(name = "reviews")
@@ -38,8 +38,8 @@ public class Review implements Serializable, Comparable<Review> {
 	
 	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="product_id")
-	private Product product;	
-
+	private Product product;
+	
 	/**
 	 * Hibernate requires an empty constructor
 	 */

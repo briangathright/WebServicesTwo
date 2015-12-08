@@ -7,12 +7,12 @@ import java.util.Set;
  */
 public interface IReviewable {
 	/**
-	 * Function to add a review to an seller or product
+	 * Function to add a review to a product
 	 */
 	public void addReview(Review r);
 	
 	/**
-	 * Function to remove a review from a seller or product
+	 * Function to remove a review from a product
 	 */
 	public void removeReview(Review r);
 
