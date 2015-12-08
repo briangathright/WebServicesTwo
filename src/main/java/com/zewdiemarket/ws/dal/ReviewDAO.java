@@ -2,6 +2,7 @@ package com.zewdiemarket.ws.dal;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.hibernate.Session;
 
@@ -66,7 +67,7 @@ public class ReviewDAO {
 			
 			session.beginTransaction();
 			
-			Set<Review> allReviews = new LinkedHashSet<Review>(session.createCriteria(Review.class).list());
+			Set<Review> allReviews = new TreeSet<Review>(session.createCriteria(Review.class).list());
 			
 			session.getTransaction().commit();
 			return allReviews;

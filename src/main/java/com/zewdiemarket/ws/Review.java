@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "reviews")
 @XmlRootElement
-public class Review implements Serializable {
+public class Review implements Serializable, Comparable<Review> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -121,5 +121,9 @@ public class Review implements Serializable {
 				"\nCustomer: " + customer.getName() +
 				"\nRating: " + rating + 
 				"\nDetail: " + review_detail;
+	}
+
+	public int compareTo(Review r) {
+		return (int) (review_id - r.getID());
 	}
 }

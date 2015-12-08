@@ -13,7 +13,7 @@ import com.zewdiemarket.ws.Customer;
 @XmlRootElement(name = "Review")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class ReviewRepresentation extends AbstractRepresentation{
+public class ReviewRepresentation extends AbstractRepresentation implements Comparable<ReviewRepresentation>{
 	
 	private long id;
 	private String reviewDetail;
@@ -51,5 +51,9 @@ public class ReviewRepresentation extends AbstractRepresentation{
 	}
 	public void setRating(float rating) {
 		this.rating = rating;
+	}
+	
+	public int compareTo(ReviewRepresentation rr) {
+		return (int) (id - rr.getID());
 	}
 }
