@@ -104,7 +104,7 @@ public class ReviewDAO {
 		s.addReview(r);
 		addReview(r);
 		SellerDAO.addSeller(s);
-		return null;
+		return r;
 	}
 
 	public static Review addNewProductReview(String productId, String reviewDetail, double rating, String customerId) {
@@ -115,8 +115,8 @@ public class ReviewDAO {
 		Product p = ProductDAO.retrieveProduct(Long.parseLong(productId));
 		p.addReview(r);
 		addReview(r);
-		//ProductDAO.addProduct(p);
-		return null;
+		ProductDAO.addProduct(p);
+		return r;
 	}
 
 	public static Set<Review> getProductReviews(long id) {
