@@ -59,6 +59,7 @@ public class Review implements Serializable, Comparable<Review> {
 	public Review(double rating, Customer customer, String review_detail, IReviewable ir) {
 		this.rating = boundRating(rating);
 		this.customer = customer;
+		this.review_detail = review_detail;
 		if(ir.getClass() == Product.class){
 			this.product = (Product) ir;
 			this.seller = null;
