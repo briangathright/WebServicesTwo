@@ -65,8 +65,7 @@ public class BillingInfoResource implements BillingInfoService {
 	
 	@POST
 	@Produces({"application/xml" , "application/json"})
-	@Path("/billinginfo/{billinginfoId}/update/cardtype/{cardType}/billingname/{billingName}/"
-			+ "/")
+	@Path("/billinginfo/{billinginfoId}/update/cardtype/{cardType}/billingname/{billingName}/billingaddress/{billingAddress}/cardNumber/{cardNumber}/expdate/{expDate}/cvcnumber/{cvcNumber}")
 	public Response updateBillingInfo( @PathParam("billinginfoId") String billingInfoId,
 			@PathParam("cardType") String cardType,
 			@PathParam("billingName") String billingName,
