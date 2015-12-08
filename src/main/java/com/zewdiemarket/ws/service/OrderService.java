@@ -14,6 +14,5 @@ public interface OrderService {
 
 	public Set<OrderRepresentation> getOrders();
 	public OrderRepresentation getOrder(String orderId);
-	public OrderRepresentation createOrder(OrderRequest orderRequest);
 
 }

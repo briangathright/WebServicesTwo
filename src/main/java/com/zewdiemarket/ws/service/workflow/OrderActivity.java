@@ -9,6 +9,7 @@ import com.zewdiemarket.ws.dal.OrderDAO;
 import com.zewdiemarket.ws.service.representation.BillingInfoRepresentation;
 import com.zewdiemarket.ws.service.representation.Link;
 import com.zewdiemarket.ws.service.representation.OrderRepresentation;
+import com.zewdiemarket.ws.service.representation.OrderRequest;
 
 /*
  * Activity for Order - we get, create, and delete Order representations
@@ -88,17 +89,12 @@ public class OrderActivity {
 		}
 		return orderReps;
 	}
-
-	public OrderRepresentation createOrder(String status) {
-		Order o = OrderDAO.addNewOrder(status);
-		OrderRepresentation orderRep = new OrderRepresentation();
-		orderRep.setID(o.getID());
-		orderRep.setStatus(o.getStatus());
-		orderRep.setProductName(o.getProductName());
-		orderRep.setSellerName(o.getOrderedProduct().getSeller().getName());
-
-		return orderRep;
+	
+	public String createOrder(OrderRequest or){
+		Order o = OrderDAO.addNewOrder(or.getCustomerId(), or.getProductId());
+		return "OK";
 	}
+	
 
 	public String deleteOrder(String id) {
 		OrderDAO.deleteOrder(OrderDAO.retrieveOrder(Long.parseLong(id)));

@@ -86,10 +86,13 @@ public class OrderResource implements OrderService {
 
 	@POST
 	@Produces({"application/xml" , "application/json"})
-	@Path("/order")
-	public OrderRepresentation createOrder(OrderRequest orderRequest) {
+	@Path("/order/product/{productId}/customer/{customerId}")
+	public String createOrder(@PathParam("productId") String productId, @PathParam("customerId") String customerId) {
 		OrderActivity orderAct = new OrderActivity();
-		return orderAct.createOrder(orderRequest.getStatus());
+		OrderRequest orderRequest = new OrderRequest();
+		orderRequest.setProductId(productId);
+		orderRequest.setCustomerId(customerId);
+		return orderAct.createOrder(orderRequest);
 	}
 
 	@DELETE

@@ -8,7 +8,10 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+import com.zewdiemarket.ws.Customer;
 import com.zewdiemarket.ws.Order;
+import com.zewdiemarket.ws.Product;
+import com.zewdiemarket.ws.Seller;
 
 public class OrderDAO {
 	
@@ -90,10 +93,21 @@ public class OrderDAO {
 	/*
 	 * Add a new Order to the database.
 	 */
-	public static Order addNewOrder(String status) {
+	public static Order addNewOrder(String custId, String productId){
 		Order o = new Order();
-		o.setStatus(status);
+		Customer c = CustomerDAO.retrieveCustomer(Long.parseLong(custId));
+		Product p = ProductDAO.retrieveProduct(Long.parseLong(productId));
+		long sellerId = p.getSeller().getID();
+		Seller s = SellerDAO.retrieveSeller(sellerId);
+		o.setOrderProduct(p);
+		o.setProductName(p.getDetail());
+		o.setCustomer(c);
+		s.getOrderList().add(o);
+		c.addOrder(o);
+		o.setStatus("PLACED");
 		addOrder(o);
+		SellerDAO.addSeller(s);
+		CustomerDAO.addCustomer(c);
 		return o;
 	}
 
