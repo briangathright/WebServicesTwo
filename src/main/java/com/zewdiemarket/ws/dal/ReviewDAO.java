@@ -100,6 +100,7 @@ public class ReviewDAO {
 		Seller s = SellerDAO.retrieveSeller(Long.parseLong(sellerId));
 		s.addReview(r);
 		r.setSeller(s);
+		r.setProduct(null);
 		addReview(r);
 		SellerDAO.addSeller(s);
 		return r;
@@ -115,6 +116,7 @@ public class ReviewDAO {
 		p.addReview(r);
 		addReview(r);
 		r.setProduct(p);
+		r.setSeller(null);
 		ProductDAO.addProduct(p);
 		CustomerDAO.addCustomer(c);
 		return r;
