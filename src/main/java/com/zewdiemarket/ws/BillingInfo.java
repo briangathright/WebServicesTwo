@@ -128,7 +128,6 @@ public class BillingInfo implements Serializable {
 				"\nBilling Name: " + billingName + 
 				"\nBilling Address: " + billingAddress +
 				"\nCard Number: " + cardNumber +
-				"\nExpiration Date: " + expDate +
-				"\nCVC Number: " + cvcNumber;
+				"\nExpiration Date: " + expDate;
 	}
 }
